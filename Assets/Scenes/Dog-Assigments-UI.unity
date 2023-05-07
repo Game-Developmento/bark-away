@@ -512,6 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 428634563}
+  - component: {fileID: 428634564}
   m_Layer: 5
   m_Name: TaskManagerUI
   m_TagString: Untagged
@@ -541,6 +542,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &428634564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428634562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4412affbb036d924aadf70cc7b9009d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 1344016742}
+  taskTemplate: {fileID: 1939973661}
 --- !u!1 &480765754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28d812fe42de80459c40caa89c84a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tasksListSO: {fileID: 11400000, guid: 0e0c9cd9854faa546b5dc3bd952421a9, type: 2}
 --- !u!4 &1285409275
 Transform:
   m_ObjectHideFlags: 0
