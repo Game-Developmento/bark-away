@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
 
         isWalking = moveDir != Vector3.zero;
 
-        // float rotateSpeed = 10f;
-        // transform.forward = Vector3.Lerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+        // float rotateSpeed = 1f;
+        // transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
     }
 
     public bool IsWalking()
