@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private bool isWalking;
 
-    void Update()
+    void FixedUpdate()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
@@ -24,5 +24,13 @@ public class Player : MonoBehaviour
     public bool IsWalking()
     {
         return isWalking;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            Debug.Log("Hitting door");
+        }
     }
 }
