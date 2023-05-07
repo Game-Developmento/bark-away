@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TasksListSO tasksListSO;
+    private float spawnerTaskTimer;
+    private float spawnerTaskTimerMax = 4f;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        spawnerTaskTimer -= Time.deltaTime;
+        if (spawnerTaskTimer <= 0f)
+        {
+            spawnerTaskTimer = spawnerTaskTimerMax;
+        }
     }
 }
