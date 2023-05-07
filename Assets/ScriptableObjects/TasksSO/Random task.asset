@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
-  m_Name: Steal the food
+  m_Name: Random task
   m_EditorClassIdentifier: 
-  taskDescription: Poop inside the kitchen
-  taskSprite: {fileID: 21300000, guid: 5955491dc8dcecb4a993d9a008cf65a7, type: 3}
+  taskDescription: 'random task '
+  taskSprite: {fileID: 0}

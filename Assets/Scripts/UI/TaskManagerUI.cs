@@ -41,6 +41,7 @@ public class TaskManagerUI : MonoBehaviour
         {
             Transform taskTransform = Instantiate(taskTemplate, container);
             taskTransform.gameObject.SetActive(true);
+            taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(task);
         }
     }
     // Update is called once per frame

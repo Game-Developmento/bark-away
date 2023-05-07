@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
   m_Name: Annoy the owner task
   m_EditorClassIdentifier: 
-  taskDescription: Annoy the owner
+  taskDescription: Turn on the tv
   taskSprite: {fileID: 21300000, guid: 8325d4ef0a6eb3d43952aff8a06d9f45, type: 3}

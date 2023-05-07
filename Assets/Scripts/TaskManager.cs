@@ -15,7 +15,7 @@ public class TaskManager : MonoBehaviour
 
     private int waitingTasksMax = 4;
     private float spawnerTaskTimer;
-    private float spawnerTaskTimerMax = 4f;
+    private float spawnerTaskTimerMax = 5f;
 
     private void Awake()
     {
