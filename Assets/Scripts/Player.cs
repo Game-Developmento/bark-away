@@ -9,6 +9,16 @@ public class Player : MonoBehaviour
 
     private bool isWalking;
 
+
+
+    private void Start()
+    {
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
+    }
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
     void FixedUpdate()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
