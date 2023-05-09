@@ -8,4 +8,6 @@ public class TasksObjectSO : ScriptableObject
     public string taskDescription;
     public Sprite taskSprite;
 
+    public GameObject prefab;
+
 }

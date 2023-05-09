@@ -64,24 +64,24 @@ public class Player : MonoBehaviour
         }
 
         // Find closest interactable
-        IInteractable closestinteractable = null;
+        IInteractable closestInteractable = null;
         foreach (IInteractable interactable in interactableList)
         {
-            if (closestinteractable == null)
+            if (closestInteractable == null)
             {
-                closestinteractable = interactable;
+                closestInteractable = interactable;
             }
             else
             {
                 if (Vector3.Distance(transform.position, interactable.GetTransform().position) <
-                Vector3.Distance(transform.position, closestinteractable.GetTransform().position))
+                Vector3.Distance(transform.position, closestInteractable.GetTransform().position))
                 {
                     // Found closer interactable!
-                    closestinteractable = interactable;
+                    closestInteractable = interactable;
                 }
             }
         }
-        return closestinteractable;
+        return closestInteractable;
     }
 
 }

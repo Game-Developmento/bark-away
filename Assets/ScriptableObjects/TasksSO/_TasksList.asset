@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: _TasksList
   m_EditorClassIdentifier: 
   tasksList:
-  - {fileID: 11400000, guid: 1082798b79f2b8541b369c01df029c14, type: 2}
-  - {fileID: 11400000, guid: b9b0ec4c370e97445be84135b6a7c0dd, type: 2}
-  - {fileID: 11400000, guid: a2cec5567a62ac2439f85928ebb6d130, type: 2}
-  - {fileID: 11400000, guid: 0ab086cd435417c4286eec0a16494972, type: 2}
   - {fileID: 11400000, guid: 0cd96d7c1c1dac647a15bbc5f289a365, type: 2}
-  - {fileID: 11400000, guid: 0b1f13287f81b574fa4da92d4194b178, type: 2}
+  - {fileID: 11400000, guid: 2859e5462aa2f1b40974ce436f3c074f, type: 2}
+  - {fileID: 11400000, guid: c31aa05426bd666458f1deea73fde11d, type: 2}

@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
+    public event EventHandler<TasksObjectEventArgs> OnTaskSpawned;
+    public class TasksObjectEventArgs : EventArgs
+    {
+        public TasksObjectSO task;
+    }
 
-    public event EventHandler OnTaskSpawned;
     public event EventHandler OnTaskCompleted;
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
@@ -33,9 +37,13 @@ public class TaskManager : MonoBehaviour
             {
                 TasksObjectSO waitingTask = tasksListSO.tasksList[UnityEngine.Random.Range(0, tasksListSO.tasksList.Count)];
                 Debug.Log(waitingTask.name);
-                waitingTasksList.Add(waitingTask);
 
-                OnTaskSpawned?.Invoke(this, EventArgs.Empty);
+                if (!waitingTasksList.Contains(waitingTask))
+                {
+                    waitingTasksList.Add(waitingTask);
+                    OnTaskSpawned?.Invoke(this, new TasksObjectEventArgs { task = waitingTask });
+                }
+
             }
 
         }
@@ -44,5 +52,22 @@ public class TaskManager : MonoBehaviour
     public List<TasksObjectSO> GetTasksObjectSOList()
     {
         return waitingTasksList;
+    }
+
+    public bool IsTaskCompleted(IInteractable interactable)
+    {
+        if (interactable != null)
+        {
+            foreach (TasksObjectSO task in waitingTasksList)
+            {
+                if (interactable.GetTransform().position == task.prefab.transform.position)
+                {
+                    waitingTasksList.Remove(task);
+                    OnTaskCompleted?.Invoke(this, EventArgs.Empty);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

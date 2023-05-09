@@ -8,9 +8,10 @@ public class PlayerInteractUI : MonoBehaviour
 
     private void Update()
     {
-        if (player.GetInteractableObject() != null)
+        IInteractable currInteractableObject = player.GetInteractableObject();
+        if (currInteractableObject != null)
         {
-            Show(player.GetInteractableObject());
+            Show(currInteractableObject);
         }
         else
         {

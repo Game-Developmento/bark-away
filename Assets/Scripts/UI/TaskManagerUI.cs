@@ -17,31 +17,37 @@ public class TaskManagerUI : MonoBehaviour
     {
         TaskManager.Instance.OnTaskSpawned += TaskManager_OnTaskSpawned;
         TaskManager.Instance.OnTaskCompleted += Instance_OnTaskCompleted;
-        UpdateVisual();
-
+        UpdateVisual(null);
     }
 
-    private void TaskManager_OnTaskSpawned(object sender, System.EventArgs E)
+    private void TaskManager_OnTaskSpawned(object sender, TaskManager.TasksObjectEventArgs E)
     {
-        UpdateVisual();
+        UpdateVisual(E.task);
     }
     private void Instance_OnTaskCompleted(object sender, System.EventArgs E)
     {
-        UpdateVisual();
+        UpdateVisual(null);
     }
 
-    private void UpdateVisual()
+    private void UpdateVisual(TasksObjectSO task)
     {
+        // Clean-up
         foreach (Transform child in container)
         {
             if (child == taskTemplate) continue;
             Destroy(child.gameObject);
         }
-        foreach (TasksObjectSO task in TaskManager.Instance.GetTasksObjectSOList())
+
+        // Display tasks
+        foreach (TasksObjectSO currTask in TaskManager.Instance.GetTasksObjectSOList())
         {
             Transform taskTransform = Instantiate(taskTemplate, container);
             taskTransform.gameObject.SetActive(true);
-            taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(task);
+            taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(currTask);
+            if (task != null && task == currTask)
+            {
+                Instantiate(task.prefab, TaskManager.Instance.transform, true); // CHECK
+            }
         }
     }
     // Update is called once per frame
