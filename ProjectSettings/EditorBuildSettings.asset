@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/BarkAwayV1.unity
+    guid: 6f01f99179f4f994698d7434ac6a2565
   m_configObjects: {}
