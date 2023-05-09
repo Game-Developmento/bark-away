@@ -36,7 +36,7 @@ public class TaskManager : MonoBehaviour
             if (waitingTasksList.Count < waitingTasksMax)
             {
                 TasksObjectSO waitingTask = tasksListSO.tasksList[UnityEngine.Random.Range(0, tasksListSO.tasksList.Count)];
-                Debug.Log(waitingTask.name);
+                // Debug.Log(waitingTask.name);
 
                 if (!waitingTasksList.Contains(waitingTask))
                 {
