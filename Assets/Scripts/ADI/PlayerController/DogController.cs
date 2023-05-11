@@ -1,7 +1,6 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
 
 [RequireComponent(typeof(Animator))]
 public class DogController : MonoBehaviour
@@ -11,9 +10,8 @@ public class DogController : MonoBehaviour
 
     [SerializeField] Vector2 currentMovementInput;
     [SerializeField] Vector3 currentMovement;
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private Vector3 velocity = Vector3.zero;
-    [SerializeField] private float rotationSpeed = 1f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 0.5f;
 
     private int isWalkingHash;
     private int directionHash;
@@ -25,8 +23,6 @@ public class DogController : MonoBehaviour
     [SerializeField] private bool isMovementPressed;
     [SerializeField] private bool isWalking;
     [SerializeField] private bool isVertical;
-    [SerializeField] private bool isInteractPressed;
-
     private enum direction
     {
         Left = -1,
@@ -63,9 +59,14 @@ public class DogController : MonoBehaviour
     }
     private void Update()
     {
-        HandleAnimations();
         HandleRotation();
-        transform.position += currentMovement * moveSpeed * Time.deltaTime;
+        HandleAnimations();
+        if (isMovementPressed)
+        {
+            // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(currentMovement), rotationSpeed * Time.deltaTime);
+            transform.forward = Vector3.Slerp(transform.forward, currentMovement, Time.deltaTime * rotationSpeed);
+            transform.position += currentMovement * moveSpeed * Time.deltaTime;
+        }
     }
 
     private void OnMovementInput(InputAction.CallbackContext context)
@@ -88,7 +89,6 @@ public class DogController : MonoBehaviour
         isTurningRight = Input.GetAxis("Horizontal") > 0;
         isTurningLeft = Input.GetAxis("Horizontal") < 0;
         isVertical = Input.GetAxis("Vertical") != 0; // true if going forwards or backwards
-        transform.forward = Vector3.Slerp(transform.forward, currentMovement, Time.deltaTime * rotationSpeed);
     }
     private void HandleAnimations()
     {
@@ -97,6 +97,8 @@ public class DogController : MonoBehaviour
         if (isMovementPressed && !isWalking)
         {
             animator.SetBool(isWalkingHash, true);
+            animator.SetInteger(directionHash, (int)direction.Forward);
+
         }
         else if (!isMovementPressed && isWalking)
         {
@@ -104,20 +106,20 @@ public class DogController : MonoBehaviour
         }
 
         // Handle walking direction
-        if (isWalking)
-        {
-            if (isTurningRight && !isVertical)
-            {
-                animator.SetInteger(directionHash, (int)direction.Right);
-            }
-            else if (isTurningLeft && !isVertical)
-            {
-                animator.SetInteger(directionHash, (int)direction.Left);
-            }
-            else
-            {
-                animator.SetInteger(directionHash, (int)direction.Forward);
-            }
-        }
+        // if (isWalking)
+        // {
+        // if (isTurningRight && !isVertical)
+        // {
+        //     animator.SetInteger(directionHash, (int)direction.Right);
+        // }
+        // else if (isTurningLeft && !isVertical)
+        // {
+        //     animator.SetInteger(directionHash, (int)direction.Left);
+        // }
+        // else
+        // {
+        //     animator.SetInteger(directionHash, (int)direction.Forward);
+        // }
+        // }
     }
 }
