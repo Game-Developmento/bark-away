@@ -57,7 +57,7 @@ public class DogController : MonoBehaviour
         {
             float targetAngle = Mathf.Atan2(currentMovement.x, currentMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f).normalized;
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             transform.position += moveDir.normalized * moveSpeed * Time.deltaTime;
@@ -71,8 +71,7 @@ public class DogController : MonoBehaviour
         currentMovement.y = 0.0f;
         currentMovement.z = currentMovementInput.y;
         currentMovement = currentMovement.normalized;
-        isMovementPressed = currentMovement.magnitude >= 0.1f;
-        // isMovementPressed = currentMovement != Vector3.zero;
+        isMovementPressed = (currentMovement != Vector3.zero) && (currentMovement.magnitude >= 0.1f);
     }
 
     private void OnInteractInput(InputAction.CallbackContext context)
