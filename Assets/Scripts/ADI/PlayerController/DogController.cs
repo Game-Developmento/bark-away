@@ -5,38 +5,31 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class DogController : MonoBehaviour
 {
+    [SerializeField] private Transform cam;
+
     [Header("Keyboard Input")]
     private DogInputActions dogInputActions;
 
     [SerializeField] Vector2 currentMovementInput;
     [SerializeField] Vector3 currentMovement;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 0.5f;
+    [SerializeField] private float turnSmoothTime = 0.15f;
+    private float turnSmoothVelocity;
 
+    [Header("Animations")]
+    private Animator animator;
     private int isWalkingHash;
     private int directionHash;
     private int isInteractHash;
 
-
-    [Header("Animations")]
-    private Animator animator;
     [SerializeField] private bool isMovementPressed;
     [SerializeField] private bool isWalking;
-    [SerializeField] private bool isVertical;
-    private enum direction
-    {
-        Left = -1,
-        Forward = 0,
-        Right = 1,
-
-    };
-    [SerializeField] private bool isTurningRight;
-    [SerializeField] private bool isTurningLeft;
 
     private void Awake()
     {
         dogInputActions = new DogInputActions();
         animator = GetComponent<Animator>();
+        cam = Camera.main.transform;
 
         isWalkingHash = Animator.StringToHash("isWalking");
         directionHash = Animator.StringToHash("direction");
@@ -59,13 +52,15 @@ public class DogController : MonoBehaviour
     }
     private void Update()
     {
-        HandleRotation();
         HandleAnimations();
         if (isMovementPressed)
         {
-            // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(currentMovement), rotationSpeed * Time.deltaTime);
-            transform.forward = Vector3.Slerp(transform.forward, currentMovement, Time.deltaTime * rotationSpeed);
-            transform.position += currentMovement * moveSpeed * Time.deltaTime;
+            float targetAngle = Mathf.Atan2(currentMovement.x, currentMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            transform.position += moveDir.normalized * moveSpeed * Time.deltaTime;
         }
     }
 
@@ -75,20 +70,15 @@ public class DogController : MonoBehaviour
         currentMovement.x = currentMovementInput.x;
         currentMovement.y = 0.0f;
         currentMovement.z = currentMovementInput.y;
-        isMovementPressed = currentMovement != Vector3.zero;
+        currentMovement = currentMovement.normalized;
+        isMovementPressed = currentMovement.magnitude >= 0.1f;
+        // isMovementPressed = currentMovement != Vector3.zero;
     }
 
     private void OnInteractInput(InputAction.CallbackContext context)
     {
         Debug.Log("Interact!");
         animator.SetTrigger(isInteractHash);
-    }
-
-    private void HandleRotation()
-    {
-        isTurningRight = Input.GetAxis("Horizontal") > 0;
-        isTurningLeft = Input.GetAxis("Horizontal") < 0;
-        isVertical = Input.GetAxis("Vertical") != 0; // true if going forwards or backwards
     }
     private void HandleAnimations()
     {
@@ -97,29 +87,10 @@ public class DogController : MonoBehaviour
         if (isMovementPressed && !isWalking)
         {
             animator.SetBool(isWalkingHash, true);
-            animator.SetInteger(directionHash, (int)direction.Forward);
-
         }
         else if (!isMovementPressed && isWalking)
         {
             animator.SetBool(isWalkingHash, false);
         }
-
-        // Handle walking direction
-        // if (isWalking)
-        // {
-        // if (isTurningRight && !isVertical)
-        // {
-        //     animator.SetInteger(directionHash, (int)direction.Right);
-        // }
-        // else if (isTurningLeft && !isVertical)
-        // {
-        //     animator.SetInteger(directionHash, (int)direction.Left);
-        // }
-        // else
-        // {
-        //     animator.SetInteger(directionHash, (int)direction.Forward);
-        // }
-        // }
     }
 }
