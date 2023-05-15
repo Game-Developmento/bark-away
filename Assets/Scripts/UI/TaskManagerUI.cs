@@ -46,7 +46,8 @@ public class TaskManagerUI : MonoBehaviour
             taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(currTask);
             if (task != null && task == currTask)
             {
-                Instantiate(task.prefab, TaskManager.Instance.transform, true); // CHECK
+                GameObject spawnedObject = Instantiate(task.prefab, TaskManager.Instance.transform, true);
+                task.prefabId = spawnedObject.gameObject.GetInstanceID();
             }
         }
     }

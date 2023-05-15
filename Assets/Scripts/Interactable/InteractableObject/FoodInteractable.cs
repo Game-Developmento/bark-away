@@ -21,7 +21,10 @@ public class FoodInteractable : MonoBehaviour, IInteractable
     {
         return interactText;
     }
-
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
     public Transform GetTransform()
     {
         return transform;
