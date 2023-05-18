@@ -60,7 +60,7 @@ public class TaskManager : MonoBehaviour
         {
             foreach (TasksObjectSO task in waitingTasksList)
             {
-                if (task.prefabId == interactable.GetGameObject().GetInstanceID())
+                if (task.instanceId == interactable.GetGameObject().GetInstanceID())
                 {
                     waitingTasksList.Remove(task);
                     OnTaskCompleted?.Invoke(this, EventArgs.Empty);

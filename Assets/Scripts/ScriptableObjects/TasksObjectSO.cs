@@ -10,6 +10,6 @@ public class TasksObjectSO : ScriptableObject
 
     public GameObject prefab;
 
-    public int prefabId;
+    public int instanceId;
 
 }

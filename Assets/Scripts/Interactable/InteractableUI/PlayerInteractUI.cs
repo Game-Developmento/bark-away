@@ -3,7 +3,7 @@ using TMPro;
 public class PlayerInteractUI : MonoBehaviour
 {
     [SerializeField] private GameObject containerGameObject;
-    [SerializeField] private Player player;
+    [SerializeField] private PlayerController player;
     [SerializeField] private TextMeshProUGUI interactTextMeshProUGUI;
 
     private void Update()
