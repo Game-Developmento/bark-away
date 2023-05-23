@@ -1,7 +1,7 @@
 # bark-away
 
 For more information see:
-[Formal Elements](https://github.com/Game-Developmento/bark-away/blob/main/formal-elements.md)
+[Formal Elements](https://github.com/Game-Developmento/bark-away/blob/main/formal-elements.md), [Dynamic Elements](https://github.com/Game-Developmento/bark-away/blob/main/dynamic.md)
 
 [Click here to play the game!](https://adiy55.itch.io/barkawayv1)
 
