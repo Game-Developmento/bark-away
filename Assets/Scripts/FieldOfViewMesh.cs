@@ -41,7 +41,7 @@ public class FieldOfViewMesh : MonoBehaviour
 
             if (i > 0)
             {
-                bool edgeDistanceThresholdExceeded = Mathf.Abs(oldViewCast.distance - newViewCast.distance) >fieldOfView.GetEdgeDistanceTreshold();
+                bool edgeDistanceThresholdExceeded = Mathf.Abs(oldViewCast.distance - newViewCast.distance) > fieldOfView.GetEdgeDistanceTreshold();
                 if (oldViewCast.hit != newViewCast.hit || (oldViewCast.hit && newViewCast.hit && edgeDistanceThresholdExceeded))
                 {
                     FieldOfView.EdgeInfo edge = fieldOfView.FindEdge(oldViewCast, newViewCast);
