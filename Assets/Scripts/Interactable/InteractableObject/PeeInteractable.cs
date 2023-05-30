@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class FoodInteractable : MonoBehaviour, IInteractable
+public class PeeInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
+    [SerializeField] private GameObject prefabToSpawn;
     public void Interact(Transform interactorTransform)
     {
+        Debug.Log("Interact PeeInteractable!");
         TaskManager taskManager = TaskManager.Instance;
         if (taskManager != null)
         {
@@ -13,24 +15,28 @@ public class FoodInteractable : MonoBehaviour, IInteractable
     }
     public IInteractable Initialize()
     {
+        Debug.Log("Initialize PeeInteractable!");
         return this;
     }
-
     public void Cleanup()
     {
+        Debug.Log("Cleanup PeeInteractable!");
+        Instantiate(prefabToSpawn, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
-    public string GetInteractText()
+
+    public int GetGameObjectID()
     {
-        return interactText;
+        return gameObject.GetInstanceID();
     }
 
     public Transform GetGameObjectTransform()
     {
         return gameObject.transform;
     }
-    public int GetGameObjectID()
+
+    public string GetInteractText()
     {
-        return gameObject.GetInstanceID();
+        return interactText;
     }
 }

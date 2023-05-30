@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour
             interactable.Interact(transform);
         }
         OnPlayerInteractPerformed?.Invoke(this, EventArgs.Empty);
-
     }
     // This functions looks for interactable objects in a certain range from the player, and returns the closest one.
     // It is also used for displaying interactables on the UI. 
