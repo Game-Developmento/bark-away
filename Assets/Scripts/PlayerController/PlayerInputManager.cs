@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerInputManager : MonoBehaviour
 {
     // Events for input actions
-    public event EventHandler OnInteractEvent;
+    public event EventHandler OnInteractEventPerformed;
+    public event EventHandler OnInteractEventStarted;
+    public event EventHandler OnInteractEventCanceled;
 
     // PRIVATE VARIABLES //
     private PlayerInputActions playerInputActions;
@@ -22,11 +24,21 @@ public class PlayerInputManager : MonoBehaviour
         playerInputActions.Player.Move.started += OnMovementInput;
         playerInputActions.Player.Move.canceled += OnMovementInput;
         playerInputActions.Player.Move.performed += OnMovementInput;
+        playerInputActions.Player.Interact.started += Interact_started;
         playerInputActions.Player.Interact.performed += Interact_performed;
+        playerInputActions.Player.Interact.canceled += Interact_canceled;
     }
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        OnInteractEvent?.Invoke(this, EventArgs.Empty);
+        OnInteractEventPerformed?.Invoke(this, EventArgs.Empty);
+    }
+    private void Interact_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnInteractEventStarted?.Invoke(this, EventArgs.Empty);
+    }
+    private void Interact_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnInteractEventCanceled?.Invoke(this, EventArgs.Empty);
     }
     private void OnMovementInput(InputAction.CallbackContext context)
     {

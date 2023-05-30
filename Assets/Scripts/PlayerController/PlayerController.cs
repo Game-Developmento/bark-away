@@ -36,12 +36,23 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        playerInputManager.OnInteractEvent += OnInteractAction;
+        playerInputManager.OnInteractEventPerformed += OnInteractActionPerformed;
+        playerInputManager.OnInteractEventStarted += OnInteractActionStarted;
+        playerInputManager.OnInteractEventCanceled += OnInteractActionCanceled;
     }
-    // This functions invokes the Interact method when the player presses the keyboard.
-    private void OnInteractAction(object sender, System.EventArgs e)
+    private void OnInteractActionStarted(object sender, System.EventArgs e)
     {
-        Debug.Log("Interact!");
+        Debug.Log("Interact Started!");
+    }
+    private void OnInteractActionCanceled(object sender, System.EventArgs e)
+    {
+        Debug.Log("Interact Canceled!");
+    }
+
+    // This functions invokes the Interact method when the player presses the keyboard.
+    private void OnInteractActionPerformed(object sender, System.EventArgs e)
+    {
+        Debug.Log("Interact Perfomed!");
         IInteractable interactable = GetInteractableObject();
         if (interactable != null)
         {
@@ -57,7 +68,7 @@ public class PlayerController : MonoBehaviour
         int interactLayerMask = 1 << interactLayer;
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, interactLayerMask);
         foreach (Collider collider in colliderArray)
-        {   
+        {
             Debug.Log("Found collider!");
             if (collider.TryGetComponent(out IInteractable interactable))
             {
