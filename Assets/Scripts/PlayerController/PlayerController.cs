@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerInputManager))]
@@ -7,7 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Controller")]
     private PlayerInputManager playerInputManager;
-
+    public event EventHandler OnPlayerInteractStarted;
+    public event EventHandler OnPlayerInteractCanceled;
+    public event EventHandler OnPlayerInteractPerformed;
     [SerializeField] private ProgressBar progressBar;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float turnSmoothTime = 0.15f;
@@ -49,6 +52,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Interact Started!");
             progressBar.LoadProgress();
         }
+        OnPlayerInteractStarted?.Invoke(this, EventArgs.Empty);
     }
     private void OnInteractActionCanceled(object sender, System.EventArgs e)
     {
@@ -56,8 +60,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Interact Canceled!");
             progressBar.CancelLoadProgress();
-
         }
+        OnPlayerInteractCanceled?.Invoke(this, EventArgs.Empty);
     }
 
     // This functions invokes the Interact method when the player presses the keyboard.
@@ -70,6 +74,8 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger(isInteractHash);
             interactable.Interact(transform);
         }
+        OnPlayerInteractPerformed?.Invoke(this, EventArgs.Empty);
+
     }
     // This functions looks for interactable objects in a certain range from the player, and returns the closest one.
     // It is also used for displaying interactables on the UI. 
@@ -80,10 +86,8 @@ public class PlayerController : MonoBehaviour
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, interactLayerMask);
         foreach (Collider collider in colliderArray)
         {
-            Debug.Log("Found collider!");
             if (collider.TryGetComponent(out IInteractable interactable))
             {
-                Debug.Log("Got interactable!");
                 interactableList.Add(interactable);
             }
         }

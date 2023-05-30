@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private float viewRadius;
     [Range(0, 360)]
     [SerializeField] private float viewAngle;
@@ -16,10 +18,27 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] private float edgeDistanceThreshold = 0.5f;
     public Transform target;
 
+    private bool isInteracting;
+
     private List<Transform> visibleTargets = new List<Transform>();
 
 
+    private void Awake()
+    {
+        playerController.OnPlayerInteractStarted += IsInteractStarted;
+        playerController.OnPlayerInteractCanceled += IsInteractFinished;
+        playerController.OnPlayerInteractPerformed += IsInteractFinished;
+    }
 
+    private void IsInteractStarted(object sender, System.EventArgs e)
+    {
+        isInteracting = true;
+    }
+
+    private void IsInteractFinished(object sender, System.EventArgs e)
+    {
+        isInteracting = false;
+    }
     private void Start()
     {
         StartCoroutine(FindTargetsWithDelay(delay));
@@ -27,7 +46,7 @@ public class FieldOfView : MonoBehaviour
 
     private void Update()
     {
-        if (visibleTargets.Contains(target))
+        if (visibleTargets.Contains(target) && isInteracting)
         {
             Debug.Log("DOG IN SIGHT");
         }

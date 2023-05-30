@@ -46,7 +46,6 @@ public class ProgressBar : MonoBehaviour
             isProgressing = true;
             startingProgress = currProgress;
             progressTimer = 0f;
-            Debug.Log("a");
             gameObject.SetActive(true);
         }
     }
