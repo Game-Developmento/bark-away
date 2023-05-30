@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Controller")]
     private PlayerInputManager playerInputManager;
+
+    [SerializeField] private ProgressBar progressBar;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float turnSmoothTime = 0.15f;
     private float turnSmoothVelocity;
@@ -42,11 +44,20 @@ public class PlayerController : MonoBehaviour
     }
     private void OnInteractActionStarted(object sender, System.EventArgs e)
     {
-        Debug.Log("Interact Started!");
+        if (progressBar != null)
+        {
+            Debug.Log("Interact Started!");
+            progressBar.LoadProgress();
+        }
     }
     private void OnInteractActionCanceled(object sender, System.EventArgs e)
     {
-        Debug.Log("Interact Canceled!");
+        if (progressBar != null)
+        {
+            Debug.Log("Interact Canceled!");
+            progressBar.CancelLoadProgress();
+
+        }
     }
 
     // This functions invokes the Interact method when the player presses the keyboard.

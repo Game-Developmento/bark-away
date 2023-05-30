@@ -31,14 +31,13 @@ public class ProgressBar : MonoBehaviour
             {
                 currProgress = targetProgress;
                 GetCurrentFill();
-                isProgressing = false;
-                gameObject.SetActive(false);
-                currProgress = 0;
-
+                CancelLoadProgress();
             }
         }
-
     }
+
+
+
 
     public void LoadProgress()
     {
@@ -47,9 +46,17 @@ public class ProgressBar : MonoBehaviour
             isProgressing = true;
             startingProgress = currProgress;
             progressTimer = 0f;
+            Debug.Log("a");
             gameObject.SetActive(true);
-
         }
+    }
+
+    public void CancelLoadProgress()
+    {
+        isProgressing = false;
+        gameObject.SetActive(false);
+        currProgress = 0;
+
     }
 
     public int GetCurrentProgress()
