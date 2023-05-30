@@ -11,7 +11,11 @@ public class TaskManager : MonoBehaviour
         public TasksObjectSO task;
     }
 
-    public event EventHandler OnTaskCompleted;
+    public event EventHandler<InteractableObjectEventArgs> OnTaskCompleted;
+    public class InteractableObjectEventArgs : EventArgs
+    {
+        public IInteractable interactable;
+    }
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 
@@ -36,16 +40,13 @@ public class TaskManager : MonoBehaviour
             if (waitingTasksList.Count < waitingTasksMax)
             {
                 TasksObjectSO waitingTask = tasksListSO.tasksList[UnityEngine.Random.Range(0, tasksListSO.tasksList.Count)];
-                // Debug.Log(waitingTask.name);
 
                 if (!waitingTasksList.Contains(waitingTask))
                 {
                     waitingTasksList.Add(waitingTask);
                     OnTaskSpawned?.Invoke(this, new TasksObjectEventArgs { task = waitingTask });
                 }
-
             }
-
         }
     }
 
@@ -60,10 +61,10 @@ public class TaskManager : MonoBehaviour
         {
             foreach (TasksObjectSO task in waitingTasksList)
             {
-                if (task.instanceId == interactable.GetGameObject().GetInstanceID())
+                if (task.GetTaskInstanceID() == interactable.GetGameObjectID())
                 {
                     waitingTasksList.Remove(task);
-                    OnTaskCompleted?.Invoke(this, EventArgs.Empty);
+                    OnTaskCompleted?.Invoke(this, new InteractableObjectEventArgs { interactable = interactable });
                     return true;
                 }
             }

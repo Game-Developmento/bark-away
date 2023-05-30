@@ -57,9 +57,11 @@ public class PlayerController : MonoBehaviour
         int interactLayerMask = 1 << interactLayer;
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, interactLayerMask);
         foreach (Collider collider in colliderArray)
-        {
+        {   
+            Debug.Log("Found collider!");
             if (collider.TryGetComponent(out IInteractable interactable))
             {
+                Debug.Log("Got interactable!");
                 interactableList.Add(interactable);
             }
         }
@@ -78,8 +80,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                float minDist = Vector3.Distance(transform.position, closestInteractable.GetTransform().position);
-                float currDist = Vector3.Distance(transform.position, interactable.GetTransform().position);
+                float minDist = Vector3.Distance(transform.position, closestInteractable.GetGameObjectTransform().position);
+                float currDist = Vector3.Distance(transform.position, interactable.GetGameObjectTransform().position);
                 if (currDist < minDist)
                 {
                     // Found closer interactable!

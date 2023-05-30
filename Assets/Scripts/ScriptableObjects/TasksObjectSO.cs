@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewTask", menuName = "Task")]
@@ -7,9 +5,22 @@ public class TasksObjectSO : ScriptableObject
 {
     public string taskDescription;
     public Sprite taskSprite;
+    [SerializeField] private GameObject prefab;
+    private int instanceId;
 
-    public GameObject prefab;
+    public void SetTaskInstanceID(int id)
+    {
+        instanceId = id;
+    }
 
-    public int instanceId;
+    public int GetTaskInstanceID()
+    {
+        return instanceId;
+    }
+
+    public GameObject GetPrefab()
+    {
+        return prefab;
+    }
 
 }

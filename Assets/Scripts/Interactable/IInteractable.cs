@@ -5,7 +5,9 @@ using UnityEngine;
 public interface IInteractable
 {
     void Interact(Transform interactorTransform);
+    IInteractable Initialize();
+    void Cleanup();
     string GetInteractText();
-    Transform GetTransform();
-    GameObject GetGameObject();
+    Transform GetGameObjectTransform();
+    int GetGameObjectID();
 }

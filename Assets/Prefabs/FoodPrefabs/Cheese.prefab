@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4459972736966031263}
   - component: {fileID: 4459972736969422783}
   - component: {fileID: 4459972736968324479}
-  - component: {fileID: 716695386}
-  - component: {fileID: 716695380}
+  - component: {fileID: 3177260987579684423}
+  - component: {fileID: 1794881009385766265}
   m_Layer: 8
   m_Name: Cheese
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &716695386
+--- !u!64 &3177260987579684423
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 47365cc78e5cfad41badc534e3d2b7e1, type: 3}
---- !u!114 &716695380
+--- !u!114 &1794881009385766265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

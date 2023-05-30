@@ -5,28 +5,33 @@ public class FoodInteractable : MonoBehaviour, IInteractable
     [SerializeField] private string interactText;
     public void Interact(Transform interactorTransform)
     {
-        TaskManager taskManager = GetComponentInParent<TaskManager>();
+        TaskManager taskManager = TaskManager.Instance;
         if (taskManager != null)
         {
             bool isTaskCompleted = taskManager.IsTaskCompleted(this);
-            if (isTaskCompleted)
-            {
-                this.gameObject.SetActive(false);
-            }
         }
 
     }
+    public IInteractable Initialize()
+    {
+        return this;
+    }
 
+    public void Cleanup()
+    {
+        Destroy(gameObject);
+    }
     public string GetInteractText()
     {
         return interactText;
     }
-    public GameObject GetGameObject()
+
+    public Transform GetGameObjectTransform()
     {
-        return gameObject;
+        return gameObject.transform;
     }
-    public Transform GetTransform()
+    public int GetGameObjectID()
     {
-        return transform;
+        return gameObject.GetInstanceID();
     }
 }

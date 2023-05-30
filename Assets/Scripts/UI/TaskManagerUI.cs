@@ -17,19 +17,33 @@ public class TaskManagerUI : MonoBehaviour
     {
         TaskManager.Instance.OnTaskSpawned += TaskManager_OnTaskSpawned;
         TaskManager.Instance.OnTaskCompleted += Instance_OnTaskCompleted;
-        UpdateVisual(null);
+        UpdateVisual();
     }
 
     private void TaskManager_OnTaskSpawned(object sender, TaskManager.TasksObjectEventArgs E)
     {
-        UpdateVisual(E.task);
+        UpdateVisual();
+        TasksObjectSO newTaskToSpawn = E.task;
+        GameObject prefabToInitialize = newTaskToSpawn.GetPrefab();
+        if (prefabToInitialize != null)
+        {
+            GameObject spawnedObject = Instantiate(prefabToInitialize);
+            newTaskToSpawn.SetTaskInstanceID(spawnedObject.GetInstanceID());
+            IInteractable interactable = spawnedObject.GetComponent<IInteractable>();
+            interactable.Initialize();
+        }
     }
-    private void Instance_OnTaskCompleted(object sender, System.EventArgs E)
+    private void Instance_OnTaskCompleted(object sender, TaskManager.InteractableObjectEventArgs E)
     {
-        UpdateVisual(null);
+        UpdateVisual();
+        IInteractable interactable = E.interactable;
+        if (interactable != null)
+        {
+            interactable.Cleanup();
+        }
     }
 
-    private void UpdateVisual(TasksObjectSO task)
+    private void UpdateVisual()
     {
         // Clean-up
         foreach (Transform child in container)
@@ -44,16 +58,6 @@ public class TaskManagerUI : MonoBehaviour
             Transform taskTransform = Instantiate(taskTemplate, container);
             taskTransform.gameObject.SetActive(true);
             taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(currTask);
-            if (task != null && task == currTask)
-            {
-                GameObject spawnedObject = Instantiate(task.prefab, TaskManager.Instance.transform, true);
-                task.instanceId = spawnedObject.gameObject.GetInstanceID();
-            }
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
