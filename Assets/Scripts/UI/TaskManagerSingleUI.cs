@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class TaskManagerSingleUI : MonoBehaviour
 {
 
@@ -9,6 +9,10 @@ public class TaskManagerSingleUI : MonoBehaviour
     [SerializeField] private Transform iconContainer;
     [SerializeField] private Transform iconTemplate;
 
+    private void Awake()
+    {
+        iconTemplate.gameObject.SetActive(false);
+    }
 
     public void SetTasksObjectSO(TasksObjectSO tasksObjectSO)
     {
@@ -18,7 +22,8 @@ public class TaskManagerSingleUI : MonoBehaviour
             if (child == iconTemplate) continue;
             Destroy(child.gameObject);
         }
-
-        // we need to set here the icon, need to add icons and check how to do it in the video.
+        Transform iconTransform = Instantiate(iconTemplate, iconContainer);
+        iconTransform.gameObject.SetActive(true);
+        iconTransform.GetComponent<Image>().sprite = tasksObjectSO.taskSprite;
     }
 }

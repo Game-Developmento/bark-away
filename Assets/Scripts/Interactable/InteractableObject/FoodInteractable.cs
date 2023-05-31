@@ -3,6 +3,8 @@ using UnityEngine;
 public class FoodInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
+    public void StartInteraction() { }
+    public void CancelInteraction() { }
     public void Interact(Transform interactorTransform)
     {
         TaskManager taskManager = TaskManager.Instance;

@@ -4,6 +4,8 @@ using UnityEngine;
 // Note: Interactable objects must have a collider so interactions can be detected!
 public interface IInteractable
 {
+    void StartInteraction();
+    void CancelInteraction();
     void Interact(Transform interactorTransform);
     IInteractable Initialize();
     void Cleanup();

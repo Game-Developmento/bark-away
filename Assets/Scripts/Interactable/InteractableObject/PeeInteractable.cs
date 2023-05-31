@@ -4,9 +4,23 @@ public class PeeInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
     [SerializeField] private GameObject prefabToSpawn;
-    [SerializeField] private Animator playerAnimator; // Dog animations controller to trigger peeing animation
-    
-    
+    private Animator playerAnimator;
+    public void StartInteraction()
+    {
+        Debug.Log("StartInteracton!");
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("startPeeing");
+        }
+    }
+    public void CancelInteraction()
+    {
+        Debug.Log("CancelInteracton!");
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetTrigger("cancelPeeing");
+        }
+    }
     public void Interact(Transform interactorTransform)
     {
         Debug.Log("Interact PeeInteractable!");
@@ -19,6 +33,9 @@ public class PeeInteractable : MonoBehaviour, IInteractable
     public IInteractable Initialize()
     {
         Debug.Log("Initialize PeeInteractable!");
+        // Find GameObject named Player, then get animations controller to trigger peeing animations
+        GameObject.Find("Player").TryGetComponent(out Animator animator);
+        playerAnimator = animator;
         return this;
     }
     public void Cleanup()

@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Interact Started!");
                 progressBar.LoadProgress();
             }
+            currInteractable.StartInteraction();
             OnPlayerInteractStarted?.Invoke(this, EventArgs.Empty);
         }
     }
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Interact Canceled!");
                 progressBar.CancelLoadProgress();
             }
+            currInteractable.CancelInteraction();
             OnPlayerInteractCanceled?.Invoke(this, EventArgs.Empty);
             currInteractable = null;
         }
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
         if ((nearestInteractable != null && currInteractable != null)
         && (nearestInteractable.GetGameObjectID() == currInteractable.GetGameObjectID()))
         {
-            nearestInteractable.Interact(transform);
+            currInteractable.Interact(transform);
             OnPlayerInteractPerformed?.Invoke(this, EventArgs.Empty);
         }
         // Reset variables
@@ -146,7 +148,6 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             transform.position += moveDir.normalized * moveSpeed * Time.deltaTime;
         }
-
     }
 
     private void HandleAnimations()

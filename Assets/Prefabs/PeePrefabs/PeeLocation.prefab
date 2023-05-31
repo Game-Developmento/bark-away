@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactText: Pee Here!
   prefabToSpawn: {fileID: 7601559487329161764, guid: 539d277f26d6d6048a0941d9ef73eb75, type: 3}
-  playerAnimator: {fileID: 0}
+  playerAnimator: {fileID: 2022555666644393077, guid: 494572d9240342044865b4bfd926dd09, type: 3}
 --- !u!65 &6538137239165557129
 BoxCollider:
   m_ObjectHideFlags: 0
