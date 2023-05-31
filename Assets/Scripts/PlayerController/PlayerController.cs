@@ -25,10 +25,10 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private int isWalkingHash;
     private int directionHash;
-    private int isInteractHash;
     // PRIVATE VARIABLES //
+    [Header("Interactions")]
     private List<IInteractable> interactableList = new List<IInteractable>();
-
+    IInteractable currInteractable; // The interactable the player was near when started pressing 'E'
     private void Awake()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
 
         isWalkingHash = Animator.StringToHash("isWalking");
         directionHash = Animator.StringToHash("direction");
-        isInteractHash = Animator.StringToHash("isInteract");
     }
     void Start()
     {
@@ -47,35 +46,48 @@ public class PlayerController : MonoBehaviour
     }
     private void OnInteractActionStarted(object sender, System.EventArgs e)
     {
-        if (progressBar != null)
+        currInteractable = GetInteractableObject();
+        if (currInteractable != null)
         {
-            Debug.Log("Interact Started!");
-            progressBar.LoadProgress();
+            if (progressBar != null)
+            {
+                Debug.Log("Interact Started!");
+                progressBar.LoadProgress();
+            }
+            OnPlayerInteractStarted?.Invoke(this, EventArgs.Empty);
         }
-        OnPlayerInteractStarted?.Invoke(this, EventArgs.Empty);
     }
     private void OnInteractActionCanceled(object sender, System.EventArgs e)
     {
-        if (progressBar != null)
+        if (currInteractable != null)
         {
-            Debug.Log("Interact Canceled!");
-            progressBar.CancelLoadProgress();
+            if (progressBar != null)
+            {
+                Debug.Log("Interact Canceled!");
+                progressBar.CancelLoadProgress();
+            }
+            OnPlayerInteractCanceled?.Invoke(this, EventArgs.Empty);
+            currInteractable = null;
         }
-        OnPlayerInteractCanceled?.Invoke(this, EventArgs.Empty);
     }
 
     // This functions invokes the Interact method when the player presses the keyboard.
     private void OnInteractActionPerformed(object sender, System.EventArgs e)
     {
         Debug.Log("Interact Perfomed!");
-        IInteractable interactable = GetInteractableObject();
-        if (interactable != null)
+
+        IInteractable nearestInteractable = GetInteractableObject();
+        // Check if interactable changed since player started pressing 'E'
+        if ((nearestInteractable != null && currInteractable != null)
+        && (nearestInteractable.GetGameObjectID() == currInteractable.GetGameObjectID()))
         {
-            animator.SetTrigger(isInteractHash);
-            interactable.Interact(transform);
+            nearestInteractable.Interact(transform);
+            OnPlayerInteractPerformed?.Invoke(this, EventArgs.Empty);
         }
-        OnPlayerInteractPerformed?.Invoke(this, EventArgs.Empty);
+        // Reset variables
+        currInteractable = null;
     }
+
     // This functions looks for interactable objects in a certain range from the player, and returns the closest one.
     // It is also used for displaying interactables on the UI. 
     public IInteractable GetInteractableObject()

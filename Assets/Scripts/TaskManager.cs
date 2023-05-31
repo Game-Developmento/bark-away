@@ -16,6 +16,7 @@ public class TaskManager : MonoBehaviour
     {
         public IInteractable interactable;
     }
+    public event EventHandler OnTaskInteractionStarted;
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 

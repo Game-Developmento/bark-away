@@ -4,6 +4,9 @@ public class PeeInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactText;
     [SerializeField] private GameObject prefabToSpawn;
+    [SerializeField] private Animator playerAnimator; // Dog animations controller to trigger peeing animation
+    
+    
     public void Interact(Transform interactorTransform)
     {
         Debug.Log("Interact PeeInteractable!");

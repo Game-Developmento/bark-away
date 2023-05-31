@@ -9,7 +9,7 @@ public class OwnerPatrol : MonoBehaviour
     private Vector3 target;
     private NavMeshAgent agent;
     private float waitTime;
-    private bool isWaiting;
+    private bool isWaitingForNextDest;
     [SerializeField] private float minDelay = 2f;
     [SerializeField] private float maxDelay = 5f;
 
@@ -31,12 +31,12 @@ public class OwnerPatrol : MonoBehaviour
 
     private void Update()
     {
-        if (isWaiting)
+        if (isWaitingForNextDest)
         {
             return;
         }
-        bool isCloseEnough = Vector3.Distance(transform.position, target) < 1;
-        if (isCloseEnough)
+        bool isCloseEnoughToTarget = Vector3.Distance(transform.position, target) < 1;
+        if (isCloseEnoughToTarget)
         {
             float nextDelay = Random.Range(minDelay, maxDelay);
             StartCoroutine(WaitBeforeNextDestination(nextDelay));
@@ -46,9 +46,9 @@ public class OwnerPatrol : MonoBehaviour
 
     private IEnumerator WaitBeforeNextDestination(float delay)
     {
-        isWaiting = true;
+        isWaitingForNextDest = true;
         yield return new WaitForSeconds(delay);
-        isWaiting = false;
+        isWaitingForNextDest = false;
 
         IterateWaypointIndex();
         UpdateDestination();

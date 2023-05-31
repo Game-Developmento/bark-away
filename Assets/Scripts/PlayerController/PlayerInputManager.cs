@@ -31,14 +31,17 @@ public class PlayerInputManager : MonoBehaviour
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnInteractEventPerformed?.Invoke(this, EventArgs.Empty);
+        playerInputActions.Player.Move.Enable();
     }
     private void Interact_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnInteractEventStarted?.Invoke(this, EventArgs.Empty);
+        playerInputActions.Player.Move.Disable();
     }
     private void Interact_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnInteractEventCanceled?.Invoke(this, EventArgs.Empty);
+        playerInputActions.Player.Move.Enable();
     }
     private void OnMovementInput(InputAction.CallbackContext context)
     {
