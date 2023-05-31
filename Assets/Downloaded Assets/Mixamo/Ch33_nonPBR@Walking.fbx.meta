@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 05e70f2019cd5c44db726b21e793ddd0
+guid: ca56f7e53bb381c48a70d6f1463039b1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ch33_body
-    second: {fileID: 2100000, guid: f755c79b41529554491de821825b1ab2, type: 2}
+    second: {fileID: 2100000, guid: 27b251816f78cd04ea804c7567506643, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ch33_hair
-    second: {fileID: 2100000, guid: 8db46552d9d862c47b5ad4991c102a3d, type: 2}
+    second: {fileID: 2100000, guid: 20339743735f156479afdfcbc24a1d15, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

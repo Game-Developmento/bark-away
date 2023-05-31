@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,23 +13,34 @@ public class OwnerPatrol : MonoBehaviour
     [SerializeField] private float minDelay = 2f;
     [SerializeField] private float maxDelay = 5f;
 
+    [Header("Animations")]
+    private Animator animator;
+    private int isWalkingHash;
 
-    private void Start()
+
+    private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        animator = GetComponent<Animator>();
+        isWalkingHash = Animator.StringToHash("isWalking");
+    }
+    private void Start()
+    {
         UpdateDestination();
     }
 
     private void Update()
     {
         if (isWaiting)
+        {
             return;
+        }
         bool isCloseEnough = Vector3.Distance(transform.position, target) < 1;
         if (isCloseEnough)
         {
             float nextDelay = Random.Range(minDelay, maxDelay);
             StartCoroutine(WaitBeforeNextDestination(nextDelay));
+            animator.SetBool(isWalkingHash, false); // Set walking animation to false when close to the target
         }
     }
 
@@ -48,6 +58,7 @@ public class OwnerPatrol : MonoBehaviour
     {
         target = wayPoints[waypointIndex].position;
         agent.SetDestination(target);
+        animator.SetBool(isWalkingHash, true); // Set walking animation to true when not close to the target
     }
 
     private void IterateWaypointIndex()
