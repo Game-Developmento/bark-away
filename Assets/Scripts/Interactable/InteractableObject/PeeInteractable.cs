@@ -23,7 +23,9 @@ public class PeeInteractable : InteractableBase
         {
             playerAnimator.SetTrigger("cancelPeeing");
         }
-        ResetVariables();
+        // Reset variables for next time
+        nearestPlayer = null;
+        playerAnimator = null;
     }
     public override void Interact(GameObject player)
     {
@@ -33,17 +35,13 @@ public class PeeInteractable : InteractableBase
         {
             bool isTaskCompleted = taskManager.IsTaskCompleted(this);
         }
-        ResetVariables();
     }
     public override void Cleanup()
     {
         Debug.Log("Cleanup PeeInteractable!");
-        Instantiate(prefabToSpawn, gameObject.transform.position, gameObject.transform.rotation);
+        Vector3 nearestPlayerPosition = nearestPlayer.transform.position;
+        Vector3 positionToSpawn = new Vector3(nearestPlayerPosition.x, transform.position.y, nearestPlayerPosition.z);
+        Instantiate(prefabToSpawn, positionToSpawn, prefabToSpawn.transform.rotation);
         Destroy(gameObject);
-    }
-    private void ResetVariables()
-    {
-        nearestPlayer = null;
-        playerAnimator = null;
     }
 }
