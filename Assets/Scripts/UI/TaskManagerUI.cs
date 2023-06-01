@@ -29,14 +29,14 @@ public class TaskManagerUI : MonoBehaviour
         {
             GameObject spawnedObject = Instantiate(prefabToInitialize);
             newTaskToSpawn.SetTaskInstanceID(spawnedObject.GetInstanceID());
-            IInteractable interactable = spawnedObject.GetComponent<IInteractable>();
+            InteractableBase interactable = spawnedObject.GetComponent<InteractableBase>();
             interactable.Initialize();
         }
     }
     private void Instance_OnTaskCompleted(object sender, TaskManager.InteractableObjectEventArgs E)
     {
         UpdateVisual();
-        IInteractable interactable = E.interactable;
+        InteractableBase interactable = E.interactable;
         if (interactable != null)
         {
             interactable.Cleanup();

@@ -1,27 +1,31 @@
 using UnityEngine;
 
-public class PeeInteractable : MonoBehaviour, IInteractable
+public class PeeInteractable : InteractableBase
 {
-    [SerializeField] private string interactText;
     [SerializeField] private GameObject prefabToSpawn;
+    [SerializeField] private GameObject nearestPlayer; // Set nearest player during interactions
     private Animator playerAnimator;
-    public void StartInteraction()
+    public override void StartInteraction(GameObject player)
     {
-        Debug.Log("StartInteracton!");
+        // Initilalize current player variables
+        nearestPlayer = player;
+        playerAnimator = nearestPlayer?.GetComponent<Animator>();
+        // Start interaction animation
         if (playerAnimator != null)
         {
             playerAnimator.SetTrigger("startPeeing");
         }
     }
-    public void CancelInteraction()
+    public override void CancelInteraction(GameObject player)
     {
         Debug.Log("CancelInteracton!");
         if (playerAnimator != null)
         {
             playerAnimator.SetTrigger("cancelPeeing");
         }
+        ResetVariables();
     }
-    public void Interact(Transform interactorTransform)
+    public override void Interact(GameObject player)
     {
         Debug.Log("Interact PeeInteractable!");
         TaskManager taskManager = TaskManager.Instance;
@@ -29,34 +33,17 @@ public class PeeInteractable : MonoBehaviour, IInteractable
         {
             bool isTaskCompleted = taskManager.IsTaskCompleted(this);
         }
+        ResetVariables();
     }
-    public IInteractable Initialize()
-    {
-        Debug.Log("Initialize PeeInteractable!");
-        // Find GameObject named Player, then get animations controller to trigger peeing animations
-        GameObject.Find("Player").TryGetComponent(out Animator animator);
-        playerAnimator = animator;
-        return this;
-    }
-    public void Cleanup()
+    public override void Cleanup()
     {
         Debug.Log("Cleanup PeeInteractable!");
         Instantiate(prefabToSpawn, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
-
-    public int GetGameObjectID()
+    private void ResetVariables()
     {
-        return gameObject.GetInstanceID();
-    }
-
-    public Transform GetGameObjectTransform()
-    {
-        return gameObject.transform;
-    }
-
-    public string GetInteractText()
-    {
-        return interactText;
+        nearestPlayer = null;
+        playerAnimator = null;
     }
 }

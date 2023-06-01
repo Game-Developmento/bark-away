@@ -14,7 +14,7 @@ public class TaskManager : MonoBehaviour
     public event EventHandler<InteractableObjectEventArgs> OnTaskCompleted;
     public class InteractableObjectEventArgs : EventArgs
     {
-        public IInteractable interactable;
+        public InteractableBase interactable;
     }
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
@@ -54,7 +54,7 @@ public class TaskManager : MonoBehaviour
         return waitingTasksList;
     }
 
-    public bool IsTaskCompleted(IInteractable interactable)
+    public bool IsTaskCompleted(InteractableBase interactable)
     {
         if (interactable != null)
         {

@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     private int directionHash;
     // PRIVATE VARIABLES //
     [Header("Interactions")]
-    private List<IInteractable> interactableList = new List<IInteractable>();
-    IInteractable currInteractable; // The interactable the player was near when started pressing 'E'
+    private List<InteractableBase> interactableList = new List<InteractableBase>();
+    InteractableBase currInteractable; // The interactable the player was near when started pressing 'E'
     private void Awake()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Interact Started!");
                 progressBar.LoadProgress();
             }
-            currInteractable.StartInteraction();
+            currInteractable.StartInteraction(gameObject);
             OnPlayerInteractStarted?.Invoke(this, EventArgs.Empty);
         }
     }
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Interact Canceled!");
                 progressBar.CancelLoadProgress();
             }
-            currInteractable.CancelInteraction();
+            currInteractable.CancelInteraction(gameObject);
             OnPlayerInteractCanceled?.Invoke(this, EventArgs.Empty);
             currInteractable = null;
         }
@@ -78,12 +78,12 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Interact Perfomed!");
 
-        IInteractable nearestInteractable = GetInteractableObject();
+        InteractableBase nearestInteractable = GetInteractableObject();
         // Check if interactable changed since player started pressing 'E'
         if ((nearestInteractable != null && currInteractable != null)
         && (nearestInteractable.GetGameObjectID() == currInteractable.GetGameObjectID()))
         {
-            currInteractable.Interact(transform);
+            currInteractable.Interact(gameObject);
             OnPlayerInteractPerformed?.Invoke(this, EventArgs.Empty);
         }
         // Reset variables
@@ -92,14 +92,14 @@ public class PlayerController : MonoBehaviour
 
     // This functions looks for interactable objects in a certain range from the player, and returns the closest one.
     // It is also used for displaying interactables on the UI. 
-    public IInteractable GetInteractableObject()
+    public InteractableBase GetInteractableObject()
     {
         // Find all interactables near player
         int interactLayerMask = 1 << interactLayer;
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, interactLayerMask);
         foreach (Collider collider in colliderArray)
         {
-            if (collider.TryGetComponent(out IInteractable interactable))
+            if (collider.TryGetComponent(out InteractableBase interactable))
             {
                 interactableList.Add(interactable);
             }
@@ -107,11 +107,11 @@ public class PlayerController : MonoBehaviour
         return GetClosestInteractable();
     }
 
-    private IInteractable GetClosestInteractable()
+    private InteractableBase GetClosestInteractable()
     {
         // Find closest interactable
-        IInteractable closestInteractable = null;
-        foreach (IInteractable interactable in interactableList)
+        InteractableBase closestInteractable = null;
+        foreach (InteractableBase interactable in interactableList)
         {
             if (closestInteractable == null)
             {

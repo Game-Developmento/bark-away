@@ -8,7 +8,7 @@ public class PlayerInteractUI : MonoBehaviour
 
     private void Update()
     {
-        IInteractable currInteractableObject = player.GetInteractableObject();
+        InteractableBase currInteractableObject = player.GetInteractableObject();
         if (currInteractableObject != null)
         {
             Show(currInteractableObject);
@@ -18,7 +18,7 @@ public class PlayerInteractUI : MonoBehaviour
             Hide();
         }
     }
-    private void Show(IInteractable interactable)
+    private void Show(InteractableBase interactable)
     {
         containerGameObject.SetActive(true);
         interactTextMeshProUGUI.text = interactable.GetInteractText();

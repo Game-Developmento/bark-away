@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class FoodInteractable : MonoBehaviour, IInteractable
+public class FoodInteractable : InteractableBase
 {
-    [SerializeField] private string interactText;
-    public void StartInteraction() { }
-    public void CancelInteraction() { }
-    public void Interact(Transform interactorTransform)
+    public override void StartInteraction(GameObject player) { }
+    public override void CancelInteraction(GameObject player) { }
+    public override void Interact(GameObject player)
     {
         TaskManager taskManager = TaskManager.Instance;
         if (taskManager != null)
@@ -13,26 +12,9 @@ public class FoodInteractable : MonoBehaviour, IInteractable
             bool isTaskCompleted = taskManager.IsTaskCompleted(this);
         }
     }
-    public IInteractable Initialize()
-    {
-        return this;
-    }
 
-    public void Cleanup()
+    public override void Cleanup()
     {
         Destroy(gameObject);
-    }
-    public string GetInteractText()
-    {
-        return interactText;
-    }
-
-    public Transform GetGameObjectTransform()
-    {
-        return gameObject.transform;
-    }
-    public int GetGameObjectID()
-    {
-        return gameObject.GetInstanceID();
     }
 }
