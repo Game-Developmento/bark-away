@@ -8,6 +8,12 @@ public class PlayerInputManager : MonoBehaviour
     public event EventHandler OnInteractEventPerformed;
     public event EventHandler OnInteractEventStarted;
     public event EventHandler OnInteractEventCanceled;
+    // Event for movement key
+    public event EventHandler<MovementKeyEventArgs> OnMovementEventStarted;
+    public class MovementKeyEventArgs : EventArgs
+    {
+        public string keyName;
+    }
 
     // PRIVATE VARIABLES //
     private PlayerInputActions playerInputActions;
@@ -21,6 +27,7 @@ public class PlayerInputManager : MonoBehaviour
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
 
+        playerInputActions.Player.Move.started += Movement_started;
         playerInputActions.Player.Move.started += OnMovementInput;
         playerInputActions.Player.Move.canceled += OnMovementInput;
         playerInputActions.Player.Move.performed += OnMovementInput;
@@ -51,6 +58,12 @@ public class PlayerInputManager : MonoBehaviour
         currentMovement.z = currentMovementInput.y;        // This vector is normalized in the input system //
         currentMovement = currentMovement.normalized;
         isMovementPressed = (currentMovement != Vector3.zero) && (currentMovement.magnitude >= 0.1f);
+    }
+
+    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        string keyName = playerInputActions.Player.Move.activeControl.displayName;
+        OnMovementEventStarted?.Invoke(this, new MovementKeyEventArgs { keyName = keyName });
     }
 
     private void OnEnable()

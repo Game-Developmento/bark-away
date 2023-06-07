@@ -43,6 +43,26 @@ public class PlayerController : MonoBehaviour
         playerInputManager.OnInteractEventPerformed += OnInteractActionPerformed;
         playerInputManager.OnInteractEventStarted += OnInteractActionStarted;
         playerInputManager.OnInteractEventCanceled += OnInteractActionCanceled;
+        playerInputManager.OnMovementEventStarted += OnPlayerMovementStarted;
+    }
+    private void OnPlayerMovementStarted(object sender, PlayerInputManager.MovementKeyEventArgs E)
+    {
+        string keyPressed = E.keyName;
+        switch (keyPressed)
+        {
+            case "W":
+                Debug.Log("W PRESSED!");
+                break;
+            case "A":
+                Debug.Log("A PRESSED!");
+                break;
+            case "S":
+                Debug.Log("S PRESSED!");
+                break;
+            case "D":
+                Debug.Log("D PRESSED!");
+                break;
+        }
     }
     private void OnInteractActionStarted(object sender, System.EventArgs e)
     {
