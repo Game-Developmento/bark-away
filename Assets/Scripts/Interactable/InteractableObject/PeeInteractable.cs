@@ -45,14 +45,18 @@ public class PeeInteractable : InteractableBase
         Vector3 positionToSpawn = new Vector3(nearestPlayerPosition.x, transform.position.y, nearestPlayerPosition.z);
         GameObject spawnedPee = Instantiate(prefabToSpawn, positionToSpawn, prefabToSpawn.transform.rotation);
         StartCoroutine(DestroyPee(spawnedPee.gameObject));
+
+        Collider collider = GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
         // TODO: Check why this works only in children
         SpriteRenderer renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
         if (renderer != null)
         {
-            Debug.Log("TryGetComponent");
             renderer.enabled = false;
         }
-
     }
 
     private IEnumerator DestroyPee(GameObject spawnedPee)

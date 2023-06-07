@@ -7,67 +7,76 @@ public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private int targetProgress = 100;
     [SerializeField] private int currProgress = 0;
-
+    private int startPosProgress;
+    private int divideRatio = 100;
     [SerializeField] private float duration = 3f;
 
     public Image mask;
     public Image fill;
     private Color color;
-
-    private bool isProgressing = false;
+    private bool isInProgress = false;
     private float progressTimer = 0f;
-    private int startingProgress;
+
+    private void Start()
+    {
+        startPosProgress = currProgress;
+    }
 
     private void Update()
     {
-        if (isProgressing)
+        if (isInProgress)
         {
-            progressTimer += Time.deltaTime;
-            float progress = Mathf.Lerp(startingProgress, targetProgress, progressTimer / duration);
-            currProgress = (int)progress;
-            GetCurrentFill();
-
-            if (progressTimer >= duration)
-            {
-                currProgress = targetProgress;
-                GetCurrentFill();
-                CancelLoadProgress();
-            }
+            HandleProgressBar(startPosProgress);
         }
     }
 
 
-
-
-    public void LoadProgress()
+    private void HandleProgressBar(int startingPoint)
     {
-        if (!isProgressing)
+        progressTimer += Time.deltaTime;
+        currProgress = (int)Mathf.Lerp(startingPoint, targetProgress, progressTimer / duration);
+        GetCurrentFill();
+
+        if (progressTimer >= duration)
         {
-            isProgressing = true;
-            startingProgress = currProgress;
+            currProgress = targetProgress;
+            GetCurrentFill();
+            CancelProgress();
+        }
+    }
+
+
+    public void BeginProgress()
+    {
+        if (!isInProgress)
+        {
+            isInProgress = true;
             progressTimer = 0f;
             gameObject.SetActive(true);
         }
     }
 
-    public void CancelLoadProgress()
+    public void CancelProgress()
     {
-        isProgressing = false;
+        isInProgress = false;
         gameObject.SetActive(false);
-        currProgress = 0;
+        currProgress = startPosProgress;
 
+    }
+
+    public bool IsCurrentlyInProgress()
+    {
+        return isInProgress;
     }
 
     public int GetCurrentProgress()
     {
         return currProgress;
     }
-
     void GetCurrentFill()
     {
         float currentOffset = currProgress;
-        float maximumOffset = targetProgress;
-        float fillAmount = currentOffset / maximumOffset;
+        float fillAmount = currentOffset / divideRatio;
         mask.fillAmount = fillAmount;
         fill.color = color;
     }

@@ -7,6 +7,7 @@ public class TaskManagerUI : MonoBehaviour
     [SerializeField] private Transform container;
     [SerializeField] private Transform taskTemplate;
 
+    private Dictionary<TasksObjectSO, Transform> taskObjectMap = new Dictionary<TasksObjectSO, Transform>();
 
     private void Awake()
     {
@@ -45,19 +46,46 @@ public class TaskManagerUI : MonoBehaviour
 
     private void UpdateVisual()
     {
-        // Clean-up
-        foreach (Transform child in container)
+        List<TasksObjectSO> currTaskList = TaskManager.Instance.GetTasksObjectSOList();
+        List<TasksObjectSO> tasksToRemove = new List<TasksObjectSO>();
+
+        // saves Dict keys to clean up unnecessary tasks
+        foreach (TasksObjectSO taskObject in taskObjectMap.Keys)
         {
-            if (child == taskTemplate) continue;
-            Destroy(child.gameObject);
+            if (!currTaskList.Contains(taskObject))
+            {
+
+                tasksToRemove.Add(taskObject);
+            }
+        }
+        // removing tasks
+        foreach (var taskObject in tasksToRemove)
+        {
+            Transform taskTransform = taskObjectMap[taskObject];
+            taskObjectMap.Remove(taskObject);
+            Destroy(taskTransform.gameObject);
         }
 
         // Display tasks
-        foreach (TasksObjectSO currTask in TaskManager.Instance.GetTasksObjectSOList())
+        foreach (TasksObjectSO currTask in currTaskList)
         {
-            Transform taskTransform = Instantiate(taskTemplate, container);
+            Transform taskTransform;
+            if (taskObjectMap.ContainsKey(currTask))
+            {
+                taskTransform = taskObjectMap[currTask];
+            }
+            else
+            {
+                taskTransform = Instantiate(taskTemplate, container);
+                taskObjectMap.Add(currTask, taskTransform);
+            }
             taskTransform.gameObject.SetActive(true);
             taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(currTask);
+            ProgressBar progressBar = taskTransform.GetComponentInChildren<ProgressBar>();
+            if (progressBar != null && !progressBar.IsCurrentlyInProgress())
+            {
+                progressBar.BeginProgress();
+            }
         }
     }
 }

@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             if (progressBar != null)
             {
                 Debug.Log("Interact Started!");
-                progressBar.LoadProgress();
+                progressBar.BeginProgress();
             }
             currInteractable.StartInteraction(gameObject);
             OnPlayerInteractStarted?.Invoke(this, EventArgs.Empty);
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             if (progressBar != null)
             {
                 Debug.Log("Interact Canceled!");
-                progressBar.CancelLoadProgress();
+                progressBar.CancelProgress();
             }
             currInteractable.CancelInteraction(gameObject);
             OnPlayerInteractCanceled?.Invoke(this, EventArgs.Empty);
