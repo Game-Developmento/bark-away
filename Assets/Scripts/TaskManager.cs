@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +15,7 @@ public class TaskManager : MonoBehaviour
     {
         public InteractableBase interactable;
     }
+    public event EventHandler<InteractableObjectEventArgs> OnTaskIncomplete;
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 
@@ -46,6 +46,16 @@ public class TaskManager : MonoBehaviour
                     spawnerTaskTimer = spawnerTaskTimerMax;
                 }
             }
+        }
+    }
+
+    public void RemoveIncompleteTask(TasksObjectSO task)
+    {
+        if (task != null && waitingTasksList.Contains(task))
+        {
+            InteractableBase interactable = task.GetCurrentObject().GetComponent<InteractableBase>();
+            waitingTasksList.Remove(task);
+            OnTaskIncomplete?.Invoke(this, new InteractableObjectEventArgs { interactable = interactable });
         }
     }
 

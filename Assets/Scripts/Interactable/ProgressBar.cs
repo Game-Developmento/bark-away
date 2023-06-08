@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ProgressBar : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class ProgressBar : MonoBehaviour
     private Color color;
     private bool isInProgress = false;
     private float progressTimer = 0f;
+    // Event is unique for each process bar!
+    public event EventHandler OnTimerOverEvent;
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class ProgressBar : MonoBehaviour
         {
             currProgress = targetProgress;
             GetCurrentFill();
-            CancelProgress();
+            HandleTimerOver();
         }
     }
 
@@ -56,12 +57,12 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-    public void CancelProgress()
+    public void HandleTimerOver()
     {
         isInProgress = false;
+        OnTimerOverEvent?.Invoke(this, EventArgs.Empty);
         gameObject.SetActive(false);
         currProgress = startPosProgress;
-
     }
 
     public bool IsCurrentlyInProgress()

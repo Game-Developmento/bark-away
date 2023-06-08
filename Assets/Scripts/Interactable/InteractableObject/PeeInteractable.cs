@@ -41,21 +41,28 @@ public class PeeInteractable : InteractableBase
     public override void Cleanup()
     {
         Debug.Log("Cleanup PeeInteractable!");
-        Vector3 nearestPlayerPosition = nearestPlayer.transform.position;
-        Vector3 positionToSpawn = new Vector3(nearestPlayerPosition.x, transform.position.y, nearestPlayerPosition.z);
-        GameObject spawnedPee = Instantiate(prefabToSpawn, positionToSpawn, prefabToSpawn.transform.rotation);
-        StartCoroutine(DestroyPee(spawnedPee.gameObject));
-
-        Collider collider = GetComponent<Collider>();
-        if (collider != null)
+        if (nearestPlayer != null)
         {
-            collider.enabled = false;
+            Vector3 nearestPlayerPosition = nearestPlayer.transform.position;
+            Vector3 positionToSpawn = new Vector3(nearestPlayerPosition.x, transform.position.y, nearestPlayerPosition.z);
+            GameObject spawnedPee = Instantiate(prefabToSpawn, positionToSpawn, prefabToSpawn.transform.rotation);
+            StartCoroutine(DestroyPee(spawnedPee.gameObject));
+            Collider collider = GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+            // TODO: Check why this works only in children
+            SpriteRenderer renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
         }
-        // TODO: Check why this works only in children
-        SpriteRenderer renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
-        if (renderer != null)
+        else
         {
-            renderer.enabled = false;
+            // No player nearby, destory object immediately
+            Destroy(gameObject);
         }
     }
 

@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             if (progressBar != null)
             {
                 Debug.Log("Interact Canceled!");
-                progressBar.CancelProgress();
+                progressBar.HandleTimerOver();
             }
             currInteractable.CancelInteraction(gameObject);
             OnPlayerInteractCanceled?.Invoke(this, EventArgs.Empty);

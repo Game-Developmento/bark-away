@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,8 @@ public class TaskManagerUI : MonoBehaviour
     void Start()
     {
         TaskManager.Instance.OnTaskSpawned += TaskManager_OnTaskSpawned;
-        TaskManager.Instance.OnTaskCompleted += Instance_OnTaskCompleted;
+        TaskManager.Instance.OnTaskCompleted += TaskManager_OnTaskCompleted;
+        TaskManager.Instance.OnTaskIncomplete += TaskManager_OnTaskIncomplete;
         UpdateVisual();
     }
 
@@ -30,11 +30,22 @@ public class TaskManagerUI : MonoBehaviour
         {
             GameObject spawnedObject = Instantiate(prefabToInitialize);
             newTaskToSpawn.SetTaskInstanceID(spawnedObject.GetInstanceID());
+            newTaskToSpawn.SetCurrentTask(spawnedObject);
             InteractableBase interactable = spawnedObject.GetComponent<InteractableBase>();
             interactable.Initialize();
         }
     }
-    private void Instance_OnTaskCompleted(object sender, TaskManager.InteractableObjectEventArgs E)
+    private void TaskManager_OnTaskCompleted(object sender, TaskManager.InteractableObjectEventArgs E)
+    {
+        UpdateVisual();
+        InteractableBase interactable = E.interactable;
+        if (interactable != null)
+        {
+            interactable.Cleanup();
+        }
+    }
+
+    private void TaskManager_OnTaskIncomplete(object sender, TaskManager.InteractableObjectEventArgs E)
     {
         UpdateVisual();
         InteractableBase interactable = E.interactable;
@@ -70,6 +81,7 @@ public class TaskManagerUI : MonoBehaviour
         foreach (TasksObjectSO currTask in currTaskList)
         {
             Transform taskTransform;
+            ProgressBar progressBar;
             if (taskObjectMap.ContainsKey(currTask))
             {
                 taskTransform = taskObjectMap[currTask];
@@ -78,10 +90,12 @@ public class TaskManagerUI : MonoBehaviour
             {
                 taskTransform = Instantiate(taskTemplate, container);
                 taskObjectMap.Add(currTask, taskTransform);
+                progressBar = taskTransform.GetComponentInChildren<ProgressBar>();
+                currTask.SetProgressBar(progressBar);
             }
             taskTransform.gameObject.SetActive(true);
             taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(currTask);
-            ProgressBar progressBar = taskTransform.GetComponentInChildren<ProgressBar>();
+            progressBar = currTask.GetProgressBar();
             if (progressBar != null && !progressBar.IsCurrentlyInProgress())
             {
                 progressBar.BeginProgress();
