@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
-    public event EventHandler<TasksObjectEventArgs> OnTaskSpawned;
-    public class TasksObjectEventArgs : EventArgs
-    {
-        public TasksObjectSO task;
-    }
-
-    public event EventHandler<InteractableObjectEventArgs> OnTaskCompleted;
-    public class InteractableObjectEventArgs : EventArgs
+    public event EventHandler<ObjectEventArgs> OnTaskSpawned;
+    public event EventHandler<ObjectEventArgs> OnTaskCompleted;
+    public class ObjectEventArgs : EventArgs
     {
         public InteractableBase interactable;
+        public TasksObjectSO task;
     }
-    public event EventHandler<InteractableObjectEventArgs> OnTaskIncomplete;
+    public event EventHandler<ObjectEventArgs> OnTaskIncomplete;
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 
@@ -42,7 +38,7 @@ public class TaskManager : MonoBehaviour
                 if (!waitingTasksList.Contains(waitingTask))
                 {
                     waitingTasksList.Add(waitingTask);
-                    OnTaskSpawned?.Invoke(this, new TasksObjectEventArgs { task = waitingTask });
+                    OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = waitingTask });
                     spawnerTaskTimer = spawnerTaskTimerMax;
                 }
             }
@@ -55,7 +51,7 @@ public class TaskManager : MonoBehaviour
         {
             InteractableBase interactable = task.GetCurrentObject().GetComponent<InteractableBase>();
             waitingTasksList.Remove(task);
-            OnTaskIncomplete?.Invoke(this, new InteractableObjectEventArgs { interactable = interactable });
+            OnTaskIncomplete?.Invoke(this, new ObjectEventArgs { interactable = interactable });
         }
     }
 
@@ -74,7 +70,7 @@ public class TaskManager : MonoBehaviour
                 {
                     waitingTasksList.Remove(task);
                     spawnerTaskTimer = spawnerTaskTimerMax;
-                    OnTaskCompleted?.Invoke(this, new InteractableObjectEventArgs { interactable = interactable });
+                    OnTaskCompleted?.Invoke(this, new ObjectEventArgs { interactable = interactable, task = task });
                     return true;
                 }
             }

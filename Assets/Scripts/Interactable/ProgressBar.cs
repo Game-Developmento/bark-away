@@ -74,6 +74,11 @@ public class ProgressBar : MonoBehaviour
     {
         return currProgress;
     }
+
+    public int GetCurrentTime()
+    {
+        return (int)(mask.fillAmount * duration);
+    }
     void GetCurrentFill()
     {
         float currentOffset = currProgress;

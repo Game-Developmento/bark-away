@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TaskManagerUI : MonoBehaviour
 {
     [SerializeField] private Transform container;
     [SerializeField] private Transform taskTemplate;
+
+    [SerializeField] private TextMeshProUGUI points;
+
+    private int currentScore = 0;
+    private int defaultPoints = 15;
 
     private Dictionary<TasksObjectSO, Transform> taskObjectMap = new Dictionary<TasksObjectSO, Transform>();
 
@@ -21,7 +27,7 @@ public class TaskManagerUI : MonoBehaviour
         UpdateVisual();
     }
 
-    private void TaskManager_OnTaskSpawned(object sender, TaskManager.TasksObjectEventArgs E)
+    private void TaskManager_OnTaskSpawned(object sender, TaskManager.ObjectEventArgs E)
     {
         UpdateVisual();
         TasksObjectSO newTaskToSpawn = E.task;
@@ -35,7 +41,24 @@ public class TaskManagerUI : MonoBehaviour
             interactable.Initialize();
         }
     }
-    private void TaskManager_OnTaskCompleted(object sender, TaskManager.InteractableObjectEventArgs E)
+    private void TaskManager_OnTaskCompleted(object sender, TaskManager.ObjectEventArgs E)
+    {
+        UpdateVisual();
+        InteractableBase interactable = E.interactable;
+        TasksObjectSO taskCompleted = E.task;
+        int timeLeftForTask = taskCompleted.GetProgressBar().GetCurrentTime();
+        int scoreToAdd = timeLeftForTask * defaultPoints;
+        UpdatePoints(scoreToAdd);
+
+        if (interactable != null)
+        {
+            interactable.Cleanup();
+        }
+
+
+    }
+
+    private void TaskManager_OnTaskIncomplete(object sender, TaskManager.ObjectEventArgs E)
     {
         UpdateVisual();
         InteractableBase interactable = E.interactable;
@@ -45,19 +68,8 @@ public class TaskManagerUI : MonoBehaviour
         }
     }
 
-    private void TaskManager_OnTaskIncomplete(object sender, TaskManager.InteractableObjectEventArgs E)
+    private void RemoveTasks(List<TasksObjectSO> currTaskList)
     {
-        UpdateVisual();
-        InteractableBase interactable = E.interactable;
-        if (interactable != null)
-        {
-            interactable.Cleanup();
-        }
-    }
-
-    private void UpdateVisual()
-    {
-        List<TasksObjectSO> currTaskList = TaskManager.Instance.GetTasksObjectSOList();
         List<TasksObjectSO> tasksToRemove = new List<TasksObjectSO>();
 
         // saves Dict keys to clean up unnecessary tasks
@@ -76,7 +88,10 @@ public class TaskManagerUI : MonoBehaviour
             taskObjectMap.Remove(taskObject);
             Destroy(taskTransform.gameObject);
         }
+    }
 
+    private void DisplayTasks(List<TasksObjectSO> currTaskList)
+    {
         // Display tasks
         foreach (TasksObjectSO currTask in currTaskList)
         {
@@ -101,5 +116,18 @@ public class TaskManagerUI : MonoBehaviour
                 progressBar.BeginProgress();
             }
         }
+    }
+
+    private void UpdatePoints(int scoreToAdd)
+    {
+        currentScore += scoreToAdd;
+        points.text = "Points: " + currentScore.ToString();
+
+    }
+    private void UpdateVisual()
+    {
+        List<TasksObjectSO> currTaskList = TaskManager.Instance.GetTasksObjectSOList();
+        RemoveTasks(currTaskList);
+        DisplayTasks(currTaskList);
     }
 }
