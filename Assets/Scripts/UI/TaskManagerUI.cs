@@ -8,6 +8,7 @@ public class TaskManagerUI : MonoBehaviour
     [SerializeField] private Transform taskTemplate;
 
     [SerializeField] private TextMeshProUGUI points;
+    [SerializeField] private PointsPopup pointsPopup;
 
     private int currentScore = 0;
     private int defaultPoints = 15;
@@ -120,6 +121,7 @@ public class TaskManagerUI : MonoBehaviour
 
     private void UpdatePoints(int scoreToAdd)
     {
+        pointsPopup.ShowScorePopup(scoreToAdd);
         currentScore += scoreToAdd;
         points.text = "Points: " + currentScore.ToString();
 
