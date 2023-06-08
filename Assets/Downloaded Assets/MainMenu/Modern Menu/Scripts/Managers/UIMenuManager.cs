@@ -93,7 +93,7 @@ namespace SlimUI.ModernMenu
 
         public void LoadLevel1() {
             // load scene of level 1;
-            LoadScene("MainMenu");
+            LoadScene("Ori BarkAway V3");
         }
         public void LoadLevel2() {
             // load scene of level 2;
@@ -104,13 +104,12 @@ namespace SlimUI.ModernMenu
             LoadScene("MainMenu");
         }
 
-
-        // public void ReturnMenu()
-        // {
-        //     playMenu.SetActive(false);
-        //     exitMenu.SetActive(false);
-        //     mainMenu.SetActive(true);
-        // }
+        public void ReturnMenu()
+        {
+            playMenu.SetActive(false);
+            exitMenu.SetActive(false);
+            mainMenu.SetActive(true);
+        }
 
         public void LoadScene(string scene)
         {
