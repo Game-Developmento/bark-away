@@ -11910,7 +11910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetProgress: 0
   currProgress: 100
-  duration: 5
+  duration: 20
   mask: {fileID: 1720825351}
   fill: {fileID: 1605185048}
 --- !u!114 &1722969706
