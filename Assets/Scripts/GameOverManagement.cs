@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOverManagement : MonoBehaviour
 {
 
-    public void GameOver(int totalPoints, int taskCompleted, int fastestTaskCompleted)
+    public void GameOver(int totalPoints, int taskCompleted, int fastestTaskCompleted,string sceneToLoad)
     {
         // Store the values using PlayerPrefs
         PlayerPrefs.SetInt("totalPoints", totalPoints);
@@ -15,6 +15,6 @@ public class GameOverManagement : MonoBehaviour
         PlayerPrefs.SetString("mostRecentScene", SceneManager.GetActiveScene().name);
 
         // Load the "GameOver" scene
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

@@ -79,7 +79,8 @@ public class TaskManagerUI : MonoBehaviour
 
     private void clock_OnTimerOver(object sender, System.EventArgs E)
     {
-        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted);
+        string sceneToLoad = "Time's up";
+        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted,sceneToLoad);
     }
 
     private void RemoveTasks(List<TasksObjectSO> currTaskList)

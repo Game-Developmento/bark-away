@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 670700ca94218ad41a4a9098c0b8b9b6
+  - enabled: 1
+    path: Assets/Scenes/Time's up.unity
+    guid: 8e56090b2ead55349be5321e4d1fafeb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a7a33b1840e943b4088f0dc7b920b9b8, type: 2}
