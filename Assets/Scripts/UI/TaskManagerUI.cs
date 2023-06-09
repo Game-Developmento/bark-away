@@ -8,16 +8,22 @@ public class TaskManagerUI : MonoBehaviour
     [SerializeField] private Transform taskTemplate;
 
     [SerializeField] private TextMeshProUGUI points;
-    [SerializeField] private PointsPopup pointsPopup;
+    private PointsPopup pointsPopup;
+    private ClockUI clock;
+    [SerializeField] private GameOverManagement gameOvermanagement;
 
     private int currentScore = 0;
     private int defaultPoints = 15;
+    private int numOfTasksCompleted = 0;
+    private int fastestTaskCompleted = 20;
 
     private Dictionary<TasksObjectSO, Transform> taskObjectMap = new Dictionary<TasksObjectSO, Transform>();
 
     private void Awake()
     {
         taskTemplate.gameObject.SetActive(false);
+        pointsPopup = GetComponentInChildren<PointsPopup>();
+        clock = GetComponentInChildren<ClockUI>();
     }
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,7 @@ public class TaskManagerUI : MonoBehaviour
         TaskManager.Instance.OnTaskSpawned += TaskManager_OnTaskSpawned;
         TaskManager.Instance.OnTaskCompleted += TaskManager_OnTaskCompleted;
         TaskManager.Instance.OnTaskIncomplete += TaskManager_OnTaskIncomplete;
+        clock.OnTimeOverEvent += clock_OnTimerOver;
         UpdateVisual();
     }
 
@@ -47,16 +54,17 @@ public class TaskManagerUI : MonoBehaviour
         UpdateVisual();
         InteractableBase interactable = E.interactable;
         TasksObjectSO taskCompleted = E.task;
-        int timeLeftForTask = taskCompleted.GetProgressBar().GetCurrentTime();
+        ProgressBar progressbar = taskCompleted.GetProgressBar();
+        int timeLeftForTask = progressbar.GetCurrentTime();
         int scoreToAdd = timeLeftForTask * defaultPoints;
         UpdatePoints(scoreToAdd);
-
+        numOfTasksCompleted += 1;
+        int currTaskTimeCompleted = (int)(progressbar.GetTotalTime() - timeLeftForTask);
+        UpdateFastestTaskCompleted(currTaskTimeCompleted);
         if (interactable != null)
         {
             interactable.Cleanup();
         }
-
-
     }
 
     private void TaskManager_OnTaskIncomplete(object sender, TaskManager.ObjectEventArgs E)
@@ -67,6 +75,11 @@ public class TaskManagerUI : MonoBehaviour
         {
             interactable.Cleanup();
         }
+    }
+
+    private void clock_OnTimerOver(object sender, System.EventArgs E)
+    {
+        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted);
     }
 
     private void RemoveTasks(List<TasksObjectSO> currTaskList)
@@ -121,9 +134,17 @@ public class TaskManagerUI : MonoBehaviour
 
     private void UpdatePoints(int scoreToAdd)
     {
-        pointsPopup.ShowScorePopup(scoreToAdd);
         currentScore += scoreToAdd;
-        points.text = "Points: " + currentScore.ToString();
+
+        if (pointsPopup != null)
+        {
+            pointsPopup.ShowScorePopup(scoreToAdd);
+        }
+        if (points != null)
+        {
+            points.text = "Points: " + currentScore.ToString();
+            Debug.Log(points.text);
+        }
 
     }
     private void UpdateVisual()
@@ -132,4 +153,13 @@ public class TaskManagerUI : MonoBehaviour
         RemoveTasks(currTaskList);
         DisplayTasks(currTaskList);
     }
+
+    private void UpdateFastestTaskCompleted(int currTaskTimeCompleted)
+    {
+        if (currTaskTimeCompleted < fastestTaskCompleted)
+        {
+            fastestTaskCompleted = currTaskTimeCompleted;
+        }
+    }
+
 }

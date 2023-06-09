@@ -86,4 +86,8 @@ public class ProgressBar : MonoBehaviour
         mask.fillAmount = fillAmount;
         fill.color = color;
     }
-}
+
+    public float GetTotalTime() {
+        return duration;
+    }
+ }
