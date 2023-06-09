@@ -11,7 +11,8 @@ public class GameOverManagement : MonoBehaviour
         // Store the values using PlayerPrefs
         PlayerPrefs.SetInt("totalPoints", totalPoints);
         PlayerPrefs.SetInt("tasksCompleted", taskCompleted);
-        PlayerPrefs.SetInt("FastestTaskCompleted", fastestTaskCompleted);
+        PlayerPrefs.SetInt("fastestTaskCompleted", fastestTaskCompleted);
+        PlayerPrefs.SetString("mostRecentScene", SceneManager.GetActiveScene().name);
 
         // Load the "GameOver" scene
         SceneManager.LoadScene("GameOver");

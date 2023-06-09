@@ -14,7 +14,7 @@ public class GameOverScreen : MonoBehaviour
         // Retrieve the stored values using PlayerPrefs
         int totalPoints = PlayerPrefs.GetInt("totalPoints");
         int tasksCompleted = PlayerPrefs.GetInt("tasksCompleted");
-        int FastestTaskCompleted = PlayerPrefs.GetInt("FastestTaskCompleted");
+        int FastestTaskCompleted = PlayerPrefs.GetInt("fastestTaskCompleted");
 
         // Update the TextMeshProUGUI components with the retrieved values
         totalPointsText.text = "Total Points: " + totalPoints.ToString();
@@ -29,7 +29,7 @@ public class GameOverScreen : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("totalPoints");
         PlayerPrefs.DeleteKey("tasksCompleted");
-        PlayerPrefs.DeleteKey("FastestTaskCompleted");
+        PlayerPrefs.DeleteKey("fastestTaskCompleted");
     }
 
 
