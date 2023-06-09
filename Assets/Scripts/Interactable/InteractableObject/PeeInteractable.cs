@@ -53,10 +53,13 @@ public class PeeInteractable : InteractableBase
                 collider.enabled = false;
             }
             // TODO: Check why this works only in children
-            SpriteRenderer renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
-            if (renderer != null)
+            SpriteRenderer[] rendererComponents = this.gameObject.GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer renderer in rendererComponents)
             {
-                renderer.enabled = false;
+                if (renderer != null)
+                {
+                    renderer.enabled = false;
+                }
             }
         }
         else
