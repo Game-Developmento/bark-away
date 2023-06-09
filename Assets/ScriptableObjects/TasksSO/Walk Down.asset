@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
+  m_Name: Walk Down
+  m_EditorClassIdentifier: 
+  taskDescription: Walk Down
+  taskSprite: {fileID: -1717045692, guid: e4c6f8ccc6125044dbaaae0a630f4b62, type: 3}
+  prefab: {fileID: 8886802996556534289, guid: 32a93a3998341ab48996a5c8e8d4a95e, type: 3}

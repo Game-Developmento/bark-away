@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
+  m_Name: Walk Up
+  m_EditorClassIdentifier: 
+  taskDescription: Walk Up
+  taskSprite: {fileID: 733048535, guid: e4c6f8ccc6125044dbaaae0a630f4b62, type: 3}
+  prefab: {fileID: 8886802996556534289, guid: f37c2177aaf5d6d418f6d97e18f652f1, type: 3}

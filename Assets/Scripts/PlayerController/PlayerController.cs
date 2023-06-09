@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     public event EventHandler OnPlayerInteractStarted;
     public event EventHandler OnPlayerInteractCanceled;
     public event EventHandler OnPlayerInteractPerformed;
+    public event EventHandler<KeyNameEventArgs> OnPlayerMovementEvent;
+    public class KeyNameEventArgs : EventArgs
+    {
+        public string name;
+    }
     [SerializeField] private ProgressBar progressBar;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float turnSmoothTime = 0.15f;
@@ -48,21 +53,7 @@ public class PlayerController : MonoBehaviour
     private void OnPlayerMovementStarted(object sender, PlayerInputManager.MovementKeyEventArgs E)
     {
         string keyPressed = E.keyName;
-        switch (keyPressed)
-        {
-            case "W":
-                Debug.Log("W PRESSED!");
-                break;
-            case "A":
-                Debug.Log("A PRESSED!");
-                break;
-            case "S":
-                Debug.Log("S PRESSED!");
-                break;
-            case "D":
-                Debug.Log("D PRESSED!");
-                break;
-        }
+        OnPlayerMovementEvent?.Invoke(this, new KeyNameEventArgs { name = keyPressed });
     }
     private void OnInteractActionStarted(object sender, System.EventArgs e)
     {

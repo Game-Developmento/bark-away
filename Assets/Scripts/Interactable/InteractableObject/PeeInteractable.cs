@@ -35,7 +35,7 @@ public class PeeInteractable : InteractableBase
         TaskManager taskManager = TaskManager.Instance;
         if (taskManager != null)
         {
-            bool isTaskCompleted = taskManager.IsTaskCompleted(this);
+            bool isTaskCompleted = taskManager.IsInteractableTaskCompleted(this);
         }
     }
     public override void Cleanup()

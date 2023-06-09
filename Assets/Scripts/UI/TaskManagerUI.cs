@@ -45,26 +45,28 @@ public class TaskManagerUI : MonoBehaviour
             GameObject spawnedObject = Instantiate(prefabToInitialize);
             newTaskToSpawn.SetTaskInstanceID(spawnedObject.GetInstanceID());
             newTaskToSpawn.SetCurrentTask(spawnedObject);
-            InteractableBase interactable = spawnedObject.GetComponent<InteractableBase>();
-            interactable.Initialize();
+            if (spawnedObject.TryGetComponent(out InteractableBase interactable))
+            {
+                interactable.Initialize();
+            }
         }
     }
     private void TaskManager_OnTaskCompleted(object sender, TaskManager.ObjectEventArgs E)
     {
         UpdateVisual();
         InteractableBase interactable = E.interactable;
-
         TasksObjectSO taskCompleted = E.task;
-        ProgressBar progressbar = taskCompleted.GetProgressBar();
-        int timeLeftForTask = progressbar.GetTimeLeft();
-        int scoreToAdd = timeLeftForTask * defaultPoints;
-        UpdatePoints(scoreToAdd);
-        numOfTasksCompleted += 1;
-        // updating the fastest task completed so far
-        int currTaskTimeCompleted = (int)(progressbar.GetTotalTime() - timeLeftForTask);
-        UpdateFastestTaskCompleted(currTaskTimeCompleted);
-
-
+        if (taskCompleted != null)
+        {
+            ProgressBar progressbar = taskCompleted.GetProgressBar();
+            int timeLeftForTask = progressbar.GetTimeLeft();
+            int scoreToAdd = timeLeftForTask * defaultPoints;
+            UpdatePoints(scoreToAdd);
+            numOfTasksCompleted += 1;
+            // updating the fastest task completed so far
+            int currTaskTimeCompleted = (int)(progressbar.GetTotalTime() - timeLeftForTask);
+            UpdateFastestTaskCompleted(currTaskTimeCompleted);
+        }
         if (interactable != null)
         {
             interactable.Cleanup();
@@ -84,7 +86,7 @@ public class TaskManagerUI : MonoBehaviour
     private void clock_OnTimerOver(object sender, System.EventArgs E)
     {
         string sceneToLoad = "Time's up";
-        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted,sceneToLoad);
+        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
 
     private void RemoveTasks(List<TasksObjectSO> currTaskList)

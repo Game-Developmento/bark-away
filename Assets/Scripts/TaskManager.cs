@@ -60,7 +60,7 @@ public class TaskManager : MonoBehaviour
         return waitingTasksList;
     }
 
-    public bool IsTaskCompleted(InteractableBase interactable)
+    public bool IsInteractableTaskCompleted(InteractableBase interactable)
     {
         if (interactable != null)
         {
@@ -76,5 +76,18 @@ public class TaskManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void RegularTaskCompleted(int objectID)
+    {
+        foreach (TasksObjectSO task in waitingTasksList)
+        {
+            if (task.GetTaskInstanceID() == objectID)
+            {
+                waitingTasksList.Remove(task);
+                OnTaskCompleted?.Invoke(this, new ObjectEventArgs { task = task });
+                return;
+            }
+        }
     }
 }
