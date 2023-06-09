@@ -75,7 +75,7 @@ public class ProgressBar : MonoBehaviour
         return currProgress;
     }
 
-    public int GetCurrentTime()
+    public int GetTimeLeft()
     {
         return (int)(mask.fillAmount * duration);
     }

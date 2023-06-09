@@ -15,7 +15,7 @@ public class TaskManagerUI : MonoBehaviour
     private int currentScore = 0;
     private int defaultPoints = 15;
     private int numOfTasksCompleted = 0;
-    private int fastestTaskCompleted = 20;
+    private int fastestTaskCompleted = 100;
 
     private Dictionary<TasksObjectSO, Transform> taskObjectMap = new Dictionary<TasksObjectSO, Transform>();
 
@@ -53,14 +53,18 @@ public class TaskManagerUI : MonoBehaviour
     {
         UpdateVisual();
         InteractableBase interactable = E.interactable;
+
         TasksObjectSO taskCompleted = E.task;
         ProgressBar progressbar = taskCompleted.GetProgressBar();
-        int timeLeftForTask = progressbar.GetCurrentTime();
+        int timeLeftForTask = progressbar.GetTimeLeft();
         int scoreToAdd = timeLeftForTask * defaultPoints;
         UpdatePoints(scoreToAdd);
         numOfTasksCompleted += 1;
+        // updating the fastest task completed so far
         int currTaskTimeCompleted = (int)(progressbar.GetTotalTime() - timeLeftForTask);
         UpdateFastestTaskCompleted(currTaskTimeCompleted);
+
+
         if (interactable != null)
         {
             interactable.Cleanup();
@@ -144,7 +148,6 @@ public class TaskManagerUI : MonoBehaviour
         if (points != null)
         {
             points.text = "Points: " + currentScore.ToString();
-            Debug.Log(points.text);
         }
 
     }
