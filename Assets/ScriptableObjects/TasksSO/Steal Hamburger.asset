@@ -15,3 +15,4 @@ MonoBehaviour:
   taskDescription: Steal the Hamburger
   taskSprite: {fileID: 21300000, guid: 58b0cf752acfa164b873be9fa7b69f7f, type: 3}
   prefab: {fileID: 3216673886906318514, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
+  taskDuration: 30

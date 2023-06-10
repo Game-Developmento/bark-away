@@ -15,3 +15,4 @@ MonoBehaviour:
   taskDescription: Steal the Watermelon
   taskSprite: {fileID: 21300000, guid: 4745f6a546c478a4a8d34f2c85881a4f, type: 3}
   prefab: {fileID: 2512269847617789886, guid: 1df363cb72ccc3847b1cd747cf46be2f, type: 3}
+  taskDuration: 30

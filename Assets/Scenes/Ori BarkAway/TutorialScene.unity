@@ -2274,7 +2274,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391816687}
-  m_LocalRotation: {x: 0.21232799, y: -0.00000001681405, z: 0.0000000036533965, w: 0.9771985}
+  m_LocalRotation: {x: 0.21232799, y: 0.00000001681405, z: -0.0000000036533965, w: 0.9771985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4980,7 +4980,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786688175}
-  m_LocalRotation: {x: 0.212328, y: -0.0000000336281, z: 0.0000000073067934, w: 0.9771985}
+  m_LocalRotation: {x: 0.212328, y: 0.0000000336281, z: -0.0000000073067934, w: 0.9771985}
   m_LocalPosition: {x: 3.936575, y: 3.102, z: -14.402586}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10399,7 +10399,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515668952}
-  m_LocalRotation: {x: 0.2297529, y: -0.000000014896381, z: 0.0000000035165577, w: 0.973249}
+  m_LocalRotation: {x: 0.22975288, y: 0.00000002079004, z: -0.000000004907862, w: 0.973249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11993,10 +11993,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tasksListSO: {fileID: 11400000, guid: 0e0c9cd9854faa546b5dc3bd952421a9, type: 2}
-  tutorialTaskGroup: []
+  tutorialTaskGroup:
+  - {fileID: 11400000, guid: 58fc4cbac14a931459bb833e8a8d481c, type: 2}
+  - {fileID: 11400000, guid: 0f3558f6471d9e94ea933b4493f6294a, type: 2}
+  - {fileID: 11400000, guid: 4ef4c9763cffc8b4ba3b1fc3468e02a6, type: 2}
   waitingTasksMax: 4
   spawnerTaskTimerMax: 5
-  isTutorial: 0
+  isTutorial: 1
 --- !u!4 &1680417517
 Transform:
   m_ObjectHideFlags: 0

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Walk Left
   m_EditorClassIdentifier: 
   taskDescription: Walk Left
-  taskSprite: {fileID: 472698318, guid: e4c6f8ccc6125044dbaaae0a630f4b62, type: 3}
+  taskSprite: {fileID: 21300000, guid: 2fe8cc78a0931c84fbb97d3494772532, type: 3}
   prefab: {fileID: 8886802996556534289, guid: 37997877303af9c42aadc65613fed665, type: 3}
+  taskDuration: 40

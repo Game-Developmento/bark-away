@@ -6,6 +6,7 @@ public class TasksObjectSO : ScriptableObject
     public string taskDescription;
     public Sprite taskSprite;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private float taskDuration;
     private int instanceId;
     private ProgressBar taskTimer; // This is set when the task is instantiated 
     private GameObject currSpawnedTask; // The current task that was spawned
@@ -49,6 +50,16 @@ public class TasksObjectSO : ScriptableObject
     {
         TaskManager taskManager = TaskManager.Instance;
         taskManager.RemoveIncompleteTask(this);
+    }
+
+    public float GetTaskDuration()
+    {
+        return taskDuration;
+    }
+
+    public void SetTaskDuration(float newTaskDuration)
+    {
+        taskDuration = newTaskDuration;
     }
 
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
-  m_Name: Walk Down
+  m_Name: NavigateBedroom
   m_EditorClassIdentifier: 
-  taskDescription: Walk Down
-  taskSprite: {fileID: 21300000, guid: dbb946203ff91ac42ade2f0a4db7d01a, type: 3}
-  prefab: {fileID: 8886802996556534289, guid: 32a93a3998341ab48996a5c8e8d4a95e, type: 3}
-  taskDuration: 40
+  taskDescription: Go To Bedroom
+  taskSprite: {fileID: 21300000, guid: 73fc1ca646ecd964686506676e02418a, type: 3}
+  prefab: {fileID: 1083928266398953179, guid: 558b67efa32d19d428151b6a0d17c00a, type: 3}
+  taskDuration: 30

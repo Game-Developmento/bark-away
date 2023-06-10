@@ -13,7 +13,7 @@ public class TaskManagerUI : MonoBehaviour
     [SerializeField] private GameOverManagement gameOvermanagement;
 
     private int currentScore = 0;
-    private int defaultPoints = 15;
+    private int defaultPoints = 300;
     private int numOfTasksCompleted = 0;
     private int fastestTaskCompleted = 100;
 
@@ -60,11 +60,13 @@ public class TaskManagerUI : MonoBehaviour
         {
             ProgressBar progressbar = taskCompleted.GetProgressBar();
             int timeLeftForTask = progressbar.GetTimeLeft();
-            int scoreToAdd = timeLeftForTask * defaultPoints;
+            float totalTimeforTask = progressbar.GetTotalTime();
+            float timeRatio = timeLeftForTask / totalTimeforTask;
+            int scoreToAdd = (int)(timeRatio * defaultPoints);
             UpdatePoints(scoreToAdd);
             numOfTasksCompleted += 1;
             // updating the fastest task completed so far
-            int currTaskTimeCompleted = (int)(progressbar.GetTotalTime() - timeLeftForTask);
+            int currTaskTimeCompleted = (int)(totalTimeforTask - timeLeftForTask);
             UpdateFastestTaskCompleted(currTaskTimeCompleted);
         }
         if (interactable != null)
@@ -132,6 +134,7 @@ public class TaskManagerUI : MonoBehaviour
             taskTransform.gameObject.SetActive(true);
             taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(currTask);
             progressBar = currTask.GetProgressBar();
+            progressBar.SetDuration(currTask.GetTaskDuration());
             if (progressBar != null && !progressBar.IsCurrentlyInProgress())
             {
                 progressBar.BeginProgress();

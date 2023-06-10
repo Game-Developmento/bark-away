@@ -15,34 +15,77 @@ public class TaskManager : MonoBehaviour
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 
+    [SerializeField] private List<TasksListSO> tutorialTaskGroup;
+    private int currentTaskGroupIndex = 0;
+    private bool isNextGroupReady = true;
+
+    private TasksListSO currentTaskGroup;
+
     private List<TasksObjectSO> waitingTasksList;
 
     [SerializeField] private int waitingTasksMax = 4;
     [SerializeField] private float spawnerTaskTimerMax = 5f;
     private float spawnerTaskTimer;
+    [SerializeField] private bool isTutorial;
+
 
     private void Awake()
     {
         Instance = this;
         waitingTasksList = new List<TasksObjectSO>();
         spawnerTaskTimer = spawnerTaskTimerMax;
+
     }
     private void Update()
     {
-        spawnerTaskTimer -= Time.deltaTime;
-        if (spawnerTaskTimer <= 0f)
+
+        if (isTutorial)
         {
-            if (waitingTasksList.Count < waitingTasksMax)
+            if (isNextGroupReady)
             {
-                TasksObjectSO waitingTask = tasksListSO.tasksList[UnityEngine.Random.Range(0, tasksListSO.tasksList.Count)];
-                if (!waitingTasksList.Contains(waitingTask))
+                currentTaskGroup = tutorialTaskGroup[currentTaskGroupIndex];
+                AddTasks(currentTaskGroup);
+                isNextGroupReady = false;
+            }
+            // Check if all the tasks in the current group are completed
+            if (waitingTasksList.Count == 0)
+            {
+                currentTaskGroupIndex++;
+                isNextGroupReady = true;
+            }
+        }
+        else
+        {
+            spawnerTaskTimer -= Time.deltaTime;
+            if (spawnerTaskTimer <= 0f)
+            {
+                if (waitingTasksList.Count < waitingTasksMax)
                 {
-                    waitingTasksList.Add(waitingTask);
-                    OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = waitingTask });
-                    spawnerTaskTimer = spawnerTaskTimerMax;
+                    TasksObjectSO waitingTask = tasksListSO.tasksList[UnityEngine.Random.Range(0, tasksListSO.tasksList.Count)];
+                    if (!waitingTasksList.Contains(waitingTask))
+                    {
+                        waitingTasksList.Add(waitingTask);
+                        OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = waitingTask });
+                        spawnerTaskTimer = spawnerTaskTimerMax;
+                    }
                 }
             }
         }
+    }
+
+    // private bool AreAllTasksCompleted(TasksListSO currentTaskGroup)
+    // {
+
+    // }
+
+    private void AddTasks(TasksListSO currentTaskGroup)
+    {
+        foreach (TasksObjectSO currTask in currentTaskGroup.tasksList)
+        {
+            waitingTasksList.Add(currTask);
+            OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = currTask });
+        }
+
     }
 
     public void RemoveIncompleteTask(TasksObjectSO task)

@@ -6,4 +6,5 @@ using UnityEngine;
 public class TasksListSO : ScriptableObject
 {
    public List<TasksObjectSO> tasksList;
+   
 }

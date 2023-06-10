@@ -8,7 +8,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private int currProgress = 0;
     private int startPosProgress;
     private int divideRatio = 100;
-    [SerializeField] private float duration = 3f;
+    [SerializeField] private float duration = 2.5f;
 
     public Image mask;
     public Image fill;
@@ -31,6 +31,10 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
+    public void SetDuration(float newDuration)
+    {
+        duration = newDuration;
+    }
 
     private void HandleProgressBar(int startingPoint)
     {
@@ -87,7 +91,8 @@ public class ProgressBar : MonoBehaviour
         fill.color = color;
     }
 
-    public float GetTotalTime() {
+    public float GetTotalTime()
+    {
         return duration;
     }
- }
+}
