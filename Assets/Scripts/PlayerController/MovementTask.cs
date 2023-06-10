@@ -16,7 +16,7 @@ public class MovementTask : MonoBehaviour
     private void PlayerController_OnMovementPressed(object sender, PlayerController.KeyNameEventArgs E)
     {
         string keyPressed = E.name;
-        if (keyPressed == keyName)
+        if (keyPressed == keyName && Time.timeScale == 1)
         {
             // Removes only the task that matches the key that was pressed
             TaskManager.Instance.RegularTaskCompleted(gameObject.GetInstanceID());

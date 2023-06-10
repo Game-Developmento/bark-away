@@ -38,7 +38,7 @@ public class TaskManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isTutorial)
+        if (isTutorial && TutorialProgression.Instance.isPriorGameTutorialFinished())
         {
             if (isNextGroupReady && currentTaskGroupIndex < tutorialTaskGroup.Count)
             {
@@ -76,6 +76,7 @@ public class TaskManager : MonoBehaviour
     {
         foreach (TasksObjectSO currTask in currentTaskGroup.tasksList)
         {
+            TutorialProgression.Instance.HandleNextPartInTutorial();
             waitingTasksList.Add(currTask);
             OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = currTask });
         }
