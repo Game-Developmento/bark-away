@@ -13,6 +13,7 @@ public class TaskManager : MonoBehaviour
     }
     public event EventHandler<ObjectEventArgs> OnTaskIncomplete;
     public event EventHandler OnTimeFinished;
+    public event EventHandler OnPlayerCaught;
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 
@@ -31,6 +32,7 @@ public class TaskManager : MonoBehaviour
 
     [SerializeField] private Clock clock;
 
+    [SerializeField] private FieldOfView fieldOfView;
 
     private void Awake()
     {
@@ -42,11 +44,16 @@ public class TaskManager : MonoBehaviour
     private void Start()
     {
         clock.OnTimeOverEvent += clock_OnTimerOver;
+        fieldOfView.OnPlayerInFieldOfView += fieldOfView_OnPlayerCaught;
     }
 
     private void clock_OnTimerOver(object sender, System.EventArgs E)
     {
         OnTimeFinished?.Invoke(this, EventArgs.Empty);
+    }
+    private void fieldOfView_OnPlayerCaught(object sender, System.EventArgs E)
+    {
+        OnPlayerCaught?.Invoke(this, EventArgs.Empty);
     }
     private void Update()
     {

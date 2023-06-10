@@ -31,12 +31,18 @@ public class TaskManagerUI : MonoBehaviour
         TaskManager.Instance.OnTaskCompleted += TaskManager_OnTaskCompleted;
         TaskManager.Instance.OnTaskIncomplete += TaskManager_OnTaskIncomplete;
         TaskManager.Instance.OnTimeFinished += TaskManager_OnTimeFinished;
+        TaskManager.Instance.OnPlayerCaught += TaskManager_OnPlayerCaught;
 
         UpdateVisual();
     }
     private void TaskManager_OnTimeFinished(object sender, EventArgs e)
     {
         string sceneToLoad = "Time's up";
+        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
+    }
+    private void TaskManager_OnPlayerCaught(object sender, EventArgs e)
+    {
+        string sceneToLoad = "GameOver";
         gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
     private void TaskManager_OnTaskSpawned(object sender, TaskManager.ObjectEventArgs E)

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FieldOfView : MonoBehaviour
 {
+
+    public event EventHandler OnPlayerInFieldOfView;
 
     [SerializeField] private PlayerController playerController;
     [SerializeField] private float viewRadius;
@@ -48,7 +51,7 @@ public class FieldOfView : MonoBehaviour
     {
         if (visibleTargets.Contains(target) && isInteracting)
         {
-            Debug.Log("DOG IN SIGHT");
+            OnPlayerInFieldOfView?.Invoke(this, EventArgs.Empty);
         }
     }
 
