@@ -38,10 +38,9 @@ public class TaskManager : MonoBehaviour
     }
     private void Update()
     {
-
         if (isTutorial)
         {
-            if (isNextGroupReady)
+            if (isNextGroupReady && currentTaskGroupIndex < tutorialTaskGroup.Count)
             {
                 currentTaskGroup = tutorialTaskGroup[currentTaskGroupIndex];
                 AddTasks(currentTaskGroup);
@@ -72,11 +71,6 @@ public class TaskManager : MonoBehaviour
             }
         }
     }
-
-    // private bool AreAllTasksCompleted(TasksListSO currentTaskGroup)
-    // {
-
-    // }
 
     private void AddTasks(TasksListSO currentTaskGroup)
     {
