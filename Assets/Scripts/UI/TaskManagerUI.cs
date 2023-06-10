@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 
 public class TaskManagerUI : MonoBehaviour
@@ -9,7 +10,6 @@ public class TaskManagerUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI points;
     private PointsPopup pointsPopup;
-    private ClockUI clock;
     [SerializeField] private GameOverManagement gameOvermanagement;
 
     private int currentScore = 0;
@@ -23,7 +23,6 @@ public class TaskManagerUI : MonoBehaviour
     {
         taskTemplate.gameObject.SetActive(false);
         pointsPopup = GetComponentInChildren<PointsPopup>();
-        clock = GetComponentInChildren<ClockUI>();
     }
     // Start is called before the first frame update
     void Start()
@@ -31,10 +30,15 @@ public class TaskManagerUI : MonoBehaviour
         TaskManager.Instance.OnTaskSpawned += TaskManager_OnTaskSpawned;
         TaskManager.Instance.OnTaskCompleted += TaskManager_OnTaskCompleted;
         TaskManager.Instance.OnTaskIncomplete += TaskManager_OnTaskIncomplete;
-        clock.OnTimeOverEvent += clock_OnTimerOver;
+        TaskManager.Instance.OnTimeFinished += TaskManager_OnTimeFinished;
+
         UpdateVisual();
     }
-
+    private void TaskManager_OnTimeFinished(object sender, EventArgs e)
+    {
+        string sceneToLoad = "Time's up";
+        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
+    }
     private void TaskManager_OnTaskSpawned(object sender, TaskManager.ObjectEventArgs E)
     {
         UpdateVisual();
@@ -83,12 +87,6 @@ public class TaskManagerUI : MonoBehaviour
         {
             interactable.Cleanup();
         }
-    }
-
-    private void clock_OnTimerOver(object sender, System.EventArgs E)
-    {
-        string sceneToLoad = "Time's up";
-        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
 
     private void RemoveTasks(List<TasksObjectSO> currTaskList)

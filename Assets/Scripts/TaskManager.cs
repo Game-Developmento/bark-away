@@ -12,6 +12,7 @@ public class TaskManager : MonoBehaviour
         public TasksObjectSO task;
     }
     public event EventHandler<ObjectEventArgs> OnTaskIncomplete;
+    public event EventHandler OnTimeFinished;
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 
@@ -28,13 +29,24 @@ public class TaskManager : MonoBehaviour
     private float spawnerTaskTimer;
     [SerializeField] private bool isTutorial;
 
+    [SerializeField] private Clock clock;
+
 
     private void Awake()
     {
         Instance = this;
         waitingTasksList = new List<TasksObjectSO>();
         spawnerTaskTimer = spawnerTaskTimerMax;
+    }
 
+    private void Start()
+    {
+        clock.OnTimeOverEvent += clock_OnTimerOver;
+    }
+
+    private void clock_OnTimerOver(object sender, System.EventArgs E)
+    {
+        OnTimeFinished?.Invoke(this, EventArgs.Empty);
     }
     private void Update()
     {

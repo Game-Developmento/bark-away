@@ -3,7 +3,7 @@ using TMPro;
 using System;
 
 
-public class ClockUI : MonoBehaviour
+public class Clock : MonoBehaviour
 {
     [SerializeField] private Transform clockHourHandTransform;
     [SerializeField] private TextMeshProUGUI timeText;
