@@ -25,7 +25,7 @@ public class TutorialProgression : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0f; // Pause the game initially
-        ShowNewDialog(currentTutorialIndex, beforeGameTutorialDialog);
+        beforeGameTutorialDialog[currentTutorialIndex].SetActive(false);
     }
     private void Update()
     {
@@ -44,7 +44,7 @@ public class TutorialProgression : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    HidePriorDialog(currentTutorialIndex, inGameTutorialDialog);
+                    inGameTutorialDialog[currentTutorialIndex].SetActive(false);
                     currentTutorialIndex++;
                     isTutorialActive = false;
                     ContinueGame();
@@ -53,7 +53,7 @@ public class TutorialProgression : MonoBehaviour
         }
     }
 
-    public bool isPriorGameTutorialFinished()
+    public bool IsBeforeGameTutorialFinished()
     {
         return isBeforeGameTutorialFinished;
     }
@@ -64,24 +64,17 @@ public class TutorialProgression : MonoBehaviour
             currentTutorialIndex++;
             if (currentTutorialIndex < beforeGameTutorialDialog.Length)
             {
-                HidePriorDialog(currentTutorialIndex - 1, beforeGameTutorialDialog);
-                ShowNewDialog(currentTutorialIndex, beforeGameTutorialDialog);
+                // hide previous tutorial
+                beforeGameTutorialDialog[currentTutorialIndex - 1].SetActive(false);
+                // show current tutorial
+                beforeGameTutorialDialog[currentTutorialIndex].SetActive(true);
             }
             else
             {
-                HidePriorDialog(currentTutorialIndex - 1, beforeGameTutorialDialog);
+                beforeGameTutorialDialog[currentTutorialIndex - 1].SetActive(false);
                 EndBeforeGameTutorial();
             }
         }
-    }
-    private void ShowNewDialog(int index, GameObject[] tutorialGameDialog)
-    {
-        tutorialGameDialog[index].SetActive(true);
-    }
-
-    private void HidePriorDialog(int index, GameObject[] tutorialGameDialog)
-    {
-        tutorialGameDialog[index].SetActive(false);
     }
 
     private void EndBeforeGameTutorial()
@@ -110,7 +103,7 @@ public class TutorialProgression : MonoBehaviour
         StopGame();
         if (currentTutorialIndex < inGameTutorialDialog.Length)
         {
-            ShowNewDialog(currentTutorialIndex, inGameTutorialDialog);
+            inGameTutorialDialog[currentTutorialIndex].SetActive(true);
         }
     }
 }

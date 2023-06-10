@@ -57,40 +57,50 @@ public class TaskManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isTutorial && TutorialProgression.Instance.isPriorGameTutorialFinished())
+        if (isTutorial && TutorialProgression.Instance.IsBeforeGameTutorialFinished())
         {
-            if (isNextGroupReady && currentTaskGroupIndex < tutorialTaskGroup.Count)
-            {
-                currentTaskGroup = tutorialTaskGroup[currentTaskGroupIndex];
-                AddTasks(currentTaskGroup);
-                isNextGroupReady = false;
-            }
-            // Check if all the tasks in the current group are completed
-            if (waitingTasksList.Count == 0)
-            {
-                currentTaskGroupIndex++;
-                isNextGroupReady = true;
-            }
+            HandleTutorial();
         }
         else
         {
-            spawnerTaskTimer -= Time.deltaTime;
-            if (spawnerTaskTimer <= 0f)
+            HandlePlayMode();
+        }
+    }
+
+
+    private void HandleTutorial()
+    {
+        if (isNextGroupReady && currentTaskGroupIndex < tutorialTaskGroup.Count)
+        {
+            currentTaskGroup = tutorialTaskGroup[currentTaskGroupIndex];
+            AddTasks(currentTaskGroup);
+            isNextGroupReady = false;
+        }
+        // Check if all the tasks in the current group are completed
+        if (waitingTasksList.Count == 0)
+        {
+            currentTaskGroupIndex++;
+            isNextGroupReady = true;
+        }
+    }
+
+    private void HandlePlayMode()
+    {
+        spawnerTaskTimer -= Time.deltaTime;
+        if (spawnerTaskTimer <= 0f)
+        {
+            if (waitingTasksList.Count < waitingTasksMax)
             {
-                if (waitingTasksList.Count < waitingTasksMax)
+                TasksObjectSO waitingTask = tasksListSO.tasksList[UnityEngine.Random.Range(0, tasksListSO.tasksList.Count)];
+                if (!waitingTasksList.Contains(waitingTask))
                 {
-                    TasksObjectSO waitingTask = tasksListSO.tasksList[UnityEngine.Random.Range(0, tasksListSO.tasksList.Count)];
-                    if (!waitingTasksList.Contains(waitingTask))
-                    {
-                        waitingTasksList.Add(waitingTask);
-                        OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = waitingTask });
-                        spawnerTaskTimer = spawnerTaskTimerMax;
-                    }
+                    waitingTasksList.Add(waitingTask);
+                    OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = waitingTask });
+                    spawnerTaskTimer = spawnerTaskTimerMax;
                 }
             }
         }
     }
-
     private void AddTasks(TasksListSO currentTaskGroup)
     {
         foreach (TasksObjectSO currTask in currentTaskGroup.tasksList)
