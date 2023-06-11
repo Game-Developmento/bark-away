@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.16788375, g: 0.21073635, b: 0.28994125, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6548,7 +6548,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -11751,8 +11752,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tasksListSO: {fileID: 11400000, guid: 0e0c9cd9854faa546b5dc3bd952421a9, type: 2}
+  tutorialTaskGroup: []
   waitingTasksMax: 4
   spawnerTaskTimerMax: 5
+  isTutorial: 0
+  clock: {fileID: 0}
+  fieldOfView: {fileID: 0}
 --- !u!4 &1680417517
 Transform:
   m_ObjectHideFlags: 0
@@ -14655,6 +14660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 543450652176795697}
+  squareMiniMap: {fileID: 0}
+  circleMiniMap: {fileID: 0}
 --- !u!1 &2112645713
 GameObject:
   m_ObjectHideFlags: 0
@@ -15030,6 +15037,10 @@ PrefabInstance:
       propertyPath: progressBar
       value: 
       objectReference: {fileID: 1231945666}
+    - target: {fileID: 2022555667508759945, guid: 494572d9240342044865b4bfd926dd09, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494572d9240342044865b4bfd926dd09, type: 3}
 --- !u!1001 &7548692513201084018
@@ -15111,6 +15122,10 @@ PrefabInstance:
       propertyPath: wayPoints.Array.data[13]
       value: 
       objectReference: {fileID: 1262684371}
+    - target: {fileID: 5397796776969587190, guid: db777b4dfc85f5d49a762d092e177327, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 5895785018078170946, guid: db777b4dfc85f5d49a762d092e177327, type: 3}
       propertyPath: m_RootOrder
       value: 9

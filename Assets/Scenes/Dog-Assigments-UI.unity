@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -481,6 +481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 1344016742}
   taskTemplate: {fileID: 1939973661}
+  points: {fileID: 0}
+  gameOvermanagement: {fileID: 0}
 --- !u!1 &527821583
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +713,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tasksListSO: {fileID: 11400000, guid: 0e0c9cd9854faa546b5dc3bd952421a9, type: 2}
+  tutorialTaskGroup: []
+  waitingTasksMax: 4
+  spawnerTaskTimerMax: 5
+  isTutorial: 0
+  clock: {fileID: 0}
+  fieldOfView: {fileID: 0}
 --- !u!4 &1285409275
 Transform:
   m_ObjectHideFlags: 0

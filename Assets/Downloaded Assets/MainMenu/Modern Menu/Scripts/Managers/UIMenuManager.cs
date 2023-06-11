@@ -129,7 +129,7 @@ namespace SlimUI.ModernMenu
             DisablePlayGame();
             CameraObject.SetFloat("Animate", 1);
             // need to change here to tutorial scene
-            LoadScene("MainMenu");
+            LoadScene("Tutorial");
         }
 
         public void Position1()
