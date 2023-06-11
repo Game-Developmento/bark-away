@@ -5427,7 +5427,10 @@ MonoBehaviour:
   tasksListSO: {fileID: 11400000, guid: 0e0c9cd9854faa546b5dc3bd952421a9, type: 2}
   tutorialTaskGroup: []
   waitingTasksMax: 4
-  spawnerTaskTimerMax: 5
+  minTimeTospawn: 10
+  maxTimeToSpawn: 15
+  minTimeForTaskToComplete: 30
+  maxTimeForTaskToComplete: 40
   isTutorial: 0
   clock: {fileID: 0}
   fieldOfView: {fileID: 0}

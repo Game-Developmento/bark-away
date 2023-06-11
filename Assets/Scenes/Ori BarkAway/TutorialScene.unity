@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15150,7 +15150,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58fc4cbac14a931459bb833e8a8d481c, type: 2}
   - {fileID: 11400000, guid: 4ef4c9763cffc8b4ba3b1fc3468e02a6, type: 2}
   waitingTasksMax: 4
-  spawnerTaskTimerMax: 5
+  minTimeTospawn: 10
+  maxTimeToSpawn: 15
+  minTimeForTaskToComplete: 30
+  maxTimeForTaskToComplete: 40
   isTutorial: 1
   clock: {fileID: 23139696}
   fieldOfView: {fileID: 875292829}

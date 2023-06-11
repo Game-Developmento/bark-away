@@ -7,14 +7,14 @@ public class MiniMap : MonoBehaviour
     public Transform player;
     [SerializeField] private GameObject squareMiniMap;
     [SerializeField] private GameObject circleMiniMap;
-    private Quaternion initialCameraRotation;
-    private Vector3 initialPosition;
+        private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
 
     private void Start()
     {
-        initialCameraRotation = Quaternion.Euler(90f, Camera.main.transform.eulerAngles.y, 0f);
         initialPosition = transform.position;
+        initialRotation = transform.rotation;
     }
 
     private void LateUpdate()
@@ -33,7 +33,7 @@ public class MiniMap : MonoBehaviour
         circleMiniMap.SetActive(!circleMiniMap.activeSelf);
         if (squareMiniMap.activeSelf)
         {
-            transform.rotation = initialCameraRotation;
+            transform.rotation = initialRotation;
             transform.position = initialPosition;
         }
     }
