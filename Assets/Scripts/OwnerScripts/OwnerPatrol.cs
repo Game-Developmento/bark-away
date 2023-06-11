@@ -56,9 +56,12 @@ public class OwnerPatrol : MonoBehaviour
 
     private void UpdateDestination()
     {
-        target = wayPoints[waypointIndex].position;
-        agent.SetDestination(target);
-        animator.SetBool(isWalkingHash, true); // Set walking animation to true when not close to the target
+        if (waypointIndex < wayPoints.Length)
+        {
+            target = wayPoints[waypointIndex].position;
+            agent.SetDestination(target);
+            animator.SetBool(isWalkingHash, true); // Set walking animation to true when not close to the target
+        }
     }
 
     private void IterateWaypointIndex()

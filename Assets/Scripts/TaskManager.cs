@@ -71,15 +71,17 @@ public class TaskManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isTutorial && TutorialProgression.Instance.IsBeforeGameTutorialFinished())
+        if (TutorialProgression.Instance.IsBeforeGameTutorialFinished())
         {
-            HandleTutorial();
-
-        }
-        else
-        {
-            HandlePlayMode();
-            UpdateTaskSpawnTime();
+            if (isTutorial)
+            {
+                HandleTutorial();
+            }
+            else
+            {
+                HandlePlayMode();
+                UpdateTaskSpawnTime();
+            }
         }
     }
 
@@ -139,6 +141,10 @@ public class TaskManager : MonoBehaviour
 
     public (float, float) GetTimeForTaskToCompleteRange()
     {
+        if (isTutorial)
+        {
+            return (50f, 50f);
+        }
         return (adjustedMinTimeForTaskToComplete, adjustedMaxTimeForTaskToComplete);
     }
     private void AddTasks(TasksListSO currentTaskGroup)

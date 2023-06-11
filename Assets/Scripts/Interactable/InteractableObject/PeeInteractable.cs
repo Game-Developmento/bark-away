@@ -20,7 +20,6 @@ public class PeeInteractable : InteractableBase
     }
     public override void CancelInteraction(GameObject player)
     {
-        Debug.Log("CancelInteracton!");
         if (playerAnimator != null)
         {
             playerAnimator.SetTrigger("cancelPeeing");
@@ -31,7 +30,6 @@ public class PeeInteractable : InteractableBase
     }
     public override void Interact(GameObject player)
     {
-        Debug.Log("Interact PeeInteractable!");
         TaskManager taskManager = TaskManager.Instance;
         if (taskManager != null)
         {
@@ -40,7 +38,6 @@ public class PeeInteractable : InteractableBase
     }
     public override void Cleanup()
     {
-        Debug.Log("Cleanup PeeInteractable!");
         if (nearestPlayer != null)
         {
             Vector3 nearestPlayerPosition = nearestPlayer.transform.position;
@@ -71,10 +68,8 @@ public class PeeInteractable : InteractableBase
 
     private IEnumerator DestroyPee(GameObject spawnedPee)
     {
-        Debug.Log("Start DestroyPee");
         yield return new WaitForSeconds(destoryPeeDelay);
         Destroy(spawnedPee);
-        Debug.Log("DestroyPee");
         Destroy(gameObject);
     }
 }

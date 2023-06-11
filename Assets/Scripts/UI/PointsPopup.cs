@@ -4,7 +4,7 @@ using TMPro;
 
 public class PointsPopup : MonoBehaviour
 {
-    [SerializeField] private float duration = 3f;
+    [SerializeField] private float duration = 2f;
     [SerializeField] private float speed = 10f;
     private TextMeshProUGUI textMesh;
 
