@@ -17,6 +17,9 @@ public class TaskManagerUI : MonoBehaviour
     private int numOfTasksCompleted = 0;
     private int fastestTaskCompleted = 100;
 
+    private float minTimeForTaskToComplete;
+    private float maxTimeForTaskToComplete;
+
     private Dictionary<TasksObjectSO, Transform> taskObjectMap = new Dictionary<TasksObjectSO, Transform>();
 
     private void Awake()
@@ -138,9 +141,12 @@ public class TaskManagerUI : MonoBehaviour
             taskTransform.gameObject.SetActive(true);
             taskTransform.GetComponent<TaskManagerSingleUI>().SetTasksObjectSO(currTask);
             progressBar = currTask.GetProgressBar();
-            progressBar.SetDuration(currTask.GetTaskDuration());
+            (minTimeForTaskToComplete, maxTimeForTaskToComplete) = TaskManager.Instance.GetTimeForTaskToCompleteRange();
+            // progressBar.SetDuration(currTask.GetTaskDuration());
             if (progressBar != null && !progressBar.IsCurrentlyInProgress())
             {
+                float randomTimeForTask = UnityEngine.Random.Range(minTimeForTaskToComplete, maxTimeForTaskToComplete);
+                progressBar.SetDuration(randomTimeForTask);
                 progressBar.BeginProgress();
             }
         }

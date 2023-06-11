@@ -13,15 +13,19 @@ public class Clock : MonoBehaviour
 
     public event EventHandler OnTimeOverEvent;
 
+    private float remainingSeconds;
+    private float timeFromLastScene;
     private void Start()
     {
         // Reset the start time when the scene is loaded
         startTimeInSeconds = Time.time + startTimeInSeconds;
+        timeFromLastScene = Time.time;
+
     }
     private void Update()
     {
         // Time calculation
-        float remainingSeconds = startTimeInSeconds - Time.time;
+        remainingSeconds = startTimeInSeconds - Time.time;
         if (remainingSeconds > 0)
         {
             clockHourHandTransform.Rotate(Vector3.forward, clockRotationSpeed * Time.deltaTime);
@@ -38,6 +42,15 @@ public class Clock : MonoBehaviour
             timeText.text = "00:00";
             OnTimeOverEvent?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    public float GetSecondsRemaining()
+    {
+        return remainingSeconds;
+    }
+
+    public float GetTotalTime() {
+        return startTimeInSeconds - timeFromLastScene;
     }
 
 }

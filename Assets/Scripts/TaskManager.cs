@@ -26,8 +26,16 @@ public class TaskManager : MonoBehaviour
     private List<TasksObjectSO> waitingTasksList;
 
     [SerializeField] private int waitingTasksMax = 4;
-    [SerializeField] private float spawnerTaskTimerMax = 5f;
-    private float spawnerTaskTimer;
+
+    [SerializeField] private float minTimeTospawn = 10f;
+    [SerializeField] private float maxTimeToSpawn = 15f;
+    [SerializeField] private float minTimeForTaskToComplete = 30f;
+    [SerializeField] private float maxTimeForTaskToComplete = 40f;
+    private float adjustedMinTimeToSpawn;
+    private float adjustedMaxTimeToSpawn;
+    private float adjustedMinTimeForTaskToComplete;
+    private float adjustedMaxTimeForTaskToComplete;
+    private float spawnerTaskTimer = 10f;
     [SerializeField] private bool isTutorial;
 
     [SerializeField] private Clock clock;
@@ -38,13 +46,19 @@ public class TaskManager : MonoBehaviour
     {
         Instance = this;
         waitingTasksList = new List<TasksObjectSO>();
-        spawnerTaskTimer = spawnerTaskTimerMax;
     }
 
     private void Start()
     {
         clock.OnTimeOverEvent += clock_OnTimerOver;
         fieldOfView.OnPlayerInFieldOfView += fieldOfView_OnPlayerCaught;
+        SetRandomTimeForTask();
+    }
+
+    private void SetRandomTimeForTask()
+    {
+        float randomTime = UnityEngine.Random.Range(adjustedMinTimeToSpawn, adjustedMaxTimeToSpawn);
+        spawnerTaskTimer = randomTime;
     }
 
     private void clock_OnTimerOver(object sender, System.EventArgs E)
@@ -60,10 +74,12 @@ public class TaskManager : MonoBehaviour
         if (isTutorial && TutorialProgression.Instance.IsBeforeGameTutorialFinished())
         {
             HandleTutorial();
+
         }
         else
         {
             HandlePlayMode();
+            UpdateTaskSpawnTime();
         }
     }
 
@@ -96,10 +112,34 @@ public class TaskManager : MonoBehaviour
                 {
                     waitingTasksList.Add(waitingTask);
                     OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = waitingTask });
-                    spawnerTaskTimer = spawnerTaskTimerMax;
+                    SetRandomTimeForTask();
                 }
             }
         }
+    }
+
+    private void UpdateTaskSpawnTime()
+    {
+        float totalTimeForInGame = clock.GetTotalTime();
+        float remainingTimeInGame = clock.GetSecondsRemaining();
+        float factor = remainingTimeInGame / totalTimeForInGame;
+
+        // Calculate adjusted values based on the factor
+        adjustedMinTimeToSpawn = minTimeTospawn * factor;
+        adjustedMaxTimeToSpawn = maxTimeToSpawn * factor;
+        adjustedMinTimeForTaskToComplete = minTimeForTaskToComplete * factor;
+        adjustedMaxTimeForTaskToComplete = maxTimeForTaskToComplete * factor;
+
+        // Set minimum bounds for spawn times
+        adjustedMinTimeToSpawn = Mathf.Max(adjustedMinTimeToSpawn, 4f);
+        adjustedMaxTimeToSpawn = Mathf.Max(adjustedMaxTimeToSpawn, 7f);
+        adjustedMinTimeForTaskToComplete = Mathf.Max(adjustedMinTimeForTaskToComplete, 12f);
+        adjustedMaxTimeForTaskToComplete = Mathf.Max(adjustedMaxTimeForTaskToComplete, 18f);
+    }
+
+    public (float, float) GetTimeForTaskToCompleteRange()
+    {
+        return (adjustedMinTimeForTaskToComplete, adjustedMaxTimeForTaskToComplete);
     }
     private void AddTasks(TasksListSO currentTaskGroup)
     {
@@ -135,8 +175,11 @@ public class TaskManager : MonoBehaviour
             {
                 if (task.GetTaskInstanceID() == interactable.GetGameObjectID())
                 {
+                    if (waitingTasksList.Count == waitingTasksMax)
+                    {
+                        SetRandomTimeForTask();
+                    }
                     waitingTasksList.Remove(task);
-                    spawnerTaskTimer = spawnerTaskTimerMax;
                     OnTaskCompleted?.Invoke(this, new ObjectEventArgs { interactable = interactable, task = task });
                     return true;
                 }
