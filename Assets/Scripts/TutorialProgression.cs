@@ -25,7 +25,7 @@ public class TutorialProgression : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0f; // Pause the game initially
-        beforeGameTutorialDialog[currentTutorialIndex].SetActive(false);
+        beforeGameTutorialDialog[currentTutorialIndex].SetActive(true);
     }
     private void Update()
     {
@@ -45,7 +45,7 @@ public class TutorialProgression : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     inGameTutorialDialog[currentTutorialIndex].SetActive(false);
-                    currentTutorialIndex++;
+                    ++currentTutorialIndex;
                     isTutorialActive = false;
                     ContinueGame();
                 }
