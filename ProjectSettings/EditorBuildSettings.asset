@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialOverScreen.unity
     guid: cf690a5f268809c489a4a675570161d1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 9fa9f99c57186e94db3986e8ec36c6f4
   m_configObjects:
