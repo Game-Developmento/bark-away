@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Options")]
     [SerializeField] private bool isFarViewCam = true;
     private Transform cam;
+    [SerializeField] private GameObject closeCam;
+    [SerializeField] private GameObject farCam;
 
     [Header("Events")]
     [SerializeField] private ProgressBar progressBar;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
         animator = GetComponent<Animator>();
         cam = Camera.main.transform;
+        isFarViewCam = farCam.activeSelf;
 
         isWalkingHash = Animator.StringToHash("isWalking");
         directionHash = Animator.StringToHash("direction");
@@ -188,4 +191,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ToggleCamera()
+    {
+        closeCam.SetActive(!closeCam.activeSelf);
+        farCam.SetActive(!farCam.activeSelf);
+        isFarViewCam = farCam.activeSelf;
+    }
 }
