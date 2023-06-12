@@ -74,19 +74,23 @@ public class TaskManager : MonoBehaviour
     }
     private void Update()
     {
-        if (TutorialProgression.Instance != null && TutorialProgression.Instance.IsBeforeGameTutorialFinished())
+        if (TutorialProgression.Instance != null)
         {
-            if (isTutorial)
+            if (TutorialProgression.Instance.IsBeforeGameTutorialFinished())
             {
-                HandleTutorial();
-            }
-            else
-            {
-                HandlePlayMode();
-                UpdateTaskSpawnTime();
+                if (isTutorial)
+                {
+                    HandleTutorial();
+                }
             }
         }
+        else
+        {
+            HandlePlayMode();
+            UpdateTaskSpawnTime();
+        }
     }
+
 
 
     private void HandleTutorial()
@@ -103,7 +107,7 @@ public class TaskManager : MonoBehaviour
         {
             ++currentTaskGroupIndex;
             if (currentTaskGroupIndex == tutorialTaskGroup.Count)
-            {   
+            {
                 TutorialProgression.Instance.HandleNextPartInTutorial();
             }
             isNextGroupReady = true;
