@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
-  m_Name: Steal Watermelon
+  m_Name: Pee Bedroom
   m_EditorClassIdentifier: 
-  taskDescription: Steal the Watermelon
-  taskSprite: {fileID: 21300000, guid: 4745f6a546c478a4a8d34f2c85881a4f, type: 3}
-  prefab: {fileID: 2512269847617789886, guid: 1df363cb72ccc3847b1cd747cf46be2f, type: 3}
-  taskDuration: 30
+  taskDescription: Pee on the Floor
+  taskLocation: Bedroom
+  taskSprite: {fileID: 21300000, guid: 68df57406dff0234bb7fa0e01066f6fb, type: 3}
+  prefab: {fileID: 6538137239165557128, guid: 2100a3df1bf0cd84d904d90ae2418dcc, type: 3}
+  taskDuration: 20

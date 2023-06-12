@@ -6,6 +6,7 @@ public class TaskManagerSingleUI : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI taskNameText;
+    [SerializeField] private TextMeshProUGUI taskLocationText;
     [SerializeField] private Transform iconContainer;
     [SerializeField] private Transform iconTemplate;
 
@@ -16,7 +17,8 @@ public class TaskManagerSingleUI : MonoBehaviour
 
     public void SetTasksObjectSO(TasksObjectSO tasksObjectSO)
     {
-        taskNameText.text = tasksObjectSO.taskDescription;
+        taskNameText.text = tasksObjectSO.GetTaskDescription();
+        taskLocationText.text = tasksObjectSO.GetTaskLocation();
         foreach (Transform child in iconContainer)
         {
             if (child == iconTemplate) continue;
@@ -24,6 +26,6 @@ public class TaskManagerSingleUI : MonoBehaviour
         }
         Transform iconTransform = Instantiate(iconTemplate, iconContainer);
         iconTransform.gameObject.SetActive(true);
-        iconTransform.GetComponent<Image>().sprite = tasksObjectSO.taskSprite;
+        iconTransform.GetComponent<Image>().sprite = tasksObjectSO.GetTaskSprite();
     }
 }

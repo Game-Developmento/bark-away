@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
-  m_Name: Steal Cheese
+  m_Name: Steal Hamburger Living Room
   m_EditorClassIdentifier: 
-  taskDescription: Steal the Cheese
-  taskSprite: {fileID: 21300000, guid: 287d6de5692f9f44bb37ce1a2024a04a, type: 3}
-  prefab: {fileID: 4459972736966388671, guid: b0fa1b5ca6b71184bbaf28df7246895a, type: 3}
-  taskDuration: 10
+  taskDescription: Steal the Hamburger
+  taskLocation: Living Room
+  taskSprite: {fileID: 21300000, guid: 58b0cf752acfa164b873be9fa7b69f7f, type: 3}
+  prefab: {fileID: 3216673886906318514, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
+  taskDuration: 30

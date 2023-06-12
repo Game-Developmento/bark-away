@@ -3,8 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewTask", menuName = "Task")]
 public class TasksObjectSO : ScriptableObject
 {
-    public string taskDescription;
-    public Sprite taskSprite;
+    [SerializeField] private string taskDescription;
+    [SerializeField] private string taskLocation;
+
+    [SerializeField] private Sprite taskSprite;
     [SerializeField] private GameObject prefab;
     [SerializeField] private float taskDuration;
     private int instanceId;
@@ -30,7 +32,19 @@ public class TasksObjectSO : ScriptableObject
     {
         return currSpawnedTask;
     }
+    public string GetTaskDescription()
+    {
+        return taskDescription;
+    }
+    public Sprite GetTaskSprite()
+    {
+        return taskSprite;
+    }
 
+    public string GetTaskLocation()
+    {
+        return taskLocation;
+    }
     public void SetCurrentTask(GameObject spawnedTask)
     {
         currSpawnedTask = spawnedTask;

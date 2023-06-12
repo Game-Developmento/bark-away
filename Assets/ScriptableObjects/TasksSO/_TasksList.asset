@@ -15,3 +15,5 @@ MonoBehaviour:
   tasksList:
   - {fileID: 11400000, guid: c31aa05426bd666458f1deea73fde11d, type: 2}
   - {fileID: 11400000, guid: 2859e5462aa2f1b40974ce436f3c074f, type: 2}
+  - {fileID: 11400000, guid: 0cd96d7c1c1dac647a15bbc5f289a365, type: 2}
+  - {fileID: 11400000, guid: 5594fc973aa6c0847963191f27db4832, type: 2}
