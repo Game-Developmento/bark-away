@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float turnSmoothTime = 0.15f;
     private float turnSmoothVelocity;
     [Header("Camera Options")]
-    [SerializeField] private bool isFarViewCam = true;
     private Transform cam;
     [SerializeField] private GameObject closeCam;
     [SerializeField] private GameObject farCam;
@@ -45,7 +44,6 @@ public class PlayerController : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
         animator = GetComponent<Animator>();
         cam = Camera.main.transform;
-        isFarViewCam = farCam.activeSelf;
 
         isWalkingHash = Animator.StringToHash("isWalking");
         directionHash = Animator.StringToHash("direction");
@@ -161,15 +159,10 @@ public class PlayerController : MonoBehaviour
             Vector3 currentMovement = playerInputManager.GetMovementVectorNormalized();
             // rotate the dog towards the movement direction
             float targetAngle = Mathf.Atan2(currentMovement.x, currentMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            /* 
-            If using free look camera- always rotate.
-            If using virtual camera- isFreeLookCam should be toggled false, do not update rotation when walking backwards!
-            */
-            if (isFarViewCam || currentMovement != Vector3.back)
-            {
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f).normalized;
-            }
+
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f).normalized;
+
             // move the dog in the movement direction
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             transform.position += moveDir.normalized * moveSpeed * Time.deltaTime;
@@ -195,6 +188,5 @@ public class PlayerController : MonoBehaviour
     {
         closeCam.SetActive(!closeCam.activeSelf);
         farCam.SetActive(!farCam.activeSelf);
-        isFarViewCam = farCam.activeSelf;
     }
 }
