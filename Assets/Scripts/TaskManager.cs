@@ -35,12 +35,14 @@ public class TaskManager : MonoBehaviour
     private float adjustedMaxTimeToSpawn;
     private float adjustedMinTimeForTaskToComplete;
     private float adjustedMaxTimeForTaskToComplete;
-    private float spawnerTaskTimer = 10f;
-    [SerializeField] private bool isTutorial;
 
     [SerializeField] private Clock clock;
 
     [SerializeField] private FieldOfView fieldOfView;
+    private float spawnerTaskTimer = 10f;
+    [Header("Tutorial")]
+    [SerializeField] private bool isTutorial;
+    [SerializeField] private float tutorialTaskTime = 90f;
 
     private void Awake()
     {
@@ -143,7 +145,7 @@ public class TaskManager : MonoBehaviour
     {
         if (isTutorial)
         {
-            return (50f, 50f);
+            return (tutorialTaskTime, tutorialTaskTime);
         }
         return (adjustedMinTimeForTaskToComplete, adjustedMaxTimeForTaskToComplete);
     }

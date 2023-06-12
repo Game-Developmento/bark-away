@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8a8053b772ec4e44bf27988b1de48bc, type: 3}
-  m_Name: _NavigateRoomList
+  m_Name: _InteractTasksList
   m_EditorClassIdentifier: 
   tasksList:
-  - {fileID: 11400000, guid: 6461e81948008b64787b52f08bd93c49, type: 2}
+  - {fileID: 11400000, guid: 0cd96d7c1c1dac647a15bbc5f289a365, type: 2}
+  - {fileID: 11400000, guid: c31aa05426bd666458f1deea73fde11d, type: 2}

@@ -10,10 +10,9 @@ Material:
   m_Name: Ground
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
-  - _EMISSION
   - _SPECULAR_SETUP
   m_InvalidKeywords: []
-  m_LightmapFlags: 1
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -110,10 +109,10 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.021760419, b: 0, a: 1}
-    - _Color: {r: 0, g: 0.021760419, b: 0, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.1509434, g: 0.1488074, b: 0.1488074, a: 1}
+    - _BaseColor: {r: 0.23584908, g: 0.2302866, b: 0.2302866, a: 0.9647059}
+    - _Color: {r: 0.23584905, g: 0.23028657, b: 0.23028657, a: 0.9647059}
+    - _EmissionColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+    - _SpecColor: {r: 0.3490566, g: 0.33753115, b: 0.33753115, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7455497274425883576
 MonoBehaviour:

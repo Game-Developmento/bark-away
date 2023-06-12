@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8a8053b772ec4e44bf27988b1de48bc, type: 3}
-  m_Name: _StealFoodList
+  m_Name: _StealthTasksList
   m_EditorClassIdentifier: 
   tasksList:
-  - {fileID: 11400000, guid: 0cd96d7c1c1dac647a15bbc5f289a365, type: 2}
   - {fileID: 11400000, guid: 2859e5462aa2f1b40974ce436f3c074f, type: 2}
+  - {fileID: 11400000, guid: 5594fc973aa6c0847963191f27db4832, type: 2}

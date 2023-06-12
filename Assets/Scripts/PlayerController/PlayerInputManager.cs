@@ -24,16 +24,19 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Awake()
     {
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Player.Enable();
+        if (playerInputActions == null)
+        {
+            playerInputActions = new PlayerInputActions();
+            playerInputActions.Player.Enable();
 
-        playerInputActions.Player.Move.started += Movement_started;
-        playerInputActions.Player.Move.started += OnMovementInput;
-        playerInputActions.Player.Move.canceled += OnMovementInput;
-        playerInputActions.Player.Move.performed += OnMovementInput;
-        playerInputActions.Player.Interact.started += Interact_started;
-        playerInputActions.Player.Interact.performed += Interact_performed;
-        playerInputActions.Player.Interact.canceled += Interact_canceled;
+            playerInputActions.Player.Move.started += Movement_started;
+            playerInputActions.Player.Move.started += OnMovementInput;
+            playerInputActions.Player.Move.canceled += OnMovementInput;
+            playerInputActions.Player.Move.performed += OnMovementInput;
+            playerInputActions.Player.Interact.started += Interact_started;
+            playerInputActions.Player.Interact.performed += Interact_performed;
+            playerInputActions.Player.Interact.canceled += Interact_canceled;
+        }
     }
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {

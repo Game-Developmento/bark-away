@@ -52,8 +52,11 @@ public class PlayerController : MonoBehaviour
     }
     private void OnPlayerMovementStarted(object sender, PlayerInputManager.MovementKeyEventArgs E)
     {
-        string keyPressed = E.keyName;
-        OnPlayerMovementEvent?.Invoke(this, new KeyNameEventArgs { name = keyPressed });
+        if (E?.keyName != null)
+        {
+            string keyPressed = E.keyName;
+            OnPlayerMovementEvent?.Invoke(this, new KeyNameEventArgs { name = keyPressed });
+        }
     }
     private void OnInteractActionStarted(object sender, System.EventArgs e)
     {
