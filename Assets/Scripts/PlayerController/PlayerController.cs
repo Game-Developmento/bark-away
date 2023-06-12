@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float turnSmoothTime = 0.15f;
     private float turnSmoothVelocity;
     [Header("Camera Options")]
-    [SerializeField] private bool isFreeLookCam = true;
+    [SerializeField] private bool isFarViewCam = true;
     private Transform cam;
 
     [Header("Events")]
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
             If using free look camera- always rotate.
             If using virtual camera- isFreeLookCam should be toggled false, do not update rotation when walking backwards!
             */
-            if (isFreeLookCam || currentMovement != Vector3.back)
+            if (isFarViewCam || currentMovement != Vector3.back)
             {
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f).normalized;
