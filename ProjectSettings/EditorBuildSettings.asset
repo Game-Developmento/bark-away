@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Adi BarkAway/TutorialNewHouse.unity
-    guid: 6ad711e15e671ad4da2cdbaf393c9f3f
+    path: Assets/Scenes/Adi BarkAway/TutorialNewHouse V2.unity
+    guid: 93f375bb42bc87349973a7b2d655e25a
   - enabled: 1
     path: Assets/Scenes/TutorialOverScreen.unity
     guid: cf690a5f268809c489a4a675570161d1
