@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverManagement : MonoBehaviour
 {
 
-    public void GameOver(int totalPoints, int taskCompleted, int fastestTaskCompleted,string sceneToLoad)
+    public void GameOver(int totalPoints, int taskCompleted, int fastestTaskCompleted, string sceneToLoad)
     {
         // Store the values using PlayerPrefs
         PlayerPrefs.SetInt("totalPoints", totalPoints);

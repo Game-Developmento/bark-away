@@ -14,6 +14,7 @@ public class TaskManager : MonoBehaviour
     public event EventHandler<ObjectEventArgs> OnTaskIncomplete;
     public event EventHandler OnTimeFinished;
     public event EventHandler OnPlayerCaught;
+    public event EventHandler OnTutorialFinished;
     public static TaskManager Instance { get; private set; }
     [SerializeField] private TasksListSO tasksListSO;
 
@@ -92,6 +93,7 @@ public class TaskManager : MonoBehaviour
     {
         if (isNextGroupReady && currentTaskGroupIndex < tutorialTaskGroup.Count)
         {
+            TutorialProgression.Instance.HandleNextPartInTutorial();
             currentTaskGroup = tutorialTaskGroup[currentTaskGroupIndex];
             AddTasks(currentTaskGroup);
             isNextGroupReady = false;
@@ -99,8 +101,16 @@ public class TaskManager : MonoBehaviour
         // Check if all the tasks in the current group are completed
         if (waitingTasksList.Count == 0)
         {
-            currentTaskGroupIndex++;
+            ++currentTaskGroupIndex;
+            if (currentTaskGroupIndex == tutorialTaskGroup.Count)
+            {   
+                TutorialProgression.Instance.HandleNextPartInTutorial();
+            }
             isNextGroupReady = true;
+        }
+        if (TutorialProgression.Instance.IsTutorialFinished())
+        {
+            OnTutorialFinished?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -153,7 +163,7 @@ public class TaskManager : MonoBehaviour
     {
         foreach (TasksObjectSO currTask in currentTaskGroup.tasksList)
         {
-            TutorialProgression.Instance.HandleNextPartInTutorial();
+            // TutorialProgression.Instance.HandleNextPartInTutorial();
             waitingTasksList.Add(currTask);
             OnTaskSpawned?.Invoke(this, new ObjectEventArgs { task = currTask });
         }

@@ -10,7 +10,7 @@ public class TaskManagerUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI points;
     private PointsPopup pointsPopup;
-    [SerializeField] private GameOverManagement gameOvermanagement;
+    [SerializeField] private GameOverManagement gameOverManagement;
 
     private int currentScore = 0;
     private int defaultPoints = 300;
@@ -35,18 +35,24 @@ public class TaskManagerUI : MonoBehaviour
         TaskManager.Instance.OnTaskIncomplete += TaskManager_OnTaskIncomplete;
         TaskManager.Instance.OnTimeFinished += TaskManager_OnTimeFinished;
         TaskManager.Instance.OnPlayerCaught += TaskManager_OnPlayerCaught;
+        TaskManager.Instance.OnTutorialFinished += TaskManager_OnTutorialFinished;
 
         UpdateVisual();
+    }
+    private void TaskManager_OnTutorialFinished(object sender, EventArgs e)
+    {
+        string sceneToLoad = "TutorialOverScreen";
+        gameOverManagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
     private void TaskManager_OnTimeFinished(object sender, EventArgs e)
     {
         string sceneToLoad = "Time's up";
-        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
+        gameOverManagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
     private void TaskManager_OnPlayerCaught(object sender, EventArgs e)
     {
         string sceneToLoad = "GameOver";
-        gameOvermanagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
+        gameOverManagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
     private void TaskManager_OnTaskSpawned(object sender, TaskManager.ObjectEventArgs E)
     {

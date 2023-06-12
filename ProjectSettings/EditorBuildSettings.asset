@@ -6,14 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Adi BarkAway/TutorialScene.unity
-    guid: 96f0bb85ec5298045a7a154744ce907c
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 670700ca94218ad41a4a9098c0b8b9b6
-  - enabled: 1
-    path: Assets/Scenes/Time's up.unity
-    guid: 8e56090b2ead55349be5321e4d1fafeb
+    path: Assets/Scenes/Adi BarkAway/TutorialNewHouse.unity
+    guid: 6ad711e15e671ad4da2cdbaf393c9f3f
   - enabled: 1
     path: Assets/Scenes/TutorialOverScreen.unity
     guid: cf690a5f268809c489a4a675570161d1

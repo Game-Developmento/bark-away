@@ -61,7 +61,7 @@ public class TutorialProgression : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            currentTutorialIndex++;
+            ++currentTutorialIndex;
             if (currentTutorialIndex < beforeGameTutorialDialog.Length)
             {
                 // hide previous tutorial
@@ -96,7 +96,10 @@ public class TutorialProgression : MonoBehaviour
         Time.timeScale = 1f;
         tutorialUI.gameObject.SetActive(false);
     }
-
+    public bool IsTutorialFinished()
+    {
+        return currentTutorialIndex == inGameTutorialDialog.Length;
+    }
     public void HandleNextPartInTutorial()
     {
         isTutorialActive = true;
