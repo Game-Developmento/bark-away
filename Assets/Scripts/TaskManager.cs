@@ -74,7 +74,7 @@ public class TaskManager : MonoBehaviour
     }
     private void Update()
     {
-        if (TutorialProgression.Instance.IsBeforeGameTutorialFinished())
+        if (TutorialProgression.Instance != null && TutorialProgression.Instance.IsBeforeGameTutorialFinished())
         {
             if (isTutorial)
             {

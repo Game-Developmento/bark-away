@@ -31,7 +31,6 @@ public class PlayerBlockingDetector : MonoBehaviour
                 fader = hit.collider.gameObject.GetComponent<ObjectFader>();
                 if (fader != null)
                 {
-                    Debug.Log("fader not null last stage");
                     fader.SetDoFade(true);
                 }
             }
