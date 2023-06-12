@@ -16,6 +16,7 @@ public class TaskManager : MonoBehaviour
     public event EventHandler OnPlayerCaught;
     public event EventHandler OnTutorialFinished;
     public static TaskManager Instance { get; private set; }
+    [Header("Tasks SO")]
     [SerializeField] private TasksListSO tasksListSO;
 
     [SerializeField] private List<TasksListSO> tutorialTaskGroup;
@@ -39,7 +40,7 @@ public class TaskManager : MonoBehaviour
 
     [SerializeField] private Clock clock;
 
-    [SerializeField] private FieldOfView fieldOfView;
+    // [SerializeField] private FieldOfView fieldOfViewList;
     private float spawnerTaskTimer = 10f;
     [Header("Tutorial")]
     [SerializeField] private bool isTutorial;
@@ -53,8 +54,20 @@ public class TaskManager : MonoBehaviour
 
     private void Start()
     {
-        clock.OnTimeOverEvent += clock_OnTimerOver;
-        fieldOfView.OnPlayerInFieldOfView += fieldOfView_OnPlayerCaught;
+        clock.OnTimeOverEvent += Clock_OnTimerOver;
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Owner");
+        if (objects != null)
+        {
+            FieldOfView fieldOfView;
+            foreach (GameObject ownerNPC in objects)
+            {
+                fieldOfView = ownerNPC.GetComponent<FieldOfView>();
+                if (fieldOfView != null)
+                {
+                    fieldOfView.OnPlayerInFieldOfView += FieldOfView_OnPlayerCaught;
+                }
+            }
+        }
         SetRandomTimeForTask();
     }
 
@@ -64,11 +77,11 @@ public class TaskManager : MonoBehaviour
         spawnerTaskTimer = randomTime;
     }
 
-    private void clock_OnTimerOver(object sender, System.EventArgs E)
+    private void Clock_OnTimerOver(object sender, System.EventArgs E)
     {
         OnTimeFinished?.Invoke(this, EventArgs.Empty);
     }
-    private void fieldOfView_OnPlayerCaught(object sender, System.EventArgs E)
+    private void FieldOfView_OnPlayerCaught(object sender, System.EventArgs E)
     {
         OnPlayerCaught?.Invoke(this, EventArgs.Empty);
     }

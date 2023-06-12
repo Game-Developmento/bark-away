@@ -2792,7 +2792,7 @@ GameObject:
   - component: {fileID: -6066251999799630639}
   m_Layer: 9
   m_Name: Owner
-  m_TagString: Untagged
+  m_TagString: Owner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
