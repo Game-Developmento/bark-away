@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 9fa9f99c57186e94db3986e8ec36c6f4
   - enabled: 1
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Time's up.unity
     guid: 8e56090b2ead55349be5321e4d1fafeb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Adi BarkAway/Adi BarkAway V5.unity
     guid: 544d401930f3d8246b6548200e96e33a
   m_configObjects:
