@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3593714389391242590}
   - component: {fileID: 5397796776969587190}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: MiniMapIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ Transform:
   m_GameObject: {fileID: 1535919290415795786}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.445, z: 0.07500005}
-  m_LocalScale: {x: 1.73, y: 1.7300001, z: 1.7300001}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5895785018078170946}
@@ -2857,8 +2857,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
-  viewRadius: 6
-  viewAngle: 90
+  viewRadius: 3.5
+  viewAngle: 70
   delay: 0.2
   targetMask:
     serializedVersion: 2
@@ -2866,9 +2866,9 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512
-  rayCastHeight: 0.5
-  edgeResolveIterations: 4
-  edgeDistanceThreshold: 0.5
+  rayCastHeight: 0.1
+  edgeResolveIterations: 5
+  edgeDistanceThreshold: 1
   target: {fileID: 0}
 --- !u!114 &3963646584494037712
 MonoBehaviour:
@@ -2887,18 +2887,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  minDelay: 2
-  maxDelay: 5
+  minDelay: 3
+  maxDelay: 6
 --- !u!195 &7789190748689422119
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2945,9 +2935,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.096704
   m_Direction: 1
-  m_Center: {x: 0.005142868, y: 1, z: 0.01160032}
+  m_Center: {x: 0.0051428676, y: 0.951648, z: 0.011600316}
 --- !u!1 &7281857183825451499
 GameObject:
   m_ObjectHideFlags: 0

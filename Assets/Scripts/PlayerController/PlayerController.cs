@@ -6,8 +6,17 @@ using System;
 [RequireComponent(typeof(PlayerInputManager))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Controller")]
+    [Header("Movement Controller")]
     private PlayerInputManager playerInputManager;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float turnSmoothTime = 0.15f;
+    private float turnSmoothVelocity;
+    [Header("Camera Options")]
+    [SerializeField] private bool isFreeLookCam = true;
+    private Transform cam;
+
+    [Header("Events")]
+    [SerializeField] private ProgressBar progressBar;
     public event EventHandler OnPlayerInteractStarted;
     public event EventHandler OnPlayerInteractCanceled;
     public event EventHandler OnPlayerInteractPerformed;
@@ -16,11 +25,6 @@ public class PlayerController : MonoBehaviour
     {
         public string name;
     }
-    [SerializeField] private ProgressBar progressBar;
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float turnSmoothTime = 0.15f;
-    private float turnSmoothVelocity;
-    private Transform cam;
 
     [Header("Interactions")]
     [SerializeField] private float interactRange = 1f;
@@ -152,12 +156,17 @@ public class PlayerController : MonoBehaviour
         if (playerInputManager.IsMovementPressed())
         {
             Vector3 currentMovement = playerInputManager.GetMovementVectorNormalized();
-
             // rotate the dog towards the movement direction
             float targetAngle = Mathf.Atan2(currentMovement.x, currentMovement.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f).normalized;
-
+            /* 
+            If using free look camera- always rotate.
+            If using virtual camera- isFreeLookCam should be toggled false, do not update rotation when walking backwards!
+            */
+            if (isFreeLookCam || currentMovement != Vector3.back)
+            {
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f).normalized;
+            }
             // move the dog in the movement direction
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             transform.position += moveDir.normalized * moveSpeed * Time.deltaTime;
