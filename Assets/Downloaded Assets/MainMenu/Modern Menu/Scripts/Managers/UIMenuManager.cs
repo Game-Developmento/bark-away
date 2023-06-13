@@ -93,15 +93,15 @@ namespace SlimUI.ModernMenu
 
         public void LoadLevel1() {
             // load scene of level 1;
-            LoadScene("Adi BarkAway V5");
+            LoadScene("Level 1");
         }
         public void LoadLevel2() {
             // load scene of level 2;
-            LoadScene("MainMenu");
+            LoadScene("Level 2");
         }
         public void LoadLevel3() {
             // load scene of level 3;
-            LoadScene("MainMenu");
+            LoadScene("Level 3");
         }
 
         public void ReturnMenu()
