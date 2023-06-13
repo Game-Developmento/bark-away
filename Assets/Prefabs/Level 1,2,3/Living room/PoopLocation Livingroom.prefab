@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8427452773589058142
+--- !u!1001 &1691386100950098383
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6538137239165557128, guid: 0649e0d5f3f9bf2409b442760215d158, type: 3}
       propertyPath: m_Name
-      value: PoopLocation 1
+      value: PoopLocation Livingroom
       objectReference: {fileID: 0}
     - target: {fileID: 6538137239165557131, guid: 0649e0d5f3f9bf2409b442760215d158, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6538137239165557131, guid: 0649e0d5f3f9bf2409b442760215d158, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7116895
+      value: -2.09
       objectReference: {fileID: 0}
     - target: {fileID: 6538137239165557131, guid: 0649e0d5f3f9bf2409b442760215d158, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3674
+      value: -0.3642
       objectReference: {fileID: 0}
     - target: {fileID: 6538137239165557131, guid: 0649e0d5f3f9bf2409b442760215d158, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.3077908
+      value: -10.46
       objectReference: {fileID: 0}
     - target: {fileID: 6538137239165557131, guid: 0649e0d5f3f9bf2409b442760215d158, type: 3}
       propertyPath: m_LocalRotation.w
