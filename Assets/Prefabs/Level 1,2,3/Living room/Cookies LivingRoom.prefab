@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6066800939909381539, guid: f538a2dbec294064ca851c5ce0031a9c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.236
+      value: -10.682
       objectReference: {fileID: 0}
     - target: {fileID: 6066800939909381539, guid: f538a2dbec294064ca851c5ce0031a9c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6879894820584531737, guid: f538a2dbec294064ca851c5ce0031a9c, type: 3}
       propertyPath: m_Name
-      value: Cookies Variant
+      value: Cookies LivingRoom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f538a2dbec294064ca851c5ce0031a9c, type: 3}

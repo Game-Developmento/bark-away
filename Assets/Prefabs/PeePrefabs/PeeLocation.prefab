@@ -49,7 +49,7 @@ MonoBehaviour:
   interactText: Pee Here!
   prefabToSpawn: {fileID: 7601559487329161764, guid: 539d277f26d6d6048a0941d9ef73eb75, type: 3}
   nearestPlayer: {fileID: 0}
-  destoryPeeDelay: 15
+  destroyPeeDelay: 15
 --- !u!65 &6538137239165557129
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -165,15 +165,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 201335401912033874, guid: f304073334b23ae488a3cdd89476ee56, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 201335401912033874, guid: f304073334b23ae488a3cdd89476ee56, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 201335401912033874, guid: f304073334b23ae488a3cdd89476ee56, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 201335401912033874, guid: f304073334b23ae488a3cdd89476ee56, type: 3}
       propertyPath: m_LocalPosition.x
