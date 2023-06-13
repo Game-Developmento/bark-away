@@ -331,7 +331,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41193972}
-  m_LocalRotation: {x: 0.30974108, y: 0.63565755, z: -0.30974114, w: 0.6356575}
+  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974105, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2249,7 +2249,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272148694}
-  m_LocalRotation: {x: 0.30974108, y: 0.63565755, z: -0.30974114, w: 0.6356575}
+  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974105, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3646,6 +3646,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 601712529715480044, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 601712529715480044, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 601712529715480044, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 601712529715480044, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 987674986906484962, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3677,6 +3693,22 @@ PrefabInstance:
     - target: {fileID: 2245090747901333344, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleDifferentMiniMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372714396295341567, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372714396295341567, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372714396295341567, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372714396295341567, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2538565300310604964, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
       propertyPath: m_Pivot.x
