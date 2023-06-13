@@ -30,7 +30,7 @@ namespace SlimUI.ModernMenu
         [Header("PANELS")]
         [Tooltip("The UI Panel parenting all sub menus")]
         public GameObject mainCanvas;
-    
+
 
         [Header("LOADING SCREEN")]
         public bool waitForInput = true;
@@ -88,18 +88,21 @@ namespace SlimUI.ModernMenu
         {
             exitMenu.SetActive(false);
             playMenu.SetActive(true);
-            
+
         }
 
-        public void LoadLevel1() {
+        public void LoadLevel1()
+        {
             // load scene of level 1;
             LoadScene("Level 1");
         }
-        public void LoadLevel2() {
+        public void LoadLevel2()
+        {
             // load scene of level 2;
             LoadScene("Level 2");
         }
-        public void LoadLevel3() {
+        public void LoadLevel3()
+        {
             // load scene of level 3;
             LoadScene("Level 3");
         }
@@ -183,13 +186,10 @@ namespace SlimUI.ModernMenu
 
                 if (operation.progress >= 0.9f && waitForInput)
                 {
-                    loadPromptText.text = "Press " + userPromptKey.ToString().ToUpper() + " to continue";
+                    loadPromptText.text = "";
                     loadingBar.value = 1;
+                    operation.allowSceneActivation = true;
 
-                    if (Input.GetKeyDown(userPromptKey))
-                    {
-                        operation.allowSceneActivation = true;
-                    }
                 }
                 else if (operation.progress >= 0.9f && !waitForInput)
                 {
