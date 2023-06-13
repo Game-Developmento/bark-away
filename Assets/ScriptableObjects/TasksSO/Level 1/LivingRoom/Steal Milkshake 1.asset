@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
   m_Name: Steal Milkshake 1
   m_EditorClassIdentifier: 
-  taskDescription: Steal the Watermelon
+  taskDescription: Steal the Milkshake
   taskLocation: Living Room
-  taskSprite: {fileID: 0}
-  prefab: {fileID: 6459941970606413505, guid: fb1ebc5c6b9f38048809ec9367b99f5a, type: 3}
+  taskSprite: {fileID: 21300000, guid: 558e05860cf163045a11b98bf742920f, type: 3}
+  prefab: {fileID: 885566807175120986, guid: d90ff85fb6d0b5d40af2e2c485f141c0, type: 3}
   taskDuration: 30

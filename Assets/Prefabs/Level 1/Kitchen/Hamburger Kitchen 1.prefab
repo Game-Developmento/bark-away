@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3216673886906318514, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
       propertyPath: m_Name
-      value: Hamburger (1)
+      value: Hamburger Kitchen 1
       objectReference: {fileID: 0}
     - target: {fileID: 3216673886906409618, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3216673886906409618, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.47
+      value: -4.225075
       objectReference: {fileID: 0}
     - target: {fileID: 3216673886906409618, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.031
+      value: 0.6273124
       objectReference: {fileID: 0}
     - target: {fileID: 3216673886906409618, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.73
+      value: -0.33779836
       objectReference: {fileID: 0}
     - target: {fileID: 3216673886906409618, guid: 8fa4d92af73fd4644ba408380c66aeee, type: 3}
       propertyPath: m_LocalRotation.w

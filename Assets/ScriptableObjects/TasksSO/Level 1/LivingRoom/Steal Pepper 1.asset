@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
   m_Name: Steal Pepper 1
   m_EditorClassIdentifier: 
-  taskDescription: Steal the Watermelon
+  taskDescription: Steal the Pepper
   taskLocation: Living Room
-  taskSprite: {fileID: 0}
-  prefab: {fileID: 696885759695752477, guid: 41053cb565b78284abcede2f074a485d, type: 3}
+  taskSprite: {fileID: 21300000, guid: e4b831e768a675f40a57d43104f0eb8e, type: 3}
+  prefab: {fileID: 3768188664973835769, guid: ae86664ecb6b0fa429f65550cb16ee46, type: 3}
   taskDuration: 30

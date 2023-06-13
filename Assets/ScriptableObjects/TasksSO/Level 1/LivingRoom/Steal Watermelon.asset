@@ -15,5 +15,5 @@ MonoBehaviour:
   taskDescription: Steal the Watermelon
   taskLocation: Living Room
   taskSprite: {fileID: 21300000, guid: 4745f6a546c478a4a8d34f2c85881a4f, type: 3}
-  prefab: {fileID: 2512269847617789886, guid: 7b458fffcc1deb542b367f31342a602c, type: 3}
+  prefab: {fileID: 2949852560624880856, guid: 7cba85051e7b24a438f8d00401ac9f8b, type: 3}
   taskDuration: 30

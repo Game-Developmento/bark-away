@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
+  m_Name: Steal Melon
+  m_EditorClassIdentifier: 
+  taskDescription: Steal the Melon
+  taskLocation: Bedroom
+  taskSprite: {fileID: 21300000, guid: 9166ef47639a10744b37cd5cd78dc014, type: 3}
+  prefab: {fileID: 6917280414468920757, guid: dc9377234ae40374bba61dd0b29140d2, type: 3}
+  taskDuration: 30

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
   m_Name: Steal Pizza
   m_EditorClassIdentifier: 
-  taskDescription: Steal the Watermelon
+  taskDescription: Steal the Pizza
   taskLocation: Living Room
-  taskSprite: {fileID: 0}
-  prefab: {fileID: 9124503757635907423, guid: b431c6d2fa457fd4d8b9b76758b94db3, type: 3}
+  taskSprite: {fileID: 21300000, guid: f29e664c23f32f64b92a4eb0921bded2, type: 3}
+  prefab: {fileID: 2724563767786727948, guid: 312f42da30185f74dbe1cfcc3a0b30f1, type: 3}
   taskDuration: 30

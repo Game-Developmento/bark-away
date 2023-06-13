@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1557075412832258836, guid: b351ec2970849164e96945e27f031eac, type: 3}
       propertyPath: m_Name
-      value: Hotdog A (1)
+      value: Hotdog Bedroom 1
       objectReference: {fileID: 0}
     - target: {fileID: 2220282837077905838, guid: b351ec2970849164e96945e27f031eac, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2220282837077905838, guid: b351ec2970849164e96945e27f031eac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.545
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 2220282837077905838, guid: b351ec2970849164e96945e27f031eac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.625
+      value: 0.464
       objectReference: {fileID: 0}
     - target: {fileID: 2220282837077905838, guid: b351ec2970849164e96945e27f031eac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.341
+      value: -11.07
       objectReference: {fileID: 0}
     - target: {fileID: 2220282837077905838, guid: b351ec2970849164e96945e27f031eac, type: 3}
       propertyPath: m_LocalRotation.w

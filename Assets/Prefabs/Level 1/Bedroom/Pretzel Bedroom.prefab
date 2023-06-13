@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7003986197665375342, guid: a73cb62f10092764e9f78aba735874b0, type: 3}
       propertyPath: m_Name
-      value: Pretzel
+      value: Pretzel Bedroom
       objectReference: {fileID: 0}
     - target: {fileID: 7672155718138805972, guid: a73cb62f10092764e9f78aba735874b0, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7672155718138805972, guid: a73cb62f10092764e9f78aba735874b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0540223
+      value: 7.216623
       objectReference: {fileID: 0}
     - target: {fileID: 7672155718138805972, guid: a73cb62f10092764e9f78aba735874b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.606
+      value: 0.45878983
       objectReference: {fileID: 0}
     - target: {fileID: 7672155718138805972, guid: a73cb62f10092764e9f78aba735874b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.349
+      value: -5.0853634
       objectReference: {fileID: 0}
     - target: {fileID: 7672155718138805972, guid: a73cb62f10092764e9f78aba735874b0, type: 3}
       propertyPath: m_LocalRotation.w

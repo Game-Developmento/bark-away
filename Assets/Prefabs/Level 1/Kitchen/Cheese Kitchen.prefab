@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459972736966031263, guid: b0fa1b5ca6b71184bbaf28df7246895a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.567
+      value: -2.952731
       objectReference: {fileID: 0}
     - target: {fileID: 4459972736966031263, guid: b0fa1b5ca6b71184bbaf28df7246895a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.635
+      value: 0.6285
       objectReference: {fileID: 0}
     - target: {fileID: 4459972736966031263, guid: b0fa1b5ca6b71184bbaf28df7246895a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17
+      value: 0.3604
       objectReference: {fileID: 0}
     - target: {fileID: 4459972736966031263, guid: b0fa1b5ca6b71184bbaf28df7246895a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459972736966388671, guid: b0fa1b5ca6b71184bbaf28df7246895a, type: 3}
       propertyPath: m_Name
-      value: Cheese
+      value: Cheese Kitchen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0fa1b5ca6b71184bbaf28df7246895a, type: 3}

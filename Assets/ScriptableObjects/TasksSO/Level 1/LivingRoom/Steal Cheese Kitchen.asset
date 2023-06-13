@@ -15,5 +15,5 @@ MonoBehaviour:
   taskDescription: Steal the Cheese
   taskLocation: Living Room
   taskSprite: {fileID: 21300000, guid: 287d6de5692f9f44bb37ce1a2024a04a, type: 3}
-  prefab: {fileID: 4459972736966388671, guid: bac180b3a216e5643810a7e0974624f0, type: 3}
+  prefab: {fileID: 242816387095767943, guid: b5e1b47b35c9f8549930f6fee0615788, type: 3}
   taskDuration: 10

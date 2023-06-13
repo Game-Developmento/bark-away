@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975575570917985403, guid: 912dc241db0c5234a93ded6ba1c87201, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.631
+      value: -4.6410694
       objectReference: {fileID: 0}
     - target: {fileID: 5975575570917985403, guid: 912dc241db0c5234a93ded6ba1c87201, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.63
+      value: 0.62731266
       objectReference: {fileID: 0}
     - target: {fileID: 5975575570917985403, guid: 912dc241db0c5234a93ded6ba1c87201, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.132
+      value: -0.36559427
       objectReference: {fileID: 0}
     - target: {fileID: 5975575570917985403, guid: 912dc241db0c5234a93ded6ba1c87201, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6459941970606413505, guid: 912dc241db0c5234a93ded6ba1c87201, type: 3}
       propertyPath: m_Name
-      value: Milkshake
+      value: Milkshake Kitchen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 912dc241db0c5234a93ded6ba1c87201, type: 3}
