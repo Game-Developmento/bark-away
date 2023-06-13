@@ -331,7 +331,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41193972}
-  m_LocalRotation: {x: 0.3097411, y: 0.6356575, z: -0.30974108, w: 0.63565755}
+  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974105, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2249,7 +2249,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272148694}
-  m_LocalRotation: {x: 0.3097411, y: 0.6356575, z: -0.30974108, w: 0.63565755}
+  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974105, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2454,7 +2454,7 @@ PrefabInstance:
     - target: {fileID: 2022555666644393033, guid: 494572d9240342044865b4bfd926dd09, type: 3}
       propertyPath: progressBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5690062810170079240}
     - target: {fileID: 2022555666644393033, guid: 494572d9240342044865b4bfd926dd09, type: 3}
       propertyPath: isFreeLookCam
       value: 1
@@ -3674,14 +3674,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 987674986906484962, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987674986906484962, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1252934226943308928, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
       propertyPath: m_Name
       value: Canvas with Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622163483040631937, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1487041507}
+    - target: {fileID: 1622163483040631937, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleCamera
       objectReference: {fileID: 0}
     - target: {fileID: 1962395850602172998, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
       propertyPath: gameOverManagement
       value: 
       objectReference: {fileID: 1106649870}
+    - target: {fileID: 2245090747901333344, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 216271738}
+    - target: {fileID: 2245090747901333344, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleDifferentMiniMap
+      objectReference: {fileID: 0}
     - target: {fileID: 2538565300310604964, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3766,9 +3790,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3308451362526184744, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308451362526184744, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308451362526184744, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308451362526184744, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7415520541194710259, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1487041507}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+--- !u!114 &5690062810170079240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8937311725773471242, guid: 9747691c5e5393b419ad54ad72d45b22, type: 3}
+  m_PrefabInstance: {fileID: 5690062810170079239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc03b8d7aa40e14a9d4314e410561b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
