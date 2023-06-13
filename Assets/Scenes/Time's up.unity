@@ -336,7 +336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TIME's UP!
+  m_text: TIME'S UP!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 086de8c5e3aba1e45be551c7b213e320, type: 2}
@@ -742,6 +742,7 @@ MonoBehaviour:
   totalPointsText: {fileID: 935122266}
   tasksCompletedText: {fileID: 872252483}
   FastestTaskCompletedText: {fileID: 955681509}
+  highScoreText: {fileID: 599991297}
 --- !u!114 &382878460
 MonoBehaviour:
   m_ObjectHideFlags: 0
