@@ -6264,8 +6264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 512
-  m_IgnoreTag: Floor
+    m_Bits: 2048
+  m_IgnoreTag: InnerWall
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0

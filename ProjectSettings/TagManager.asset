@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
-  - Wall
   - Owner
+  - InnerWall
   layers:
   - Default
   - TransparentFX
@@ -19,7 +19,7 @@ TagManager:
   - Interactable
   - Worldspace
   - Minimap
-  - 
+  - DetectCamCollision
   - 
   - 
   - 
