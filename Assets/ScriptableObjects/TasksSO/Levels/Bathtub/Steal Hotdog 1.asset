@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437ba7cdb22344348bd9a83125e4a4cd, type: 3}
+  m_Name: Steal Hotdog 1
+  m_EditorClassIdentifier: 
+  taskDescription: Steal the Hotdog
+  taskLocation: Bathroom
+  taskSprite: {fileID: 21300000, guid: 8f8001fb991846d40b938a0d1c9b6309, type: 3}
+  prefab: {fileID: 8260242884714939790, guid: df6b1ff548ffd38468819c1c16c654cc, type: 3}
+  taskDuration: 30
