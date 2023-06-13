@@ -331,7 +331,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41193972}
-  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974105, w: 0.63565755}
+  m_LocalRotation: {x: 0.3097411, y: 0.6356575, z: -0.30974108, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2249,7 +2249,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272148694}
-  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974105, w: 0.63565755}
+  m_LocalRotation: {x: 0.3097411, y: 0.6356575, z: -0.30974108, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2384,18 +2384,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1989243948039125914, guid: 494572d9240342044865b4bfd926dd09, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989243948039125914, guid: 494572d9240342044865b4bfd926dd09, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989243948039125914, guid: 494572d9240342044865b4bfd926dd09, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989243948039125914, guid: 494572d9240342044865b4bfd926dd09, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
       objectReference: {fileID: 0}
@@ -2435,10 +2423,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1989243948039125914, guid: 494572d9240342044865b4bfd926dd09, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2022555666644393033, guid: 494572d9240342044865b4bfd926dd09, type: 3}
       propertyPath: farCam
       value: 
@@ -2462,18 +2446,6 @@ PrefabInstance:
     - target: {fileID: 2022555666644393033, guid: 494572d9240342044865b4bfd926dd09, type: 3}
       propertyPath: turnSmoothTime
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022555666644393035, guid: 494572d9240342044865b4bfd926dd09, type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022555666644393035, guid: 494572d9240342044865b4bfd926dd09, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022555666644393035, guid: 494572d9240342044865b4bfd926dd09, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2022555666644393076, guid: 494572d9240342044865b4bfd926dd09, type: 3}
       propertyPath: m_Enabled
