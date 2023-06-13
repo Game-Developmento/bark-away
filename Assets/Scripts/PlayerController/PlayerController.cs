@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     [Header("Interactions")]
     private List<InteractableBase> interactableList = new List<InteractableBase>();
     InteractableBase currInteractable; // The interactable the player was near when started pressing 'E'
+    [SerializeField] private Transform poopSpawnLocation;
+    [SerializeField] private Transform peeSpawnLocation;
     private void Awake()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
@@ -188,5 +190,15 @@ public class PlayerController : MonoBehaviour
     {
         closeCam.SetActive(!closeCam.activeSelf);
         farCam.SetActive(!farCam.activeSelf);
+    }
+
+    public Transform GetPoopSpawnLocation()
+    {
+        return poopSpawnLocation;
+    }
+
+    public Transform GetPeeSpawnLocation()
+    {
+        return peeSpawnLocation;
     }
 }

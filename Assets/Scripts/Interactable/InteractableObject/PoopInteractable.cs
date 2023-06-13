@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class PeeInteractable : InteractableBase
+public class PoopInteractable : InteractableBase
 {
     [SerializeField] private GameObject prefabToSpawn;
     [SerializeField] private GameObject nearestPlayer; // Set nearest player during interactions
     private Animator playerAnimator;
-    private Transform peeSpawnLocation;
-    [SerializeField] private float destroyPeeDelay = 15f;
+    private Transform poopSpawnLocation;
+    [SerializeField] private float destroyPoopDelay = 15f;
     public override void StartInteraction(GameObject player)
     {
         // Initilalize current player variables
@@ -16,19 +16,19 @@ public class PeeInteractable : InteractableBase
         // Start interaction animation
         if (playerAnimator != null)
         {
-            playerAnimator.SetTrigger("startPeeing");
+            playerAnimator.SetTrigger("startPooping");
         }
         PlayerController playerController = nearestPlayer?.GetComponent<PlayerController>();
         if (playerController != null)
         {
-            peeSpawnLocation = playerController.GetPeeSpawnLocation();
+            poopSpawnLocation = playerController.GetPoopSpawnLocation();
         }
     }
     public override void CancelInteraction(GameObject player)
     {
         if (playerAnimator != null)
         {
-            playerAnimator.SetTrigger("cancelPeeing");
+            playerAnimator.SetTrigger("cancelPooping");
         }
         // Reset variables for next time
         nearestPlayer = null;
@@ -48,24 +48,23 @@ public class PeeInteractable : InteractableBase
         {
             Vector3 nearestPlayerPosition = nearestPlayer.transform.position;
             Vector3 positionToSpawn;
-            if (peeSpawnLocation != null)
+            if (poopSpawnLocation != null)
             {
                 // Player has marker location!
-                positionToSpawn = peeSpawnLocation.position;
+                positionToSpawn = poopSpawnLocation.position;
             }
             else
             {
                 // Fallback location
                 positionToSpawn = new Vector3(nearestPlayerPosition.x, transform.position.y, nearestPlayerPosition.z);
             }
-            GameObject spawnedPee = Instantiate(prefabToSpawn, positionToSpawn, prefabToSpawn.transform.rotation);
-            StartCoroutine(DestroyPee(spawnedPee.gameObject));
+            GameObject spawnedPoop = Instantiate(prefabToSpawn, positionToSpawn, prefabToSpawn.transform.rotation);
+            StartCoroutine(DestroyPoop(spawnedPoop.gameObject));
             Collider collider = GetComponent<Collider>();
             if (collider != null)
             {
                 collider.enabled = false;
             }
-            // TODO: Check why this works only in children
             SpriteRenderer[] rendererComponents = this.gameObject.GetComponentsInChildren<SpriteRenderer>();
             foreach (SpriteRenderer renderer in rendererComponents)
             {
@@ -82,10 +81,10 @@ public class PeeInteractable : InteractableBase
         }
     }
 
-    private IEnumerator DestroyPee(GameObject spawnedPee)
+    private IEnumerator DestroyPoop(GameObject spawnedPoop)
     {
-        yield return new WaitForSeconds(destroyPeeDelay);
-        Destroy(spawnedPee);
+        yield return new WaitForSeconds(destroyPoopDelay);
+        Destroy(spawnedPoop);
         Destroy(gameObject);
     }
 }
