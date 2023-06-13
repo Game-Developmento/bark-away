@@ -71,6 +71,10 @@ public class TaskManager : MonoBehaviour
         SetRandomTimeForTask();
     }
 
+    public bool IsTutorialScene()
+    {
+        return isTutorial;
+    }
     private void SetRandomTimeForTask()
     {
         float randomTime = UnityEngine.Random.Range(adjustedMinTimeToSpawn, adjustedMaxTimeToSpawn);

@@ -19,14 +19,17 @@ public class GameOverManagement : MonoBehaviour
 
     private void UpdateHighScore(int totalPoints)
     {
-        if (PlayerPrefs.HasKey("highScore"))
+        if (!TaskManager.Instance.IsTutorialScene())
         {
-            int currentHighestScore = PlayerPrefs.GetInt("highScore");
-            PlayerPrefs.SetInt("highScore", Mathf.Max(currentHighestScore, totalPoints));
-        }
-        else
-        {
-            PlayerPrefs.SetInt("highScore", totalPoints);
+            if (PlayerPrefs.HasKey("highScore"))
+            {
+                int currentHighestScore = PlayerPrefs.GetInt("highScore");
+                PlayerPrefs.SetInt("highScore", Mathf.Max(currentHighestScore, totalPoints));
+            }
+            else
+            {
+                PlayerPrefs.SetInt("highScore", totalPoints);
+            }
         }
     }
 }
