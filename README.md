@@ -13,7 +13,7 @@ Welcome to Bark Away!
 
 Experience life as a mischievous dog with a mission to cause chaos in your owners house! In this game, you are tasked with stealing food, peeing on the floor, and leaving little surprises behind all while completing as many missions as possible within the given time limit. Be careful and stealthy, it is only a crime if you get caught!
 
-![Alt text](GameOver.PNG)
+![Alt text](Assets/Sprites/GameOver.PNG)
 
 ## Gameplay
 
