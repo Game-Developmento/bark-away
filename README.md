@@ -5,6 +5,8 @@ For more information see:
 
 [Click here to play the game!](https://adiy55.itch.io/bark-away)
 
+[Click here to watch the trailer!](https://youtu.be/zEk9DXPwiNM)
+
 ## Introduction
 
 Welcome to Bark Away!
