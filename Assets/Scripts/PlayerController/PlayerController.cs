@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
         {
             if (progressBar != null)
             {
-                Debug.Log("Interact Started!");
                 progressBar.BeginProgress();
             }
             currInteractable.StartInteraction(gameObject);
@@ -85,7 +84,6 @@ public class PlayerController : MonoBehaviour
         {
             if (progressBar != null)
             {
-                Debug.Log("Interact Canceled!");
                 progressBar.HandleTimerOver();
             }
             currInteractable.CancelInteraction(gameObject);
@@ -97,8 +95,6 @@ public class PlayerController : MonoBehaviour
     // This functions invokes the Interact method when the player presses the keyboard.
     private void OnInteractActionPerformed(object sender, System.EventArgs e)
     {
-        Debug.Log("Interact Perfomed!");
-
         InteractableBase nearestInteractable = GetInteractableObject();
         // Check if interactable changed since player started pressing 'E'
         if ((nearestInteractable != null && currInteractable != null)

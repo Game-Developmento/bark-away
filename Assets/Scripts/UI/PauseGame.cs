@@ -28,4 +28,5 @@ public class PauseGame : MonoBehaviour
         }
         pauseMenu.SetActive(false);
     }
+
 }
