@@ -714,14 +714,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
-    - target: {fileID: 3147151409569533101, guid: 43e3a07a48ab79d4f93c57b2622eb97d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3147151409569533101, guid: 43e3a07a48ab79d4f93c57b2622eb97d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0000000018626451
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43e3a07a48ab79d4f93c57b2622eb97d, type: 3}
 --- !u!1001 &465400697
@@ -813,6 +805,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 454301103515342806, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 620706468961398362, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 620706468961398362, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 620706468961398362, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 620706468961398362, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936389736532896656, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936389736532896656, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3744706622967228403, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
@@ -1763,7 +1779,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 200
+    m_MaxSpeed: 180
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
