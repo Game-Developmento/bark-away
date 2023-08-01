@@ -196,6 +196,7 @@ public class TaskManager : MonoBehaviour
         if (task != null && waitingTasksList.Contains(task))
         {
             InteractableBase interactable = task.GetCurrentObject().GetComponent<InteractableBase>();
+            if(interactable.IsCurrentlyInteracting()) { return; }
             waitingTasksList.Remove(task);
             OnTaskIncomplete?.Invoke(this, new ObjectEventArgs { interactable = interactable });
         }

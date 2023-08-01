@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class InteractableBase : MonoBehaviour
 {
     [SerializeField] private string interactText;
+    [SerializeField] protected bool isCurrentlyInteracting;
 
     // Absract methods: Derived classes must implement these methods!
     public abstract void StartInteraction(GameObject player);
@@ -16,4 +17,5 @@ public abstract class InteractableBase : MonoBehaviour
     public virtual string GetInteractText() { return interactText; }
     public virtual Transform GetGameObjectTransform() { return gameObject.transform; }
     public virtual int GetGameObjectID() { return gameObject.GetInstanceID(); }
+    public virtual bool IsCurrentlyInteracting() { return isCurrentlyInteracting; }
 }

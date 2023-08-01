@@ -11,6 +11,7 @@ public class TaskManagerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI points;
     private PointsPopup pointsPopup;
     [SerializeField] private GameOverManagement gameOverManagement;
+    private int InteractButtonDuration = 3; // How long the player holds 'E'
 
     private int currentScore = 0;
     private int defaultPoints = 300;
@@ -79,9 +80,14 @@ public class TaskManagerUI : MonoBehaviour
         {
             ProgressBar progressbar = taskCompleted.GetProgressBar();
             int timeLeftForTask = progressbar.GetTimeLeft();
+            if (timeLeftForTask < InteractButtonDuration)
+            {
+                timeLeftForTask = InteractButtonDuration;
+            }
             float totalTimeforTask = progressbar.GetTotalTime();
             float timeRatio = timeLeftForTask / totalTimeforTask;
             int scoreToAdd = (int)(timeRatio * defaultPoints);
+            // scoreToAdd = Mathf.Max(scoreToAdd, );
             UpdatePoints(scoreToAdd);
             numOfTasksCompleted += 1;
             // updating the fastest task completed so far

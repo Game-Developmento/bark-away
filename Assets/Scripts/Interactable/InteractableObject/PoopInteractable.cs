@@ -10,6 +10,7 @@ public class PoopInteractable : InteractableBase
     [SerializeField] private float destroyPoopDelay = 15f;
     public override void StartInteraction(GameObject player)
     {
+        isCurrentlyInteracting = true;
         // Initilalize current player variables
         nearestPlayer = player;
         playerAnimator = nearestPlayer?.GetComponent<Animator>();
@@ -26,6 +27,7 @@ public class PoopInteractable : InteractableBase
     }
     public override void CancelInteraction(GameObject player)
     {
+        isCurrentlyInteracting = false;
         if (playerAnimator != null)
         {
             playerAnimator.SetTrigger("cancelPooping");
@@ -36,6 +38,7 @@ public class PoopInteractable : InteractableBase
     }
     public override void Interact(GameObject player)
     {
+        isCurrentlyInteracting = false;
         TaskManager taskManager = TaskManager.Instance;
         if (taskManager != null)
         {
