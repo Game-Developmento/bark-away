@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameOverManagement : MonoBehaviour
 {
     private int highScore;
@@ -19,16 +20,18 @@ public class GameOverManagement : MonoBehaviour
 
     private void UpdateHighScore(int totalPoints)
     {
+        string sceneName = SceneManager.GetActiveScene().name;
         if (!TaskManager.Instance.IsTutorialScene())
         {
-            if (PlayerPrefs.HasKey("highScore"))
+            string highScoreKey = sceneName + "_highScore";
+            if (PlayerPrefs.HasKey(highScoreKey))
             {
-                int currentHighestScore = PlayerPrefs.GetInt("highScore");
-                PlayerPrefs.SetInt("highScore", Mathf.Max(currentHighestScore, totalPoints));
+                int currentHighestScore = PlayerPrefs.GetInt(highScoreKey);
+                PlayerPrefs.SetInt(highScoreKey, Mathf.Max(currentHighestScore, totalPoints));
             }
             else
             {
-                PlayerPrefs.SetInt("highScore", totalPoints);
+                PlayerPrefs.SetInt(highScoreKey, totalPoints);
             }
         }
     }

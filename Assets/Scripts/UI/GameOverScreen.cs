@@ -19,9 +19,10 @@ public class GameOverScreen : MonoBehaviour
         totalPointsText.text = "Total Points: " + totalPoints.ToString();
         tasksCompletedText.text = "Tasks Completed: " + tasksCompleted.ToString();
         FastestTaskCompletedText.text = "Fastest Task Completed: " + FastestTaskCompleted.ToString() + "s";
-        if (highScoreText.text != null && PlayerPrefs.HasKey("highScore"))
+        string mostRecentScene = PlayerPrefs.GetString("mostRecentScene");
+        if (highScoreText.text != null && PlayerPrefs.HasKey(mostRecentScene + "_highScore"))
         {
-            int highScore = PlayerPrefs.GetInt("highScore");
+            int highScore = PlayerPrefs.GetInt(mostRecentScene + "_highScore");
             highScoreText.text = "High Score: " + highScore;
         }
 
