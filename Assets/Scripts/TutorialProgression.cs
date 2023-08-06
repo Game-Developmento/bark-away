@@ -40,7 +40,7 @@ public class TutorialProgression : MonoBehaviour
             // if we enabled the tutorial on the screen we wait for space key to continue the game and disable it.
             if (tutorialUI.gameObject.activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     inGameTutorialDialog[currentTutorialIndex].SetActive(false);
                     ++currentTutorialIndex;
@@ -57,7 +57,7 @@ public class TutorialProgression : MonoBehaviour
     }
     private void HandleBeforeGameTutorial()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             ++currentTutorialIndex;
             if (currentTutorialIndex < beforeGameTutorialDialog.Length)
