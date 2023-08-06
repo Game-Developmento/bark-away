@@ -42,17 +42,20 @@ public class TaskManagerUI : MonoBehaviour
     }
     private void TaskManager_OnTutorialFinished(object sender, EventArgs e)
     {
-        string sceneToLoad = "TutorialOverScreen";
+        // string sceneToLoad = "TutorialOverScreen";
+        string sceneToLoad = "Mobile TutorialOverScreen";
         gameOverManagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
     private void TaskManager_OnTimeFinished(object sender, EventArgs e)
     {
-        string sceneToLoad = "Time's up";
+        // string sceneToLoad = "Time's up";
+        string sceneToLoad = "Mobile Time's up";
         gameOverManagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
     private void TaskManager_OnPlayerCaught(object sender, EventArgs e)
     {
-        string sceneToLoad = "GameOver";
+        // string sceneToLoad = "GameOver";
+        string sceneToLoad = "Mobile GameOver";
         gameOverManagement.GameOver(currentScore, numOfTasksCompleted, fastestTaskCompleted, sceneToLoad);
     }
     private void TaskManager_OnTaskSpawned(object sender, TaskManager.ObjectEventArgs E)
