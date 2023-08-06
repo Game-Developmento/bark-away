@@ -13,6 +13,13 @@ public class PauseGame : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void LoadMainMenuMobileScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu Mobile");
+    }
+
+
     public void OnGamePaused()
     {
         isGameAlreadyPaused = Time.timeScale == 0;

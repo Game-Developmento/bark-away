@@ -1193,6 +1193,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1487041507}
+    - target: {fileID: 5397463655771927374, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenuMobileScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5858993342936869426, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: m_Pivot.x
       value: 0

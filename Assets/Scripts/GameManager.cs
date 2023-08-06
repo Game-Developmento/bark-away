@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void LoadMainMenuMobileScene()
+    {
+        SceneManager.LoadScene("MainMenu Mobile");
+    }
     public void RestartGame()
     {
         string mostRecentScene = PlayerPrefs.GetString("mostRecentScene");

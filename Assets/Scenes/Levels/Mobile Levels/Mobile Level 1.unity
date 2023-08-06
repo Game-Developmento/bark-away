@@ -269,7 +269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41193972}
-  m_LocalRotation: {x: 0.3097411, y: 0.6356575, z: -0.30974108, w: 0.63565755}
+  m_LocalRotation: {x: 0.30974108, y: 0.63565755, z: -0.30974114, w: 0.6356575}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1958,7 +1958,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272148694}
-  m_LocalRotation: {x: 0.3097411, y: 0.6356575, z: -0.30974108, w: 0.63565755}
+  m_LocalRotation: {x: 0.30974108, y: 0.63565755, z: -0.30974114, w: 0.6356575}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2024,6 +2024,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1487041507}
+    - target: {fileID: 5397463655771927374, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenuMobileScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5858993342936869426, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2108,6 +2112,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5951520084523987817, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951520084523987817, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951520084523987817, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951520084523987817, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -207.47722
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889489470467593150, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889489470467593150, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889489470467593150, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889489470467593150, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7140116211960275478, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: m_Name
       value: Canvas Gameplay Mobile
@@ -2116,6 +2152,34 @@ PrefabInstance:
       propertyPath: gameOverManagement
       value: 
       objectReference: {fileID: 1106649870}
+    - target: {fileID: 8419109195809714251, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803462552338289530, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803462552338289530, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803462552338289530, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803462552338289530, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -69.15907
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205768842995668596, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205768842995668596, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
 --- !u!1 &1298855860

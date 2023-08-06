@@ -107,6 +107,19 @@ namespace SlimUI.ModernMenu
             LoadScene("Level 3");
         }
 
+        public void LoadLevel1Mobile()
+        {
+            LoadScene("Mobile Level 1");
+        }
+        public void LoadLevel2Mobile()
+        {
+            LoadScene("Mobile Level 2");
+        }
+        public void LoadLevel3Mobile()
+        {
+            LoadScene("Mobile Level 3");
+        }
+
         public void ReturnMenu()
         {
             playMenu.SetActive(false);
@@ -133,6 +146,14 @@ namespace SlimUI.ModernMenu
             CameraObject.SetFloat("Animate", 1);
             // need to change here to tutorial scene
             LoadScene("Tutorial");
+        }
+
+        public void LoadTutorialMobileScene()
+        {
+            DisablePlayGame();
+            CameraObject.SetFloat("Animate", 1);
+            // need to change here to tutorial scene
+            LoadScene("Mobile Tutorial");
         }
 
         public void Position1()
