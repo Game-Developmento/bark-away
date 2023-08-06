@@ -2020,6 +2020,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 99317515, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 590
+      objectReference: {fileID: 0}
+    - target: {fileID: 99317515, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -229
+      objectReference: {fileID: 0}
+    - target: {fileID: 921118909, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 921118909, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -229
+      objectReference: {fileID: 0}
     - target: {fileID: 1485238394073250405, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: player
       value: 
@@ -2148,10 +2164,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Gameplay Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 7275158104797043223, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1487041507}
+    - target: {fileID: 7275158104797043223, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 7588086496567215312, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: gameOverManagement
       value: 
       objectReference: {fileID: 1106649870}
+    - target: {fileID: 7880651684046232054, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 216271738}
+    - target: {fileID: 7880651684046232054, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleDifferentMiniMap
+      objectReference: {fileID: 0}
     - target: {fileID: 8419109195809714251, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: m_IsActive
       value: 0
