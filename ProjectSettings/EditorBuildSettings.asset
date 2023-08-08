@@ -5,29 +5,53 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 9fa9f99c57186e94db3986e8ec36c6f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Adi BarkAway/Tutorial.unity
     guid: 93f375bb42bc87349973a7b2d655e25a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels/Level 1.unity
     guid: 7e639554235d19c4f85d050850619efb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels/Level 2.unity
     guid: 5a7c9c39af066184a82c754670169f3c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels/Level 3.unity
     guid: 74972ed4c515e1c42b94dd3a3b65a1cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutorialOverScreen.unity
     guid: cf690a5f268809c489a4a675570161d1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: 670700ca94218ad41a4a9098c0b8b9b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Time's Up.unity
     guid: 8e56090b2ead55349be5321e4d1fafeb
+  - enabled: 1
+    path: Assets/Scenes/Levels/MainMenu Mobile/MainMenu Mobile.unity
+    guid: 38086f8bb23a4a44cbc9a2b894a55690
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mobile Tutorial/Mobile Tutorial.unity
+    guid: b4eebcf02d737774abdd654ab1421e01
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mobile Levels/Mobile Level 1.unity
+    guid: 0a8d8803f57c7e14dba1b293047aaf4c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mobile Levels/Mobile Level 2.unity
+    guid: 8958cb522311f3f49b17317f88004336
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mobile Levels/Mobile Level 3.unity
+    guid: 7682151b93e40894482f674eb96faa97
+  - enabled: 1
+    path: Assets/Scenes/Levels/End Screens/Mobile GameOver.unity
+    guid: d42f2f8e70002014b989e81a1dde6892
+  - enabled: 1
+    path: Assets/Scenes/Levels/End Screens/Mobile Time's up.unity
+    guid: d17de37c497755b42a88e00ab1622273
+  - enabled: 1
+    path: Assets/Scenes/Levels/End Screens/Mobile TutorialOverScreen.unity
+    guid: b13792258151cd7498a92cbc91091523
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a7a33b1840e943b4088f0dc7b920b9b8, type: 2}

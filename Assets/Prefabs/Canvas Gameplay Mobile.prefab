@@ -306,7 +306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3753638998486982642, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
       propertyPath: m_Name
-      value: Canvas Gameplay
+      value: Canvas Gameplay Mobile
       objectReference: {fileID: 0}
     - target: {fileID: 4205484510303757330, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -324,9 +324,25 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6108823910107887697, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_text
+      value: Tap the screen to continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108823910107887697, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_fontSize
+      value: 47.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284514236800579, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_text
+      value: Tap the screen to continue
+      objectReference: {fileID: 0}
     - target: {fileID: 8267448459571051197, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
       propertyPath: startTimeInSeconds
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269401922337730510, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}

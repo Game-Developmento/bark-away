@@ -109,7 +109,7 @@ public class TaskManager : MonoBehaviour
         }
         else
         {
-            if (popup != null && popup.gameObject.activeSelf && Input.anyKeyDown)
+            if (popup != null && popup.gameObject.activeSelf && (Input.anyKeyDown || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 Time.timeScale = 1f; // Resume game
                 popup.gameObject.SetActive(false);
