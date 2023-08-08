@@ -45,6 +45,7 @@ public class TaskManager : MonoBehaviour
     [Header("Tutorial")]
     [SerializeField] private bool isTutorial;
     [SerializeField] private float tutorialTaskTime = 90f;
+    private GameObject popup = null; // Popup text before levels (not tutorial!)
 
     private void Awake()
     {
@@ -54,6 +55,11 @@ public class TaskManager : MonoBehaviour
 
     private void Start()
     {
+        if (!isTutorial)
+        {
+            popup = GameObject.FindGameObjectWithTag("GameplayPopup");
+            Time.timeScale = 0f; // Pause the game initially
+        }
         clock.OnTimeOverEvent += Clock_OnTimerOver;
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Owner");
         if (objects != null)
@@ -103,6 +109,11 @@ public class TaskManager : MonoBehaviour
         }
         else
         {
+            if (popup != null && popup.gameObject.activeSelf && Input.anyKeyDown)
+            {
+                Time.timeScale = 1f; // Resume game
+                popup.gameObject.SetActive(false);
+            }
             HandlePlayMode();
             UpdateTaskSpawnTime();
         }
@@ -196,7 +207,7 @@ public class TaskManager : MonoBehaviour
         if (task != null && waitingTasksList.Contains(task))
         {
             InteractableBase interactable = task.GetCurrentObject().GetComponent<InteractableBase>();
-            if(interactable.IsCurrentlyInteracting()) { return; }
+            if (interactable.IsCurrentlyInteracting()) { return; }
             waitingTasksList.Remove(task);
             OnTaskIncomplete?.Invoke(this, new ObjectEventArgs { interactable = interactable });
         }
