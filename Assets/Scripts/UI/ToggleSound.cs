@@ -11,10 +11,36 @@ public class ToggleSound : MonoBehaviour
     private int soundInactive = 0;
     private string soundKey = "sound";
 
+
+    private void Awake()
+    {
+        if (!PlayerPrefs.HasKey(soundKey))
+        {
+            PlayerPrefs.SetInt(soundKey, soundActive);
+        }
+    }
     private void Start()
     {
+        bool isActive = PlayerPrefs.GetInt(soundKey) == soundActive;
         audioSource.Play();
         audioSource.loop = true;
+        if (isActive)
+        {
+            soundOn.SetActive(false);
+            soundOff.SetActive(true);
+        }
+        else
+        {
+            soundOn.SetActive(true);
+            soundOff.SetActive(false);
+        }
+        OnToggleSound();
+
+        // if (!isActive)
+        // {
+        //     Debug.Log("should pause");
+        //     audioSource.Pause();
+        // }
     }
     public void OnToggleSound()
     {
@@ -22,10 +48,12 @@ public class ToggleSound : MonoBehaviour
         soundOff.SetActive(!soundOff.activeSelf);
         if (soundOn.activeSelf)
         {
+            PlayerPrefs.SetInt(soundKey, soundActive);
             audioSource.UnPause();
         }
         else
         {
+            PlayerPrefs.SetInt(soundKey, soundInactive);
             audioSource.Pause();
         }
     }
