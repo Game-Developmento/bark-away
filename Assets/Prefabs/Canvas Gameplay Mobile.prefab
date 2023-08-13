@@ -179,6 +179,56 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 47.4
       objectReference: {fileID: 0}
+    - target: {fileID: 7747284515215476921, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284515215476921, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284515215476921, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284515215476921, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284515311129897, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284515518004317, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_text
+      value: "Your first assignment is to learn how to interact. \nSteal the food
+        from the table. \nYou can see the location of the current tasks in the minimap
+        as:"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284515654479825, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284516059829989, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284516296135892, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: inGameTutorialDialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747284516296135892, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: inGameTutorialDialog.Array.data[0]
+      value: 
+      objectReference: {fileID: 4360242196922815029}
+    - target: {fileID: 7747284516296135892, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: inGameTutorialDialog.Array.data[1]
+      value: 
+      objectReference: {fileID: 4360242197541010325}
+    - target: {fileID: 7747284516296135892, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+      propertyPath: inGameTutorialDialog.Array.data[2]
+      value: 
+      objectReference: {fileID: 4360242198077757093}
     - target: {fileID: 7747284516296135914, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -197,3 +247,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+--- !u!1 &4360242196922815029 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7747284515654479825, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+  m_PrefabInstance: {fileID: 6269383507734756836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4360242197541010325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7747284515162244721, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+  m_PrefabInstance: {fileID: 6269383507734756836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4360242198077757093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7747284514626284353, guid: c5319e09c05bb854ea37afde49bd5426, type: 3}
+  m_PrefabInstance: {fileID: 6269383507734756836}
+  m_PrefabAsset: {fileID: 0}

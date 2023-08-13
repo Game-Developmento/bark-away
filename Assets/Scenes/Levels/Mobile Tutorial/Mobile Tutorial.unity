@@ -331,7 +331,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41193972}
-  m_LocalRotation: {x: 0.30974108, y: 0.63565755, z: -0.30974114, w: 0.6356575}
+  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974108, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -449,7 +449,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tasksListSO: {fileID: 11400000, guid: 0e0c9cd9854faa546b5dc3bd952421a9, type: 2}
   tutorialTaskGroup:
-  - {fileID: 11400000, guid: 58fc4cbac14a931459bb833e8a8d481c, type: 2}
   - {fileID: 11400000, guid: 4ef4c9763cffc8b4ba3b1fc3468e02a6, type: 2}
   - {fileID: 11400000, guid: 0f3558f6471d9e94ea933b4493f6294a, type: 2}
   waitingTasksMax: 4
@@ -2048,7 +2047,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272148694}
-  m_LocalRotation: {x: 0.30974108, y: 0.63565755, z: -0.30974114, w: 0.6356575}
+  m_LocalRotation: {x: 0.30974114, y: 0.6356575, z: -0.30974108, w: 0.63565755}
   m_LocalPosition: {x: -8, y: 6.470805, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2826,9 +2825,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4360242196225339167, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4360242196424681742, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360242196525984513, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360242196855253197, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360242197496690013, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360242197496690013, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360242197496690013, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360242197496690013, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5858993342936869426, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: m_Pivot.x
@@ -2934,10 +2961,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Gameplay Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 7275158104797043223, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1487041507}
+    - target: {fileID: 7275158104797043223, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275158104797043223, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 7588086496567215312, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: gameOverManagement
       value: 
       objectReference: {fileID: 1106649870}
+    - target: {fileID: 7880651684046232054, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 216271738}
+    - target: {fileID: 7880651684046232054, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleDifferentMiniMap
+      objectReference: {fileID: 0}
     - target: {fileID: 9205768842995668596, guid: 4041cd9a66b5244499ae1feb0274cd28, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
